@@ -731,11 +731,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testClipEventPath:
     Guid:
-      Data1: 1165818565
-      Data2: 1233071570
-      Data3: 1300832897
-      Data4: 1919322951
-    Path: event:/sfx/testSfx
+      Data1: -918585695
+      Data2: 1258802976
+      Data3: 1471245448
+      Data4: -1355236139
+    Path: event:/ui/testClick
   _testPlayOneShot: 0
   _testPlayIn3D: 0
   _testPlayPosition: {x: 0, y: 0, z: 0}
@@ -965,11 +965,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testClipEventPath:
     Guid:
-      Data1: 1165818565
-      Data2: 1233071570
-      Data3: 1300832897
-      Data4: 1919322951
-    Path: event:/sfx/testSfx
+      Data1: -918585695
+      Data2: 1258802976
+      Data3: 1471245448
+      Data4: -1355236139
+    Path: event:/ui/testClick
   _testPlayOneShot: 1
   _testPlayIn3D: 0
   _testPlayPosition: {x: 0, y: 0, z: 0}
@@ -1125,11 +1125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testClipEventPath:
     Guid:
-      Data1: 1165818565
-      Data2: 1233071570
-      Data3: 1300832897
-      Data4: 1919322951
-    Path: event:/sfx/testSfx
+      Data1: -918585695
+      Data2: 1258802976
+      Data3: 1471245448
+      Data4: -1355236139
+    Path: event:/ui/testClick
   _testPlayOneShot: 1
   _testPlayIn3D: 1
   _testPlayPosition: {x: 5, y: 1, z: 23}
@@ -1519,11 +1519,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testClipEventPath:
     Guid:
-      Data1: 1165818565
-      Data2: 1233071570
-      Data3: 1300832897
-      Data4: 1919322951
-    Path: event:/sfx/testSfx
+      Data1: -918585695
+      Data2: 1258802976
+      Data3: 1471245448
+      Data4: -1355236139
+    Path: event:/ui/testClick
   _testPlayOneShot: 1
   _testPlayIn3D: 1
   _testPlayPosition: {x: 0, y: 0, z: 0}
@@ -1714,10 +1714,10 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -966201748
-      Data2: 1079073589
-      Data3: -2029147766
-      Data4: 265369933
+      Data1: 103232330
+      Data2: 1217439577
+      Data3: -2001093953
+      Data4: -1460285587
     Path: event:/music/testMusic
   Event: 
   EventPlayTrigger: 11
