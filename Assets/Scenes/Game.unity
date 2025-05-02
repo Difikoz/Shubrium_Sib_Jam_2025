@@ -467,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <StageName>k__BackingField: Stage 01
+  <PlayerStartPoint>k__BackingField: {fileID: 0}
   <SpawnPoints>k__BackingField:
   - {fileID: 838660761}
   <EnemiesToSpawn>k__BackingField:
@@ -949,6 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <StageName>k__BackingField: Stage 02
+  <PlayerStartPoint>k__BackingField: {fileID: 0}
   <SpawnPoints>k__BackingField:
   - {fileID: 388644965}
   - {fileID: 649046771}
@@ -1649,7 +1651,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3431002495465231029, guid: 45ea00db81fc14b43bfbdc12e7cabce1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 3431002495465231029, guid: 45ea00db81fc14b43bfbdc12e7cabce1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1657,7 +1659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3431002495465231029, guid: 45ea00db81fc14b43bfbdc12e7cabce1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3431002495465231029, guid: 45ea00db81fc14b43bfbdc12e7cabce1, type: 3}
       propertyPath: m_LocalRotation.w

@@ -7,6 +7,7 @@ namespace WinterUniverse
     public class Stage : BasicComponentHolder
     {
         [field: SerializeField] public string StageName { get; private set; }
+        [field: SerializeField] public Transform PlayerStartPoint { get; private set; }
         [field: SerializeField] public List<Transform> SpawnPoints { get; private set; }
         [field: SerializeField] public List<EnemySpawnData> EnemiesToSpawn { get; private set; }
 
@@ -20,6 +21,11 @@ namespace WinterUniverse
         {
             base.DeactivateComponent();
             gameObject.SetActive(false);
+        }
+
+        public void TeleportPlayerToStartPoint()
+        {
+            GameManager.StaticInstance.Player.transform.SetPositionAndRotation(PlayerStartPoint.transform.position, PlayerStartPoint.transform.rotation);
         }
 
         public void AddSpawnedEnemy(EnemyController enemy)
@@ -49,6 +55,7 @@ namespace WinterUniverse
                 LeanPool.Despawn(enemy.gameObject);
             }
             _components.Clear();
+            GameManager.StaticInstance.ElevatorManager.OpenDoors();
         }
     }
 }

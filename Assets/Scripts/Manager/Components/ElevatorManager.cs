@@ -6,42 +6,54 @@ namespace WinterUniverse
     public class ElevatorManager : BasicComponent
     {
         private bool _isInElevator = false;
-        
-        public void ActivateElevator()
+
+        [SerializeField] private GameObject _testDoors;
+
+        public void OpenDoors()
+        {
+            _testDoors.SetActive(false);
+        }
+
+        public void CloseDoors()
+        {
+            _testDoors.SetActive(true);
+        }
+
+        private void OnPlayerEntered()
         {
             if (_isInElevator)
+            {
                 return;
-                
+            }
             _isInElevator = true;
-
-            // Закрытие дверей лифта?
-
-            // Сразу показываем импланты без задержки
+            CloseDoors();
             GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
-
-            // Выключение текущего этажа
-
-            // Запускаем ожидание завершения выбора
             StartCoroutine(WaitForImplantSelection());
         }
-        
+
         private IEnumerator WaitForImplantSelection()
         {
-            // Ждем только один фрейм для обработки выбора
-            yield return null;
-            
-            // Заканчиваем, когда ImplantManager завершит процесс выбора
+            WaitForSeconds delay = new(0.1f);
+            yield return delay;
+            GameManager.StaticInstance.Player.DeactivateComponent();
+            GameManager.StaticInstance.StageManager.DisableCurrentStage();
+            yield return delay;
+            GameManager.StaticInstance.StageManager.CurrentStage.TeleportPlayerToStartPoint();
             while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
             {
-                yield return null;
+                yield return delay;
             }
-
-            // Включение нового этажа
-
-            // Когда выбор завершен, завершаем работу лифта
+            GameManager.StaticInstance.StageManager.StartNextStage();
+            GameManager.StaticInstance.Player.ActivateComponent();
             _isInElevator = false;
+        }
 
-            // Открытие дверей лифта?
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<PlayerController>())
+            {
+                OnPlayerEntered();
+            }
         }
     }
-} 
+}

@@ -8,6 +8,7 @@ namespace WinterUniverse
     {
         [field: SerializeField] public List<Stage> Stages { get; private set; }
         public int CurrentStageIndex { get; private set; }
+        public Stage CurrentStage => Stages[CurrentStageIndex];
 
         public override void InitializeComponent()
         {
@@ -22,35 +23,36 @@ namespace WinterUniverse
 
         public void StartNextStage()
         {
+            if (CurrentStageIndex == Stages.Count - 1)
+            {
+                Debug.Log("ТЫ ПРОШЁЛ ИГРУ, ЕЕЕ");
+                // вызвать какой-нибудь метод
+                return;
+            }
             CurrentStageIndex++;
-            _components.Add(Stages[CurrentStageIndex]);
-            Stages[CurrentStageIndex].ActivateComponent();
-            Stages[CurrentStageIndex].EnableComponent();
-            GameManager.StaticInstance.SpawnManager.SpawnEnemies(Stages[CurrentStageIndex]);
+            _components.Add(CurrentStage);
+            CurrentStage.ActivateComponent();
+            CurrentStage.EnableComponent();
+            GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
             StartCoroutine(HandleStagesCoroutine());
+        }
+
+        public void DisableCurrentStage()
+        {
+            CurrentStage.DisableComponent();
+            CurrentStage.DeactivateComponent();
+            _components.Remove(CurrentStage);
         }
 
         private IEnumerator HandleStagesCoroutine()
         {
             WaitForSeconds delay = new(5f);
             yield return delay;
-            while (!Stages[CurrentStageIndex].CanCompleteStage())
+            while (!CurrentStage.CanCompleteStage())
             {
                 yield return delay;
             }
-            Stages[CurrentStageIndex].CompleteStage();
-            Stages[CurrentStageIndex].DisableComponent();
-            Stages[CurrentStageIndex].DeactivateComponent();
-            _components.Remove(Stages[CurrentStageIndex]);
-            if (CurrentStageIndex == Stages.Count - 1)
-            {
-                Debug.Log("ТЫ ПРОШЁЛ ИГРУ, ЕЕЕ");
-                // вызвать какой-нибудь метод
-            }
-            else
-            {
-                StartNextStage();
-            }
+            CurrentStage.CompleteStage();
         }
     }
 }
