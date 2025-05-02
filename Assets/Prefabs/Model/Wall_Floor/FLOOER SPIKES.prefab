@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7434564162552430868}
   - component: {fileID: 1457360111129345099}
   - component: {fileID: 3826189492265729412}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FLOOER SPIKES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
