@@ -5,7 +5,7 @@ namespace WinterUniverse
 {
     public abstract class AbilityCastTypeConfig : ScriptableObject
     {
-        public virtual bool CanCast(Pawn caster, Pawn target, Vector3 position, Vector3 direction, List<AbilityHitTypeConfig> hitTypes, AbilityTargetType targetType)
+        public virtual bool CanCast(Pawn caster, Pawn target, Vector3 position, Vector3 direction, List<AbilityHitTypeData> hitTypes, AbilityTargetType targetType)
         {
             if (targetType == AbilityTargetType.Target && target == null)
             {
@@ -14,6 +14,6 @@ namespace WinterUniverse
             return true;
         }
 
-        public abstract void OnCast(Pawn caster, Pawn target, Vector3 position, Vector3 direction, List<AbilityHitTypeConfig> hitTypes, AbilityTargetType targetType);
+        public abstract void OnCast(Pawn caster, Pawn target, Vector3 position, Vector3 direction, List<AbilityHitTypeData> hitTypes, AbilityTargetType targetType);
     }
 }

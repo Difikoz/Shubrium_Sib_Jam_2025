@@ -7,6 +7,9 @@ namespace WinterUniverse
     public class AbilityDamageHitTypeConfig : AbilityHitTypeConfig
     {
         [field: SerializeField] public List<DamageType> DamageTypes { get; private set; }
+        [field: SerializeField] public bool UseStatToCalculate { get; private set; }
+        [field: SerializeField] public GameplayStatConfig StateDamageValue { get; private set; }
+        [field: SerializeField] public DamageTypeConfig StatDamageType { get; private set; }
 
         public override void OnHit(Pawn caster, Pawn target, Vector3 position, Vector3 direction, AbilityTargetType targetType)
         {
@@ -28,7 +31,14 @@ namespace WinterUniverse
                     // NICE =)
                     break;
             }
-            // target.ApplyDamages(DamageTypes, caster);
+            if (UseStatToCalculate && StateDamageValue != null && StatDamageType != null)
+            {
+                target.Health.Reduce(Mathf.RoundToInt(caster.GameplayComponent.GetGameplayStat(StateDamageValue.Key).CurrentValue), StatDamageType, caster);
+            }
+            else
+            {
+                target.Health.ApplyDamages(DamageTypes, caster);
+            }
         }
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace WinterUniverse
 {
-    [CreateAssetMenu(fileName = "Projectile", menuName = "Winter Universe/Ability/Cast Type/New Projectile")]
-    public class AbilityProjectileCastTypeConfig : AbilityCastTypeConfig
+    [CreateAssetMenu(fileName = "Cone", menuName = "Winter Universe/Ability/Cast Type/New Cone")]
+    public class AbilityConeCastTypeConfig : AbilityCastTypeConfig
     {
         public override void OnCast(Pawn caster, Pawn target, Vector3 position, Vector3 direction, List<AbilityHitTypeData> hitTypes, AbilityTargetType targetType)
         {
