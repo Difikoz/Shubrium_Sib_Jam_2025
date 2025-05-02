@@ -1,53 +1,32 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 namespace WinterUniverse
 {
-    public class PlayerImplantsUI : MonoBehaviour
+    public class PlayerImplantsUI : BasicComponent
     {
         [SerializeField] private GameObject _implantIconPrefab;
         [SerializeField] private Transform _iconsContainer;
         
-        private PlayerImplants _playerImplants;
-        private Dictionary<string, ImplantIconUI> _spawnedIcons = new Dictionary<string, ImplantIconUI>();
-        
-        private void Awake()
+        private Dictionary<string, ImplantIconUI> _spawnedIcons;
+
+        public override void InitializeComponent()
         {
-            _playerImplants = FindObjectOfType<PlayerImplants>();
-            if (_playerImplants == null)
-            {
-                Debug.LogError($"[{GetType().Name}] PlayerImplants не найден!");
-                return;
-            }
-            
-            // Подписываемся на событие изменения имплантов
-            _playerImplants.OnImplantsChanged += UpdateImplantsUI;
+            _spawnedIcons = new();
+        }
+
+        public override void EnableComponent()
+        {
+            GameManager.StaticInstance.Player.Equipment.OnImplantsChanged += UpdateImplantsUI;
+        }
+
+        public override void DisableComponent()
+        {
+            GameManager.StaticInstance.Player.Equipment.OnImplantsChanged -= UpdateImplantsUI;
         }
         
-        private void OnDestroy()
+        private void UpdateImplantsUI(List<ImplantConfig> implants)
         {
-            // Отписываемся от события при уничтожении
-            if (_playerImplants != null)
-            {
-                _playerImplants.OnImplantsChanged -= UpdateImplantsUI;
-            }
-        }
-        
-        private void Start()
-        {
-            // Первичное обновление UI
-            UpdateImplantsUI();
-        }
-        
-        private void UpdateImplantsUI()
-        {
-            if (_playerImplants == null)
-                return;
-                
-            var implants = _playerImplants.GetAppliedImplants();
-            
             // Создаем словарь для подсчета количества каждого импланта
             // Используем составной ключ, чтобы различать импланты по их полному идентификатору
             Dictionary<string, int> implantCounts = new Dictionary<string, int>();

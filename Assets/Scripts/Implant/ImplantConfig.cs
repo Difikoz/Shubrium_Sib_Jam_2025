@@ -3,30 +3,22 @@ using UnityEngine;
 
 namespace WinterUniverse
 {
-    [CreateAssetMenu(fileName = "Implant", menuName = "Winter Universe/Implant/New Preset")]
+    [CreateAssetMenu(fileName = "Implant", menuName = "Winter Universe/Implant/New Implant")]
     public class ImplantConfig : BasicInfoConfig
     {
-        //[field: SerializeField] public List<EffectCreator> Effects { get; private set; }
-
+        [field: SerializeField] public bool CanStack { get; private set; }
         [field: SerializeField] public List<GameplayStatModifierCreator> Modifiers { get; private set; }
-        [field: SerializeField] public bool CanStack { get; private set; } = true;
-        
-        // Поле для механики
-        [field: SerializeField] public MechanicType Mechanic { get; private set; } = MechanicType.None;
-        
-        // Перечисление доступных механик
-        public enum MechanicType
+        [field: SerializeField] public List<GameplayEffectCreator> Effects { get; private set; }
+
+        public void OnTriggerPerfomed(string trigger, Pawn owner, Pawn source)
         {
-            None,           // Нет механики (только статы)
-            Shield,         // Щит
-            Resurrection,   // Воскрешение
-            AoeReflect,     // Отражение урона по области
-            // Здесь можно добавить другие типы механик
+            foreach (GameplayEffectCreator effectCreator in Effects)
+            {
+                if (effectCreator.Trigger == trigger && effectCreator.Triggered)
+                {
+                    effectCreator.Effect.OnApply(owner, source);
+                }
+            }
         }
-        
-        // Вспомогательные методы для проверки типа импланта
-        public bool HasMechanic() => Mechanic != MechanicType.None;
-        
-        public bool HasStatsModifiers() => Modifiers != null && Modifiers.Count > 0;
     }
 }
