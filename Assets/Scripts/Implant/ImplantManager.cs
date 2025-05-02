@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WinterUniverse
 {
-    public class ImplantManager : Singleton<ImplantManager>
+    public class ImplantManager : MonoBehaviour
     {
         [SerializeField] private List<ImplantConfig> _allImplants = new List<ImplantConfig>();
         [SerializeField] private int _implantOptions = 3;
@@ -13,20 +13,23 @@ namespace WinterUniverse
         
         public bool IsSelectingImplant { get; private set; } = false;
         
-        protected override void OnAwake()
+        private void Awake()
         {
-            base.OnAwake();
-            // Дополнительная инициализация
-        }
-        
-        public override void InitializeComponent()
-        {
-            base.InitializeComponent();
+            // Проверяем, если UI не назначен через Inspector, то пытаемся найти на сцене
+            if (_implantSelectionUI == null)
+            {
+                _implantSelectionUI = FindObjectOfType<ImplantSelectionUI>();
+                if (_implantSelectionUI == null)
+                {
+                    Debug.LogError($"[{GetType().Name}] ImplantSelectionUI не найден! Назначьте его вручную в Inspector.");
+                }
+            }
+            
             // Находим компонент имплантов игрока напрямую
             _playerImplants = FindObjectOfType<PlayerImplants>();
             if (_playerImplants == null)
             {
-                Debug.LogError($"[{GetType().Name}] PlayerImplants not found!");
+                Debug.LogError($"[{GetType().Name}] PlayerImplants не найден!");
             }
         }
         
@@ -97,7 +100,10 @@ namespace WinterUniverse
             
             // Если недостаточно имплантов, вернем все что есть
             if (validImplants.Count <= count)
+            {
+                Debug.Log($"[{GetType().Name}] Доступно только {validImplants.Count} имплантов из {count} запрошенных");
                 return new List<ImplantConfig>(validImplants);
+            }
                 
             // Выбираем случайные импланты
             List<ImplantConfig> result = new List<ImplantConfig>();

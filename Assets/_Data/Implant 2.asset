@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7c8a70c7b788f439bd570ed34bb421, type: 3}
   m_Name: Implant 2
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: implant3
+  <Key>k__BackingField: implant3
   <DisplayName>k__BackingField: "\u0418\u043C\u043F\u043B\u0430\u043D\u0442 3"
   <Description>k__BackingField: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435
     3"
@@ -24,4 +24,4 @@ MonoBehaviour:
       _type: 1
       _value: 2
   <CanStack>k__BackingField: 0
-  <Type>k__BackingField: 0
+  <Mechanic>k__BackingField: 0

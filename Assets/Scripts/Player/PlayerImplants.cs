@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ namespace WinterUniverse
     {
         [SerializeField] private int _maxImplants = 4;
         [SerializeField] private List<ImplantConfig> _appliedImplants = new List<ImplantConfig>();
+        
+        // Событие, которое будет вызываться при изменении имплантов
+        public event Action OnImplantsChanged;
         
         public override void InitializeComponent()
         {
@@ -46,7 +50,6 @@ namespace WinterUniverse
                 foreach (var modifier in implant.Modifiers)
                 {
                     // Код применения модификатора
-                    
                 }
             }
             
@@ -57,6 +60,9 @@ namespace WinterUniverse
             }
             
             Debug.Log($"[{GetType().Name}] Applied implant: {implant.DisplayName}");
+            
+            // Вызываем событие обновления имплантов
+            OnImplantsChanged?.Invoke();
             
             return true;
         }

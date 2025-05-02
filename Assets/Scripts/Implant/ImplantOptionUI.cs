@@ -8,7 +8,6 @@ namespace WinterUniverse
     public class ImplantOptionUI : MonoBehaviour
     {
         [SerializeField] private Image _icon;
-        [SerializeField] private Image _background;
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private TextMeshProUGUI _descriptionText;
         [SerializeField] private Button _button;
@@ -23,8 +22,7 @@ namespace WinterUniverse
             
             _nameText.text = implant.DisplayName;
             _descriptionText.text = implant.Description;
-            _icon.sprite = implant.Icon;
-            _background.color = implant.Color;
+            _icon.sprite = implant.Icon;            
             
             _button.onClick.RemoveAllListeners();
             _button.onClick.AddListener(OnButtonClicked);
