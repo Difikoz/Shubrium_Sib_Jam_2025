@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8773566249972841306}
   - component: {fileID: 981627780498341313}
   m_Layer: 6
-  m_Name: Enemy Cyber Volk
+  m_Name: Enemy Cyber Ko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a645e14ce11dc4ead0f3b2dcdf3f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StatsCreator>k__BackingField: {fileID: 11400000, guid: bc85bf0cb1c36cd429e86dcff1b173ec, type: 2}
+  <StatsCreator>k__BackingField: {fileID: 11400000, guid: 391c140afcbdb49459f53d12d9bab38a, type: 2}
 --- !u!114 &2955175000031094459
 MonoBehaviour:
   m_ObjectHideFlags: 0
