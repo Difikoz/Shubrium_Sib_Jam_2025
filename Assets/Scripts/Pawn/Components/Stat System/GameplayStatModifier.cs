@@ -3,15 +3,15 @@ using UnityEngine;
 namespace WinterUniverse
 {
     [System.Serializable]
-    public class StatModifier
+    public class GameplayStatModifier
     {
-        [SerializeField] private StatModifierType _type;
+        [SerializeField] private GameplayStatModifierType _type;
         [SerializeField] private float _value;
 
-        public StatModifierType Type => _type;
+        public GameplayStatModifierType Type => _type;
         public float Value => _value;
 
-        public StatModifier(StatModifierType type, float value)
+        public GameplayStatModifier(GameplayStatModifierType type, float value)
         {
             _type = type;
             _value = value;

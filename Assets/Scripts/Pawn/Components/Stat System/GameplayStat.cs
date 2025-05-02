@@ -4,43 +4,45 @@ using UnityEngine;
 namespace WinterUniverse
 {
     [System.Serializable]
-    public class Stat
+    public class GameplayStat
     {
-        public StatConfig Config { get; private set; }
+        public GameplayStatConfig Config { get; private set; }
+        public float BaseValue { get; private set; }
         public float CurrentValue { get; private set; }
         public float FlatValue { get; private set; }
         public float MultiplierValue { get; private set; }
         public List<float> FlatModifiers { get; private set; }
         public List<float> MultiplierModifiers { get; private set; }
 
-        public Stat(StatConfig config)
+        public GameplayStat(GameplayStatConfig config, float baseValue)
         {
             Config = config;
-            CurrentValue = 0f;
+            BaseValue = baseValue;
+            CurrentValue = baseValue;
             FlatModifiers = new();
             MultiplierModifiers = new();
         }
 
-        public void AddModifier(StatModifier modifier)
+        public void AddModifier(GameplayStatModifier modifier)
         {
-            if (modifier.Type == StatModifierType.Flat)
+            if (modifier.Type == GameplayStatModifierType.Flat)
             {
                 FlatModifiers.Add(modifier.Value);
             }
-            else if (modifier.Type == StatModifierType.Multiplier)
+            else if (modifier.Type == GameplayStatModifierType.Multiplier)
             {
                 MultiplierModifiers.Add(modifier.Value);
             }
             CalculateCurrentValue();
         }
 
-        public void RemoveModifier(StatModifier modifier)
+        public void RemoveModifier(GameplayStatModifier modifier)
         {
-            if (modifier.Type == StatModifierType.Flat && FlatModifiers.Contains(modifier.Value))
+            if (modifier.Type == GameplayStatModifierType.Flat && FlatModifiers.Contains(modifier.Value))
             {
                 FlatModifiers.Remove(modifier.Value);
             }
-            else if (modifier.Type == StatModifierType.Multiplier && MultiplierModifiers.Contains(modifier.Value))
+            else if (modifier.Type == GameplayStatModifierType.Multiplier && MultiplierModifiers.Contains(modifier.Value))
             {
                 MultiplierModifiers.Remove(modifier.Value);
             }
@@ -61,10 +63,10 @@ namespace WinterUniverse
             }
             if (MultiplierValue != 0f)
             {
-                MultiplierValue *= FlatValue;
+                MultiplierValue *= BaseValue + FlatValue;
                 MultiplierValue /= 100f;
             }
-            CurrentValue = Mathf.Clamp(FlatValue + MultiplierValue, Config.MinValue, Config.MaxValue);
+            CurrentValue = Mathf.Clamp(BaseValue + FlatValue + MultiplierValue, Config.MinValue, Config.MaxValue);
         }
     }
 }

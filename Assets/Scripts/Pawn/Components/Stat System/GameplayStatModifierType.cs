@@ -1,6 +1,6 @@
 namespace WinterUniverse
 {
-    public enum StatModifierType
+    public enum GameplayStatModifierType
     {
         Flat,
         Multiplier,
