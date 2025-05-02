@@ -6,12 +6,10 @@ namespace WinterUniverse
     [RequireComponent(typeof(PawnEquipmentComponent))]
     [RequireComponent(typeof(PawnHealthComponent))]
     [RequireComponent(typeof(PawnLocomotionComponent))]
-    [RequireComponent(typeof(Rigidbody))]
     public class Pawn : BasicComponentHolder
     {
         [field: SerializeField] public GameplayStatsCreatorConfig StatsCreator { get; private set; }
 
-        public Rigidbody RB { get; private set; }
         public PawnAnimatorComponent Animator { get; private set; }
         public PawnEquipmentComponent Equipment { get; private set; }
         public PawnHealthComponent Health { get; private set; }
@@ -22,7 +20,6 @@ namespace WinterUniverse
         {
             GameplayComponent = new();
             GameplayComponent.AddGameplayStats(StatsCreator.BaseStats);
-            RB = GetComponent<Rigidbody>();
             Animator = GetComponent<PawnAnimatorComponent>();
             Equipment = GetComponent<PawnEquipmentComponent>();
             Health = GetComponent<PawnHealthComponent>();

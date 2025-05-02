@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1857425928816004833}
   - component: {fileID: 3868963136490027850}
   - component: {fileID: 8773566249972841306}
-  - component: {fileID: 2448017997276168187}
   - component: {fileID: 981627780498341313}
   m_Layer: 6
   m_Name: Enemy Cyber Volk
@@ -105,33 +104,6 @@ MonoBehaviour:
   <RotateSpeed>k__BackingField: 180
   <Mass>k__BackingField: 1
   <TimeToDash>k__BackingField: 0.1
---- !u!54 &2448017997276168187
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413677848155644667}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 116
-  m_CollisionDetection: 2
 --- !u!195 &981627780498341313
 NavMeshAgent:
   m_ObjectHideFlags: 0
