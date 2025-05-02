@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2356a9eaec80e4144be3434fc4b6a087, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
-  <DamageTypes>k__BackingField: []
+  <StatValue>k__BackingField: {fileID: 11400000, guid: c3f026a09333bf9468652c91549ce4ec, type: 2}
+  <StatValueMultiplier>k__BackingField: 1
+  <StatDamageType>k__BackingField: {fileID: 11400000, guid: 421e4916339dcbf42aaf1667fc56606f, type: 2}
+  _test: 
+  <FixedDamageTypes>k__BackingField: []

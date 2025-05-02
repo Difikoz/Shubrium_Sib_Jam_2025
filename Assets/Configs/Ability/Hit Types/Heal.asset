@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbe85083cb68c7469c9412e6abe1210, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
-  <Value>k__BackingField: 0
+  <StatValue>k__BackingField: {fileID: 11400000, guid: 3aa46a57aaca6704da7a059040161c59, type: 2}
+  <StatValueMultiplier>k__BackingField: 0.5
+  _test: 
+  <FixedValue>k__BackingField: 1

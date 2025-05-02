@@ -9,6 +9,7 @@ namespace WinterUniverse
         public Vector3 GroundVelocity { get; private set; }
         public Vector3 KnockbackVelocity { get; private set; }
         public Vector3 DashVelocity { get; private set; }
+        [field: SerializeField, Range(10f, 360f)] public float RotateSpeed { get; private set; }
         [field: SerializeField, Range(1f, 100f)] public float Mass { get; private set; }
         [field: SerializeField, Range(0.1f, 0.5f)] public float TimeToDash { get; private set; }
 
@@ -27,6 +28,10 @@ namespace WinterUniverse
             if (KnockbackVelocity != Vector3.zero)
             {
                 KnockbackVelocity = Vector3.MoveTowards(KnockbackVelocity, Vector3.zero, Mass * Time.fixedDeltaTime);
+            }
+            if (GroundVelocity != Vector3.zero)
+            {
+                _pawn.RB.rotation = Quaternion.RotateTowards(_pawn.RB.rotation, Quaternion.LookRotation(GroundVelocity.normalized), RotateSpeed * Time.fixedDeltaTime);
             }
             _pawn.RB.linearVelocity = GroundVelocity * _pawn.GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + KnockbackVelocity + DashVelocity;
         }
@@ -50,6 +55,7 @@ namespace WinterUniverse
         {
             yield return new WaitForSeconds(TimeToDash);
             DashVelocity = Vector3.zero;
+            yield return new WaitForSeconds(_pawn.GameplayComponent.GetGameplayStat("Dash Cooldown").CurrentValue);
             _dashCoroutine = null;
         }
     }

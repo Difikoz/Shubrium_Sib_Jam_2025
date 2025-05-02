@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a359beac78714d4aba570b17dac4624, type: 3}
   m_Name: Attack Speed
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Attack Speed
+  <Key>k__BackingField: Attack Speed
   <DisplayName>k__BackingField: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C
     \u0410\u0442\u0430\u043A\u0438"
   <Description>k__BackingField: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439
@@ -21,4 +21,4 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <MinValue>k__BackingField: 0
   <MaxValue>k__BackingField: 999999
-  <IsPercent>k__BackingField: 1
+  <IsPercent>k__BackingField: 0

@@ -5,11 +5,11 @@ namespace WinterUniverse
 {
     public class AudioSliderSettings : SliderSettings
     {
-        [SerializeField] private string _audioType = "Master";
+        [SerializeField] private string _busPath = "bus:/Master";
 
         protected override void OnValueChanged(float value)
         {
-            //RuntimeManager.SetFloat($"Volume{_audioType}", value);
+            RuntimeManager.GetBus(_busPath).setVolume(value);
         }
     }
 }

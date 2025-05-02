@@ -23,9 +23,22 @@ namespace WinterUniverse
 
         public void AddImplant(ImplantConfig config)
         {
-            Implants.Add(config);
+            Implants.Add(Instantiate(config));
             _pawn.GameplayComponent.AddGameplayStatModifiers(config.Modifiers);
             OnImplantsChanged?.Invoke(Implants);
+        }
+
+        public void RemoveImplant(ImplantConfig config)
+        {
+            foreach (ImplantConfig implant in Implants)
+            {
+                if (implant.Key == config.Key)
+                {
+                    _pawn.GameplayComponent.RemoveGameplayStatModifiers(config.Modifiers);
+                    OnImplantsChanged?.Invoke(Implants);
+                    break;
+                }
+            }
         }
     }
 }

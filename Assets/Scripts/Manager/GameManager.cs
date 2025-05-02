@@ -8,6 +8,7 @@ namespace WinterUniverse
         public bool Initialized { get; private set; }
         public PlayerController Player { get; private set; }
         public ImplantManager ImplantManager { get; private set; }
+        public UIManager UIManager { get; private set; }
 
         protected override void OnAwake()
         {
@@ -17,9 +18,11 @@ namespace WinterUniverse
         public override void FillComponents()
         {
             Player = FindFirstObjectByType<PlayerController>();
-            ImplantManager = GetComponentInChildren<ImplantManager>();
+            ImplantManager = FindFirstObjectByType<ImplantManager>();
+            UIManager = FindFirstObjectByType<UIManager>();
             _components.Add(Player);
             _components.Add(ImplantManager);
+            _components.Add(UIManager);
         }
 
         private IEnumerator Initialization()

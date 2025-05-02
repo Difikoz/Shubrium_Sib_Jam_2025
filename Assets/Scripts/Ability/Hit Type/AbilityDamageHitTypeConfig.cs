@@ -6,10 +6,10 @@ namespace WinterUniverse
     [CreateAssetMenu(fileName = "Damage", menuName = "Winter Universe/Ability/Hit Type/New Damage")]
     public class AbilityDamageHitTypeConfig : AbilityHitTypeConfig
     {
-        [field: SerializeField] public List<DamageType> DamageTypes { get; private set; }
-        [field: SerializeField] public bool UseStatToCalculate { get; private set; }
-        [field: SerializeField] public GameplayStatConfig StateDamageValue { get; private set; }
         [field: SerializeField] public DamageTypeConfig StatDamageType { get; private set; }
+        [Header("Fixed Value Below")]
+        [SerializeField] private string _test;
+        [field: SerializeField] public List<DamageType> FixedDamageTypes { get; private set; }
 
         public override void OnHit(Pawn caster, Pawn target, Vector3 position, Vector3 direction, AbilityTargetType targetType)
         {
@@ -31,13 +31,13 @@ namespace WinterUniverse
                     // NICE =)
                     break;
             }
-            if (UseStatToCalculate && StateDamageValue != null && StatDamageType != null)
+            if (StatValue != null && StatDamageType != null)
             {
-                target.Health.Reduce(Mathf.RoundToInt(caster.GameplayComponent.GetGameplayStat(StateDamageValue.Key).CurrentValue), StatDamageType, caster);
+                target.Health.Reduce(Mathf.RoundToInt(GetMultipliedStatValue(caster)), StatDamageType, caster);
             }
-            else
+            if (FixedDamageTypes != null && FixedDamageTypes.Count > 0)
             {
-                target.Health.ApplyDamages(DamageTypes, caster);
+                target.Health.ApplyDamages(FixedDamageTypes, caster);
             }
         }
     }

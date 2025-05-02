@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7850a68e8afdab4c909812786ebe992, type: 3}
   m_Name: Knockback
   m_EditorClassIdentifier: 
-  <Value>k__BackingField: 0
+  <StatValue>k__BackingField: {fileID: 11400000, guid: c3f026a09333bf9468652c91549ce4ec, type: 2}
+  <StatValueMultiplier>k__BackingField: 0.25
+  <FixedValue>k__BackingField: 1

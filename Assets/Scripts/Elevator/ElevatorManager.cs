@@ -5,19 +5,7 @@ namespace WinterUniverse
 {
     public class ElevatorManager : MonoBehaviour
     {
-        private ImplantManager _implantManager;
-        
         private bool _isInElevator = false;
-        
-        private void Awake()
-        {
-            // Находим ImplantManager на сцене
-            _implantManager = FindObjectOfType<ImplantManager>();
-            if (_implantManager == null)
-            {
-                Debug.LogError($"[{GetType().Name}] ImplantManager не найден на сцене!");
-            }
-        }
         
         public void ActivateElevator()
         {
@@ -25,11 +13,14 @@ namespace WinterUniverse
                 return;
                 
             _isInElevator = true;
-            
+
+            // Закрытие дверей лифта?
+
             // Сразу показываем импланты без задержки
-            Debug.Log($"[{GetType().Name}] Elevator activated");
-            _implantManager.ShowImplantSelection();
-            
+            GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
+
+            // Выключение текущего этажа
+
             // Запускаем ожидание завершения выбора
             StartCoroutine(WaitForImplantSelection());
         }
@@ -40,15 +31,17 @@ namespace WinterUniverse
             yield return null;
             
             // Заканчиваем, когда ImplantManager завершит процесс выбора
-            while (_implantManager.IsSelectingImplant)
+            while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
             {
                 yield return null;
             }
-            
+
+            // Включение нового этажа
+
             // Когда выбор завершен, завершаем работу лифта
             _isInElevator = false;
-            Debug.Log($"[{GetType().Name}] Elevator sequence completed");
-            // Тут можно добавить переход к следующему уровню
+
+            // Открытие дверей лифта?
         }
     }
 } 

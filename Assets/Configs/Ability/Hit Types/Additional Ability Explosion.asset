@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45581a5253f402c48959c19caf8c43cd, type: 3}
-  m_Name: Additional Ability
+  m_Name: Additional Ability Explosion
   m_EditorClassIdentifier: 
-  <AdditionalAbility>k__BackingField: {fileID: 0}
+  <StatValue>k__BackingField: {fileID: 0}
+  <StatValueMultiplier>k__BackingField: 0
+  <AdditionalAbility>k__BackingField: {fileID: 11400000, guid: fecc5da8a95fe70429fe51a235ee60df, type: 2}

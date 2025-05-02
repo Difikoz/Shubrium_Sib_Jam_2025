@@ -5,7 +5,9 @@ namespace WinterUniverse
     [CreateAssetMenu(fileName = "Knockback", menuName = "Winter Universe/Ability/Hit Type/New Knockback")]
     public class AbilityKnockbackHitTypeConfig : AbilityHitTypeConfig
     {
-        [field: SerializeField] public int Value { get; private set; }
+        [Header("Fixed Value Below")]
+        [SerializeField] private string _test;
+        [field: SerializeField] public float FixedValue { get; private set; }
 
         public override void OnHit(Pawn caster, Pawn target, Vector3 position, Vector3 direction, AbilityTargetType targetType)
         {
@@ -27,7 +29,14 @@ namespace WinterUniverse
                     // NICE =)
                     break;
             }
-            target.Locomotion.AddKnockback(direction, Value);
+            if (StatValue != null)
+            {
+                target.Locomotion.AddKnockback(direction, GetMultipliedStatValue(caster));
+            }
+            if (FixedValue != 0f)
+            {
+                target.Locomotion.AddKnockback(direction, FixedValue);
+            }
         }
     }
 }

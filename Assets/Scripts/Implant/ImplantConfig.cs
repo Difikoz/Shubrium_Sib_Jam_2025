@@ -7,17 +7,26 @@ namespace WinterUniverse
     public class ImplantConfig : BasicInfoConfig
     {
         [field: SerializeField] public bool CanStack { get; private set; }
+        [field: SerializeField] public bool RemoveAfterAnyTriggerPerfomed { get; private set; }
         [field: SerializeField] public List<GameplayStatModifierCreator> Modifiers { get; private set; }
         [field: SerializeField] public List<GameplayEffectCreator> Effects { get; private set; }
 
         public void OnTriggerPerfomed(string trigger, Pawn owner, Pawn source)
         {
-            foreach (GameplayEffectCreator effectCreator in Effects)
+            for (int i = Effects.Count - 1; i >= 0; i--)
             {
-                if (effectCreator.Trigger == trigger && effectCreator.Triggered)
+                if (Effects[i].Trigger.Key == trigger && Effects[i].Triggered)
                 {
-                    effectCreator.Effect.OnApply(owner, source);
+                    Effects[i].Effect.OnApply(owner, source);
+                    if (Effects[i].SingleUse)
+                    {
+                        Effects.RemoveAt(i);
+                    }
                 }
+            }
+            if (RemoveAfterAnyTriggerPerfomed)
+            {
+                owner.Equipment.RemoveImplant(this);
             }
         }
     }

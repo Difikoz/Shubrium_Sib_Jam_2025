@@ -5,7 +5,9 @@ namespace WinterUniverse
     [CreateAssetMenu(fileName = "Heal", menuName = "Winter Universe/Ability/Hit Type/New Heal")]
     public class AbilityHealHitTypeConfig : AbilityHitTypeConfig
     {
-        [field: SerializeField] public int Value { get; private set; }
+        [Header("Fixed Value Below")]
+        [SerializeField] private string _test;
+        [field: SerializeField] public int FixedValue { get; private set; }
 
         public override void OnHit(Pawn caster, Pawn target, Vector3 position, Vector3 direction, AbilityTargetType targetType)
         {
@@ -27,7 +29,14 @@ namespace WinterUniverse
                     // NICE =)
                     break;
             }
-            target.Health.Restore(Value, caster);
+            if (StatValue != null)
+            {
+                target.Health.Restore(Mathf.RoundToInt(GetMultipliedStatValue(caster)), caster);
+            }
+            if (FixedValue > 0)
+            {
+                target.Health.Restore(FixedValue, caster);
+            }
         }
     }
 }

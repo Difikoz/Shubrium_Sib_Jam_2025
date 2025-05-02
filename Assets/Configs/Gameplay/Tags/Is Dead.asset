@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d331a7e1b7f285445b6ce91c64548ec9, type: 3}
-  m_Name: Target
+  m_Script: {fileID: 11500000, guid: 9f2cf0f801947bd478c8c062c6576ac7, type: 3}
+  m_Name: Is Dead
   m_EditorClassIdentifier: 
+  <Key>k__BackingField: Is Dead

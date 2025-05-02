@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a359beac78714d4aba570b17dac4624, type: 3}
   m_Name: Dash Cooldown
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Dash Cooldown
+  <Key>k__BackingField: Dash Cooldown
   <DisplayName>k__BackingField: "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u0435
     \u0420\u044B\u0432\u043A\u0430"
   <Description>k__BackingField: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439

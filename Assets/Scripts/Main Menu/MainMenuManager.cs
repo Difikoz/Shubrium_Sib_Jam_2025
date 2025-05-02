@@ -27,7 +27,7 @@ namespace WinterUniverse
         private IEnumerator Start()
         {
             _blackScreen.SetActive(true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             ShowAllMenuWindows();
             yield return new WaitForSeconds(0.1f);
             HideAllMenuWindows();

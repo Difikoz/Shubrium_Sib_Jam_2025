@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a359beac78714d4aba570b17dac4624, type: 3}
   m_Name: Physical Damage
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: Physical Damage
+  <Key>k__BackingField: Physical Damage
   <DisplayName>k__BackingField: "\u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043A\u0438\u0439
     \u0423\u0440\u043E\u043D"
   <Description>k__BackingField: "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439

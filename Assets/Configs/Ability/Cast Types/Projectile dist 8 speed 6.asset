@@ -10,5 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a2b6706618c74744ade7fff37e3609c, type: 3}
-  m_Name: Projectile
+  m_Name: Projectile dist 8 speed 6
   m_EditorClassIdentifier: 
+  <Distance>k__BackingField: 8
+  <Homing>k__BackingField: 0
+  <Speed>k__BackingField: 6
+  <Count>k__BackingField: 1

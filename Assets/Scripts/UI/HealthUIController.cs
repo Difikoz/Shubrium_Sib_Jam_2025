@@ -3,36 +3,31 @@ using UnityEngine;
 
 namespace WinterUniverse
 {
-    public class HealthUIController : MonoBehaviour
+    public class HealthUIController : BasicComponent
     {
         [SerializeField] private GameObject _heartPrefab;
         [SerializeField] private Transform _heartsContainer;
         [SerializeField] private int _maxHeartsToShow = 10; // Максимальное количество отображаемых сердец
-        
-        private List<HeartUI> _hearts = new List<HeartUI>();
-        
-        private void Awake()
+
+        private List<HeartUI> _hearts = new();
+
+        public override void EnableComponent()
         {
-            // Здесь будет подписка на событие здоровья от вашего Game Manager или другого компонента
-            // GameManager.Instance.OnHealthChanged += UpdateHealthUI;
-            
-            // Для тестирования можно вызвать с начальными значениями
-            UpdateHealthUI(11, 20); // 5 полных сердец из 5 возможных
+            GameManager.StaticInstance.Player.Health.OnValueChanged += UpdateHealthUI;
         }
-        
-        private void OnDestroy()
+
+        public override void DisableComponent()
         {
-            // Отписка от события
-            // GameManager.Instance.OnHealthChanged -= UpdateHealthUI;
+            GameManager.StaticInstance.Player.Health.OnValueChanged -= UpdateHealthUI;
         }
-        
+
         // Обновление UI на основе полученных значений здоровья (текущее и максимальное)
-        public void UpdateHealthUI(int currentHealth, int maxHealth)
+        private void UpdateHealthUI(int currentHealth, int maxHealth)
         {
             // Рассчитываем, сколько сердец нам нужно (каждое сердце = 2 единицы здоровья)
             int heartsNeeded = Mathf.CeilToInt(maxHealth / 2f);
             heartsNeeded = Mathf.Min(heartsNeeded, _maxHeartsToShow);
-            
+
             // Создаем или удаляем сердца, если нужно
             while (_hearts.Count < heartsNeeded)
             {
@@ -40,22 +35,22 @@ namespace WinterUniverse
                 HeartUI heart = heartObj.GetComponent<HeartUI>();
                 _hearts.Add(heart);
             }
-            
+
             while (_hearts.Count > heartsNeeded)
             {
                 HeartUI heart = _hearts[_hearts.Count - 1];
                 _hearts.RemoveAt(_hearts.Count - 1);
                 Destroy(heart.gameObject);
             }
-            
+
             // Обновляем состояние каждого сердца
             for (int i = 0; i < _hearts.Count; i++)
             {
                 HeartUI heart = _hearts[i];
-                
+
                 // Рассчитываем количество единиц здоровья для текущего сердца
                 int heartIndex = i * 2; // Индекс начала текущего сердца (0, 2, 4, 6...)
-                
+
                 if (heartIndex + 1 < currentHealth)
                 {
                     // Если осталось 2 единицы здоровья - сердце полное
@@ -72,8 +67,8 @@ namespace WinterUniverse
                     heart.SetState(HeartUI.HeartState.Empty);
                 }
             }
-            
+
             Debug.Log($"[{GetType().Name}] Обновлен UI здоровья: {currentHealth}/{maxHealth} ({_hearts.Count} сердец)");
         }
     }
-} 
+}

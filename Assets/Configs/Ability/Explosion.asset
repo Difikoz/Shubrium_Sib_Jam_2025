@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4279925fa9ab34c93e1bce444b2417, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: 
+  <Key>k__BackingField: Explosion
+  <DisplayName>k__BackingField: Explosion
+  <Description>k__BackingField: 
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Icon>k__BackingField: {fileID: 0}
+  <TargetType>k__BackingField: 1
+  <CastType>k__BackingField: {fileID: 11400000, guid: 3f2ba715a81462240a03860d3ff092e1, type: 2}
+  <HitTypes>k__BackingField:
+  - <HitType>k__BackingField: {fileID: 11400000, guid: 9f3eecc4c69c6b141808201a6dffb565, type: 2}
+    <ChanceToTrigger>k__BackingField: 1

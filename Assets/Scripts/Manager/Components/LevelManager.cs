@@ -14,7 +14,7 @@ namespace WinterUniverse
         private void Awake()
         {
             // Получаем ссылку на SpawnManager
-            _spawnManager = FindObjectOfType<SpawnManager>();
+            _spawnManager = FindFirstObjectByType<SpawnManager>();
             if (_spawnManager == null)
             {
                 Debug.LogError($"[{GetType().Name}] SpawnManager не найден!");
