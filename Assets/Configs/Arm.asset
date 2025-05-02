@@ -25,4 +25,4 @@ MonoBehaviour:
   - _config: {fileID: 11400000, guid: b9c50432f62d96548857942322362b4c, type: 2}
     _modifier:
       _type: 1
-      _value: -10
+      _value: -1

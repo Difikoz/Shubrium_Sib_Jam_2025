@@ -26,7 +26,7 @@ namespace WinterUniverse
                 return false;
                 
             // Если имплант не стакается и уже есть - нельзя добавить
-            if (!implant.CanStack && _appliedImplants.Exists(x => x.ID == implant.ID))
+            if (!implant.CanStack && _appliedImplants.Exists(x => x.Key == implant.Key))
                 return false;
                 
             return true;
