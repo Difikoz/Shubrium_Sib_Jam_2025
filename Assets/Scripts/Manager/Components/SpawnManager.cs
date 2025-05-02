@@ -25,11 +25,10 @@ namespace WinterUniverse
             }
         }
 
-        public EnemyController SpawnEnemy(EnemyConfig config, Transform spawnPoint, Stage stage)
+        public void SpawnEnemy(EnemyConfig config, Transform spawnPoint, Stage stage)
         {
             EnemyController enemy = LeanPool.Spawn(config.Prefab, spawnPoint.position, spawnPoint.rotation).GetComponent<EnemyController>();
             stage.AddSpawnedEnemy(enemy);
-            return enemy;
         }
     }
 }

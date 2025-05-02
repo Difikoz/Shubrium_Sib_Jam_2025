@@ -4,27 +4,34 @@ using UnityEngine;
 
 namespace WinterUniverse
 {
-    public class Stage : BasicComponent
+    public class Stage : BasicComponentHolder
     {
         [field: SerializeField] public string StageName { get; private set; }
         [field: SerializeField] public List<Transform> SpawnPoints { get; private set; }
         [field: SerializeField] public List<EnemySpawnData> EnemiesToSpawn { get; private set; }
 
-        private List<EnemyController> _spawnedEnemies;
-
-        public override void InitializeComponent()
+        public override void ActivateComponent()
         {
-            _spawnedEnemies = new();
+            gameObject.SetActive(true);
+            base.ActivateComponent();
+        }
+
+        public override void DeactivateComponent()
+        {
+            base.DeactivateComponent();
+            gameObject.SetActive(false);
         }
 
         public void AddSpawnedEnemy(EnemyController enemy)
         {
-            _spawnedEnemies.Add(enemy);
+            enemy.InitializeComponent();
+            enemy.EnableComponent();
+            _components.Add(enemy);
         }
 
         public bool CanCompleteStage()
         {
-            foreach (EnemyController enemy in _spawnedEnemies)
+            foreach (BasicComponent enemy in _components)
             {
                 if (enemy.isActiveAndEnabled)
                 {
@@ -36,11 +43,12 @@ namespace WinterUniverse
 
         public void CompleteStage()
         {
-            foreach (EnemyController enemy in _spawnedEnemies)
+            foreach (BasicComponent enemy in _components)
             {
                 enemy.DisableComponent();
                 LeanPool.Despawn(enemy.gameObject);
             }
+            _components.Clear();
         }
     }
 }

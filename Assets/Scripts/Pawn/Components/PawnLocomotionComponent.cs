@@ -15,25 +15,20 @@ namespace WinterUniverse
 
         private Coroutine _dashCoroutine;
 
-        public override void FixedUpdateComponent()
+        public override void UpdateComponent()
         {
             if (MoveDirection != Vector3.zero)
             {
-                GroundVelocity = Vector3.MoveTowards(GroundVelocity, MoveDirection, 2f * Time.fixedDeltaTime);
+                GroundVelocity = Vector3.MoveTowards(GroundVelocity, MoveDirection, 2f * Time.deltaTime);
             }
             else
             {
-                GroundVelocity = Vector3.MoveTowards(GroundVelocity, Vector3.zero, 4f * Time.fixedDeltaTime);
+                GroundVelocity = Vector3.MoveTowards(GroundVelocity, Vector3.zero, 4f * Time.deltaTime);
             }
             if (KnockbackVelocity != Vector3.zero)
             {
-                KnockbackVelocity = Vector3.MoveTowards(KnockbackVelocity, Vector3.zero, Mass * Time.fixedDeltaTime);
+                KnockbackVelocity = Vector3.MoveTowards(KnockbackVelocity, Vector3.zero, Mass * Time.deltaTime);
             }
-            if (GroundVelocity != Vector3.zero)
-            {
-                _pawn.RB.rotation = Quaternion.RotateTowards(_pawn.RB.rotation, Quaternion.LookRotation(GroundVelocity.normalized), RotateSpeed * Time.fixedDeltaTime);
-            }
-            _pawn.RB.linearVelocity = GroundVelocity * _pawn.GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + KnockbackVelocity + DashVelocity;
         }
 
         public void AddKnockback(Vector3 direction, float force)

@@ -52,6 +52,7 @@ namespace WinterUniverse
             yield return new WaitForSeconds(0.1f);
             Initialized = true;
             SetInputMode(InputMode.Game);
+            StageManager.StartNextStage();
         }
 
         private void Update()

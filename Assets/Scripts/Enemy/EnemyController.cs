@@ -11,8 +11,8 @@ namespace WinterUniverse
 
         public override void FillComponents()
         {
-            base.FillComponents();
             Agent = GetComponent<NavMeshAgent>();
+            base.FillComponents();
         }
 
         public override void EnableComponent()
@@ -23,8 +23,13 @@ namespace WinterUniverse
 
         public override void UpdateComponent()
         {
+            Locomotion.MoveDirection = (Agent.steeringTarget - transform.position).normalized;
             base.UpdateComponent();
-            Locomotion.MoveDirection = Agent.desiredVelocity.normalized;
+            if (Locomotion.GroundVelocity != Vector3.zero)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.deltaTime);
+            }
+            Agent.velocity = Locomotion.GroundVelocity * GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + Locomotion.KnockbackVelocity + Locomotion.DashVelocity;
         }
 
         private IEnumerator MoveToPlayerCoroutine()
