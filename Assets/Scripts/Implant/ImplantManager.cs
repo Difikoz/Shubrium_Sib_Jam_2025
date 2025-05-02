@@ -7,7 +7,6 @@ namespace WinterUniverse
     {
         [SerializeField] private List<ImplantConfig> _allImplants = new();
         [SerializeField] private int _implantOptions = 3;
-        [SerializeField] private ImplantSelectionUI _implantSelectionUI;
 
         public bool IsSelectingImplant { get; private set; } = false;
 
@@ -19,7 +18,7 @@ namespace WinterUniverse
             var implants = GetRandomImplants(_implantOptions);
 
             // Активируем UI выбора имплантов
-            _implantSelectionUI.ShowImplantSelection(implants, OnImplantSelected);
+            GameManager.StaticInstance.UIManager.ImplantSelectionUI.ShowImplantSelection(implants, OnImplantSelected);
         }
 
         private void OnImplantSelected(ImplantConfig selectedImplant)
@@ -28,7 +27,7 @@ namespace WinterUniverse
             GameManager.StaticInstance.Player.Equipment.AddImplant(selectedImplant);
 
             // Закрываем UI выбора
-            _implantSelectionUI.HideImplantSelection();
+            GameManager.StaticInstance.UIManager.ImplantSelectionUI.HideImplantSelection();
 
             // Отмечаем, что выбор завершен
             IsSelectingImplant = false;
