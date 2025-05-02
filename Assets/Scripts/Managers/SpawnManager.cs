@@ -8,8 +8,8 @@ namespace WinterUniverse
         // Список всех спавненных врагов
         private List<GameObject> _spawnedEnemies = new List<GameObject>();
         
-        // Спавн одного врага
-        public GameObject SpawnEnemy(EnemyConfig config, Vector3 position, Quaternion rotation)
+        // Спавн врага по трансформу
+        public GameObject SpawnEnemy(EnemyConfig config, Transform spawnPoint, Level level)
         {
             if (config == null || config.EnemyPrefab == null)
             {
@@ -17,37 +17,73 @@ namespace WinterUniverse
                 return null;
             }
             
-            // Создаем врага
-            GameObject enemy = Instantiate(config.EnemyPrefab, position, rotation);
+            if (spawnPoint == null)
+            {
+                Debug.LogError($"[{GetType().Name}] Невозможно создать врага: не указана точка спавна");
+                return null;
+            }
             
-            // TODO: Настраиваем компоненты врага на основе конфига
+            // Создаем врага в указанной точке с её поворотом
+            GameObject enemy = Instantiate(config.EnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            
+            // Если у уровня есть родительский трансформ для врагов, используем его
+            if (level != null && level.EnemiesParent != null)
+            {
+                enemy.transform.SetParent(level.EnemiesParent);
+            }
+            
+            // Регистрируем врага в Level
+            level?.RegisterEnemy(enemy);
             
             // Добавляем врага в список
             _spawnedEnemies.Add(enemy);
             
-            Debug.Log($"[{GetType().Name}] Создан враг: {config.Key} в позиции {position}");
+            Debug.Log($"[{GetType().Name}] Создан враг: {config.Key} в точке {spawnPoint.name}");
             
             return enemy;
         }
         
-        // Спавн группы врагов из данных
-        public List<GameObject> SpawnEnemies(List<EnemySpawnData> spawnDataList)
+        // Спавн всех врагов для уровня
+        public void SpawnEnemiesForLevel(Level level)
         {
-            List<GameObject> spawnedEnemies = new List<GameObject>();
-            
-            foreach (var spawnData in spawnDataList)
+            if (level == null)
             {
-                GameObject enemy = SpawnEnemy(spawnData.EnemyConfig, spawnData.SpawnPosition, spawnData.SpawnRotation);
-                if (enemy != null)
+                Debug.LogError($"[{GetType().Name}] Невозможно создать врагов: уровень не указан");
+                return;
+            }
+            
+            List<Transform> spawnPoints = level.SpawnPoints;
+            if (spawnPoints == null || spawnPoints.Count == 0)
+            {
+                Debug.LogError($"[{GetType().Name}] Невозможно создать врагов: на уровне нет точек спавна");
+                return;
+            }
+            
+            // Индекс текущей точки спавна
+            int spawnPointIndex = 0;
+            
+            // Проходим по всем типам врагов
+            foreach (var enemyToSpawn in level.EnemiesToSpawn)
+            {
+                if (enemyToSpawn.EnemyConfig == null)
+                    continue;
+                
+                // Спавним указанное количество врагов данного типа
+                for (int i = 0; i < enemyToSpawn.Count; i++)
                 {
-                    spawnedEnemies.Add(enemy);
+                    // Берем следующую точку спавна циклически
+                    Transform spawnPoint = spawnPoints[spawnPointIndex];
+                    spawnPointIndex = (spawnPointIndex + 1) % spawnPoints.Count;
+                    
+                    // Спавним врага
+                    SpawnEnemy(enemyToSpawn.EnemyConfig, spawnPoint, level);
                 }
             }
             
-            return spawnedEnemies;
+            Debug.Log($"[{GetType().Name}] Созданы враги для уровня: {level.LevelName}");
         }
         
-        // Удаление всех спавненных врагов
+        // Удаление всех врагов
         public void DespawnAllEnemies()
         {
             foreach (var enemy in _spawnedEnemies)

@@ -1,12 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WinterUniverse
 {
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField] private LevelConfig _currentLevelConfig;
+        [SerializeField] private List<Level> _levels = new List<Level>();
+        [SerializeField] private int _currentLevelIndex = 0;
         
         private SpawnManager _spawnManager;
+        private Level _currentLevel;
         
         private void Awake()
         {
@@ -16,62 +19,139 @@ namespace WinterUniverse
             {
                 Debug.LogError($"[{GetType().Name}] SpawnManager не найден!");
             }
+            
+            // Деактивируем все уровни при старте
+            DeactivateAllLevels();
         }
         
         private void Start()
         {
-            // Автоматически загружаем уровень, если он задан
-            if (_currentLevelConfig != null)
-            {
-                LoadLevel(_currentLevelConfig);
-            }
+            // Запускаем первый уровень
+            StartCurrentLevel();
         }
         
-        // Загрузка уровня по конфигу
-        public void LoadLevel(LevelConfig levelConfig)
+        // Запуск текущего уровня по индексу
+        public void StartCurrentLevel()
         {
-            if (levelConfig == null)
+            if (_levels.Count == 0)
             {
-                Debug.LogError($"[{GetType().Name}] Невозможно загрузить уровень: неверный конфиг");
+                Debug.LogError($"[{GetType().Name}] Нет уровней для запуска!");
                 return;
             }
             
-            // Очищаем предыдущий уровень, если был
-            ClearLevel();
-            
-            // Устанавливаем текущий конфиг
-            _currentLevelConfig = levelConfig;
-            
-            // Спавним врагов из конфига
-            SpawnEnemiesForLevel();
-            
-            Debug.Log($"[{GetType().Name}] Загружен уровень: {levelConfig.DisplayName}");
-        }
-        
-        // Спавн врагов для текущего уровня
-        private void SpawnEnemiesForLevel()
-        {
-            if (_currentLevelConfig == null || _spawnManager == null)
+            // Проверяем валидность индекса
+            if (_currentLevelIndex < 0 || _currentLevelIndex >= _levels.Count)
+            {
+                Debug.LogError($"[{GetType().Name}] Неверный индекс уровня: {_currentLevelIndex}");
                 return;
-                
-            _spawnManager.SpawnEnemies(_currentLevelConfig.EnemiesToSpawn);
-        }
-        
-        // Очистка текущего уровня
-        public void ClearLevel()
-        {
+            }
+            
+            // Запоминаем текущий уровень
+            _currentLevel = _levels[_currentLevelIndex];
+            
+            // Подписываемся на событие завершения уровня
+            _currentLevel.OnLevelCompleted.AddListener(OnCurrentLevelCompleted);
+            
+            // Активируем уровень
+            _currentLevel.ActivateLevel();
+            
+            // Инициализируем уровень
+            _currentLevel.Initialize();
+            
+            // Спавним врагов
             if (_spawnManager != null)
             {
-                _spawnManager.DespawnAllEnemies();
+                _spawnManager.SpawnEnemiesForLevel(_currentLevel);
+            }
+            
+            Debug.Log($"[{GetType().Name}] Запущен уровень {_currentLevelIndex + 1}: {_currentLevel.LevelName}");
+        }
+        
+        // Обработчик события завершения уровня
+        private void OnCurrentLevelCompleted()
+        {
+            Debug.Log($"[{GetType().Name}] Уровень {_currentLevelIndex + 1} завершен!");
+            CompleteCurrentLevel();
+        }
+        
+        // Переход к следующему уровню
+        public void CompleteCurrentLevel()
+        {
+            // Очищаем текущий уровень
+            if (_currentLevel != null)
+            {
+                // Отписываемся от события
+                _currentLevel.OnLevelCompleted.RemoveListener(OnCurrentLevelCompleted);
+                
+                // Очищаем и деактивируем
+                _currentLevel.ClearEnemies();
+                _currentLevel.DeactivateLevel();
+            }
+            
+            // Переходим к следующему
+            _currentLevelIndex++;
+            
+            // Проверяем, не закончились ли уровни
+            if (_currentLevelIndex >= _levels.Count)
+            {
+                Debug.Log($"[{GetType().Name}] Все уровни пройдены!");
+                // Здесь можно вызвать логику завершения игры или перезапуск с первого уровня
+                _currentLevelIndex = 0; // Для цикличного прохождения
+            }
+            
+            // Запускаем следующий уровень
+            StartCurrentLevel();
+        }
+        
+        // Перезапуск текущего уровня
+        public void RestartCurrentLevel()
+        {
+            if (_currentLevel != null)
+            {
+                // Отписываемся от события
+                _currentLevel.OnLevelCompleted.RemoveListener(OnCurrentLevelCompleted);
+                
+                // Очищаем и деактивируем
+                _currentLevel.ClearEnemies();
+                _currentLevel.DeactivateLevel();
+            }
+            
+            StartCurrentLevel();
+        }
+        
+        // Деактивация всех уровней
+        private void DeactivateAllLevels()
+        {
+            foreach (var level in _levels)
+            {
+                if (level != null)
+                {
+                    level.DeactivateLevel();
+                }
             }
         }
         
-        // Перезагрузка текущего уровня
-        public void RestartLevel()
+        // Метод для удобства тестирования
+        public void JumpToLevel(int levelIndex)
         {
-            if (_currentLevelConfig != null)
+            if (levelIndex >= 0 && levelIndex < _levels.Count)
             {
-                LoadLevel(_currentLevelConfig);
+                if (_currentLevel != null)
+                {
+                    // Отписываемся от события
+                    _currentLevel.OnLevelCompleted.RemoveListener(OnCurrentLevelCompleted);
+                    
+                    // Очищаем и деактивируем
+                    _currentLevel.ClearEnemies();
+                    _currentLevel.DeactivateLevel();
+                }
+                
+                _currentLevelIndex = levelIndex;
+                StartCurrentLevel();
+            }
+            else
+            {
+                Debug.LogError($"[{GetType().Name}] Неверный индекс уровня: {levelIndex}");
             }
         }
     }
