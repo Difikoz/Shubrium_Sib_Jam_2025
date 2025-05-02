@@ -10,6 +10,7 @@ namespace WinterUniverse
         public CameraManager CameraManager { get; private set; }
         public ElevatorManager ElevatorManager { get; private set; }
         public ImplantManager ImplantManager { get; private set; }
+        public InputActionsManager InputActionsManager { get; private set; }
         public UIManager UIManager { get; private set; }
         public InputMode InputMode { get; private set; }
 
@@ -24,11 +25,13 @@ namespace WinterUniverse
             CameraManager = FindFirstObjectByType<CameraManager>();
             ElevatorManager = FindFirstObjectByType<ElevatorManager>();
             ImplantManager = FindFirstObjectByType<ImplantManager>();
+            InputActionsManager = FindFirstObjectByType<InputActionsManager>();
             UIManager = FindFirstObjectByType<UIManager>();
             _components.Add(Player);
             _components.Add(CameraManager);
             _components.Add(ElevatorManager);
             _components.Add(ImplantManager);
+            _components.Add(InputActionsManager);
             _components.Add(UIManager);
         }
 
