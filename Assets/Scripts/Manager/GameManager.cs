@@ -7,8 +7,11 @@ namespace WinterUniverse
     {
         public bool Initialized { get; private set; }
         public PlayerController Player { get; private set; }
+        public CameraManager CameraManager { get; private set; }
+        public ElevatorManager ElevatorManager { get; private set; }
         public ImplantManager ImplantManager { get; private set; }
         public UIManager UIManager { get; private set; }
+        public InputMode InputMode { get; private set; }
 
         protected override void OnAwake()
         {
@@ -18,9 +21,13 @@ namespace WinterUniverse
         public override void FillComponents()
         {
             Player = FindFirstObjectByType<PlayerController>();
+            CameraManager = FindFirstObjectByType<CameraManager>();
+            ElevatorManager = FindFirstObjectByType<ElevatorManager>();
             ImplantManager = FindFirstObjectByType<ImplantManager>();
             UIManager = FindFirstObjectByType<UIManager>();
             _components.Add(Player);
+            _components.Add(CameraManager);
+            _components.Add(ElevatorManager);
             _components.Add(ImplantManager);
             _components.Add(UIManager);
         }
@@ -35,6 +42,7 @@ namespace WinterUniverse
             EnableComponent();
             yield return new WaitForSeconds(0.1f);
             Initialized = true;
+            SetInputMode(InputMode.Game);
         }
 
         private void Update()
@@ -62,6 +70,21 @@ namespace WinterUniverse
                 return;
             }
             LateUpdateComponent();
+        }
+
+        public void SetInputMode(InputMode mode)
+        {
+            InputMode = mode;
+            if (InputMode == InputMode.Game)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
+            }
         }
     }
 }

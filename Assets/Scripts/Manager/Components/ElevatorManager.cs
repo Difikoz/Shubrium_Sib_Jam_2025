@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WinterUniverse
 {
-    public class ElevatorManager : MonoBehaviour
+    public class ElevatorManager : BasicComponent
     {
         private bool _isInElevator = false;
         
