@@ -34,6 +34,7 @@ namespace WinterUniverse
         {
             enemy.InitializeComponent();
             enemy.EnableComponent();
+            enemy.Health.Revive(enemy);
             _components.Add(enemy);
         }
 

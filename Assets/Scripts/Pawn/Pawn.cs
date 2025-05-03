@@ -16,7 +16,7 @@ namespace WinterUniverse
         public PawnAnimatorComponent Animator { get; private set; }
         public PawnCombatComponent Combat { get; private set; }
         public PawnEquipmentComponent Equipment { get; private set; }
-        public PawnHealthComponent Health { get; private set; }
+        [field: SerializeField] public PawnHealthComponent Health { get; private set; }
         public PawnLocomotionComponent Locomotion { get; private set; }
         public GameplayComponent GameplayComponent { get; private set; }
 

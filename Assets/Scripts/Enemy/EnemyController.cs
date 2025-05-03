@@ -27,7 +27,7 @@ namespace WinterUniverse
         {
             Locomotion.MoveDirection = (Agent.steeringTarget - transform.position).normalized;
             base.UpdateComponent();
-            if (Locomotion.GroundVelocity != Vector3.zero)
+            if (!GameplayComponent.HasGameplayTag("Is Perfoming Action")) //(Locomotion.GroundVelocity != Vector3.zero)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.deltaTime);
             }
