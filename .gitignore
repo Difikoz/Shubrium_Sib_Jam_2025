@@ -71,5 +71,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 fmod_editor.log
-.idea/.idea.Shubrium_Sib_Jam_2025/.idea/encodings.xml
+.idea/
+.vscode/
 Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
