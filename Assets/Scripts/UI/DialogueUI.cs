@@ -20,12 +20,6 @@ namespace WinterUniverse
         public override void InitializeComponent()
         {
             _nextButton.onClick.AddListener(AdvanceDialogue);
-            
-            // Явно выключаем UI-корень
-            if (_uiRoot != null)
-            {
-                _uiRoot.SetActive(false);
-            }
         }
         
         public void ShowDialogue(DialogueConfig dialogue, Action onCompleted = null)

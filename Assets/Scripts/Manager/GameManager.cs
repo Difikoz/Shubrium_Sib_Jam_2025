@@ -127,20 +127,20 @@ namespace WinterUniverse
         public void GameComplete()
         {
             Debug.Log("Game Completed");
-            StartCoroutine(LeaveGame());
+            StartCoroutine(LeaveGame(2, 1f));
         }
 
         public void GameOver()
         {
             Debug.Log("Game Over");
-            StartCoroutine(LeaveGame());
+            StartCoroutine(LeaveGame(0, 5f));
         }
 
-        private IEnumerator LeaveGame()
+        private IEnumerator LeaveGame(int scene, float delay)
         {
             SetInputMode(InputMode.UI);
-            yield return new WaitForSeconds(5f);
-            SceneManager.LoadScene(0);
+            yield return new WaitForSeconds(delay);
+            SceneManager.LoadScene(scene);
         }
     }
 }
