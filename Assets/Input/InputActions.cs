@@ -235,7 +235,7 @@ namespace WinterUniverse
                 {
                     ""name"": """",
                     ""id"": ""2b7f8c5b-20f8-48d8-8b4e-6c9d57a5b166"",
-                    ""path"": ""<Keyboard>/rightBracket"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -257,7 +257,7 @@ namespace WinterUniverse
                 {
                     ""name"": """",
                     ""id"": ""96c04186-845a-4beb-b57c-b26811e42fdb"",
-                    ""path"": ""<Keyboard>/leftBracket"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
