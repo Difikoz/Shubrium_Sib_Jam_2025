@@ -57,7 +57,7 @@ namespace WinterUniverse
             {
                 return;
             }
-            GameManager.StaticInstance.Player.Combat.PerformAttack(true);
+            GameManager.StaticInstance.Player.Combat.PerformAttack(true, out _);
         }
 
         private void OnToggleCursorPerfomed()

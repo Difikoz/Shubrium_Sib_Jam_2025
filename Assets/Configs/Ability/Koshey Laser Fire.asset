@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4279925fa9ab34c93e1bce444b2417, type: 3}
+  m_Name: Koshey Laser Fire
+  m_EditorClassIdentifier: 
+  <Key>k__BackingField: Koshey Laser Fire
+  <DisplayName>k__BackingField: Koshey Laser Fire
+  <Description>k__BackingField: 
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Icon>k__BackingField: {fileID: 0}
+  <PlayAnimationOnStart>k__BackingField: 0
+  <AnimationName>k__BackingField: 
+  <TargetType>k__BackingField: 3
+  <CastType>k__BackingField: {fileID: 11400000, guid: 3db25b29fd28f0742b06c1c5f44cf85b, type: 2}
+  <HitTypes>k__BackingField:
+  - <HitType>k__BackingField: {fileID: 11400000, guid: f668e2f352726a3439b6dd65ba9a599a, type: 2}
+    <ChanceToTrigger>k__BackingField: 1

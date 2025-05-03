@@ -19,7 +19,7 @@ namespace WinterUniverse
             for (int i = 0; i < Count; i++)
             {
                 directionWithSpread = eulerAngles + new Vector3(Random.Range(-Spread, Spread), Random.Range(-Spread, Spread), Random.Range(-Spread, Spread));
-                LeanPool.Spawn(Prefab, position, Quaternion.LookRotation(directionWithSpread)).GetComponent<ProjectileController>().Initialize(caster, target, this, hitTypes, targetType);
+                LeanPool.Spawn(Prefab, position, Quaternion.Euler(directionWithSpread)).GetComponent<ProjectileController>().Initialize(caster, target, this, hitTypes, targetType);
             }
         }
     }

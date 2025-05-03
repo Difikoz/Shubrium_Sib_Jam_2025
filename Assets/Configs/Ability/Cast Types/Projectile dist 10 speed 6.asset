@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a2b6706618c74744ade7fff37e3609c, type: 3}
-  m_Name: Projectile dist 16 speed 6
+  m_Name: Projectile dist 10 speed 6
   m_EditorClassIdentifier: 
   <Distance>k__BackingField: 10
   <AngleToCast>k__BackingField: 10
   <Prefab>k__BackingField: {fileID: 4050856305836690513, guid: 2af920114fe807a4c8ff8fefc91252fb, type: 3}
   <Homing>k__BackingField: 0
-  <Speed>k__BackingField: 6
+  <Speed>k__BackingField: 10
   <Count>k__BackingField: 1
   <Spread>k__BackingField: 0

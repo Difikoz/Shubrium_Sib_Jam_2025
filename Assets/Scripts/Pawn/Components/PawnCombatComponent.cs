@@ -21,22 +21,25 @@ namespace WinterUniverse
             }
         }
 
-        public bool PerformAttack(bool ignoreTargeting)
+        public bool PerformAttack(bool ignoreTargeting, out float waitTime)
         {
-            return PerformAbility(BasicAttack, ignoreTargeting);
+            return PerformAbility(BasicAttack, ignoreTargeting, out waitTime);
         }
 
-        public bool PerformAbility(AbilityPresetConfig ability, bool ignoreTargeting)
+        public bool PerformAbility(AbilityPresetConfig ability, bool ignoreTargeting, out float waitTime)
         {
+            waitTime = 0f;
             if (CanPerformAbility(ability, ignoreTargeting))
             {
                 CurrentAbility = ability;
                 if (CurrentAbility.PlayAnimationOnStart)
                 {
+                    _pawn.Animator.SetFloat("Attack Speed", _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue);
                     _pawn.Animator.PlayAction(CurrentAbility.AnimationName);
                 }
                 else
                 {
+                    waitTime = 1f / _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue;
                     PerformAbilityCast();
                 }
                 return true;
