@@ -19,6 +19,7 @@ namespace WinterUniverse
         {
             base.ActivateComponent();
             _dashCoroutine = null;
+            _pawn.Animator.SetBool("Is Dashing", false);
         }
 
         public override void UpdateComponent()
@@ -71,6 +72,7 @@ namespace WinterUniverse
             DashVelocity = transform.forward * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
             KnockbackVelocity = Vector3.zero;
             GroundVelocity = Vector3.zero;
+            _pawn.Animator.SetBool("Is Dashing", true);
             _dashCoroutine = StartCoroutine(DashCoroutine());
         }
 
@@ -78,6 +80,7 @@ namespace WinterUniverse
         {
             yield return new WaitForSeconds(TimeToDash);
             DashVelocity = Vector3.zero;
+            _pawn.Animator.SetBool("Is Dashing", false);
             yield return new WaitForSeconds(_pawn.GameplayComponent.GetGameplayStat("Dash Cooldown").CurrentValue);
             _dashCoroutine = null;
         }

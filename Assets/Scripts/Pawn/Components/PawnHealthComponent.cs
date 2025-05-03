@@ -62,6 +62,7 @@ namespace WinterUniverse
             Current = 0;
             OnValueChanged?.Invoke(Current, Max);
             _pawn.GameplayComponent.AddGameplayTag("Is Dead");
+            _pawn.Animator.PlayAction("Death");
             StartCoroutine(_pawn.PerformDeath());
         }
 

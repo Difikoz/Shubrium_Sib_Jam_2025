@@ -16,7 +16,7 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Bug Agility
   <Description>k__BackingField: 
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: eba3149532958c440bfc999b11c7ff2c, type: 3}
   <Chance>k__BackingField: 100
   <CanStack>k__BackingField: 1
   <RemoveAfterAnyTriggerPerfomed>k__BackingField: 0
