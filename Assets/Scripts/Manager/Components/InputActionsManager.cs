@@ -18,12 +18,14 @@ namespace WinterUniverse
             _inputActions.Enable();
             _inputActions.Player.Dash.performed += ctx => OnDashPerfomed();
             _inputActions.Player.Attack.performed += ctx => OnAttackPerfomed();
+            _inputActions.Player.ToggleCursor.performed += ctx => OnToggleCursorPerfomed();
         }
 
         public override void DisableComponent()
         {
             _inputActions.Player.Dash.performed -= ctx => OnDashPerfomed();
             _inputActions.Player.Attack.performed -= ctx => OnAttackPerfomed();
+            _inputActions.Player.ToggleCursor.performed -= ctx => OnToggleCursorPerfomed();
             _inputActions.Disable();
         }
 
@@ -55,7 +57,19 @@ namespace WinterUniverse
             {
                 return;
             }
-            GameManager.StaticInstance.Player.Combat.PerformAttack();
+            GameManager.StaticInstance.Player.Combat.PerformAttack(true);
+        }
+
+        private void OnToggleCursorPerfomed()
+        {
+            if (GameManager.StaticInstance.InputMode == InputMode.Game)
+            {
+                GameManager.StaticInstance.SetInputMode(InputMode.UI);
+            }
+            else
+            {
+                GameManager.StaticInstance.SetInputMode(InputMode.Game);
+            }
         }
     }
 }

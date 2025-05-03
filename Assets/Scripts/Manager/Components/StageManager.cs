@@ -54,6 +54,13 @@ namespace WinterUniverse
             else
             {
                 GameManager.StaticInstance.ElevatorManager.OpenDoors();
+                GameManager.StaticInstance.DialogueManager.ShowDialogue(GameManager.StaticInstance.StageManager.CurrentStage.DialogueAfterBattle);
+                GameManager.StaticInstance.SetInputMode(InputMode.UI);
+                while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
+                {
+                    yield return delay;
+                }
+                GameManager.StaticInstance.SetInputMode(InputMode.Game);
             }
         }
     }

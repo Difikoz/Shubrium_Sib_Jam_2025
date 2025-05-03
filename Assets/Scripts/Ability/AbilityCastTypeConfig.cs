@@ -10,10 +10,6 @@ namespace WinterUniverse
 
         public virtual bool CanCast(Pawn caster, Pawn target, Vector3 position, Vector3 eulerAngles, Vector3 direction, List<AbilityHitTypeData> hitTypes, AbilityTargetType targetType)
         {
-            if (targetType == AbilityTargetType.Target && target == null)
-            {
-                return false;
-            }
             return true;
         }
 

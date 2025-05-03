@@ -52,7 +52,14 @@ namespace WinterUniverse
         {
             WaitForSeconds delay = new(0.1f);
             yield return new WaitForSeconds(1f);
+            //_components = new();
             InitializeComponent();
+            //foreach (BasicComponent component in _components)
+            //{
+            //    Debug.LogError($"Initialize {component.gameObject.name}");
+            //    component.InitializeComponent();
+            //    Debug.LogError($"{component.gameObject.name} Initialized");
+            //}
             yield return delay;
             ActivateComponent();
             yield return delay;
@@ -67,7 +74,7 @@ namespace WinterUniverse
 
         private void Update()
         {
-            if (!Initialized)
+            if (!Initialized || InputMode != InputMode.Game)
             {
                 return;
             }
@@ -76,7 +83,7 @@ namespace WinterUniverse
 
         private void FixedUpdate()
         {
-            if (!Initialized)
+            if (!Initialized || InputMode != InputMode.Game)
             {
                 return;
             }
@@ -85,7 +92,7 @@ namespace WinterUniverse
 
         private void LateUpdate()
         {
-            if (!Initialized)
+            if (!Initialized || InputMode != InputMode.Game)
             {
                 return;
             }

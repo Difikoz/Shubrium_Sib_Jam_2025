@@ -51,7 +51,7 @@ namespace WinterUniverse
                 {
                     Agent.ResetPath();
                 }
-                if (Combat.PerformAttack())
+                if (Combat.PerformAttack(false))
                 {
                     yield return null;
                 }

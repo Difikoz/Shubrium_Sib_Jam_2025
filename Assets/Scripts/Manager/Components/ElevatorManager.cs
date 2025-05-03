@@ -44,11 +44,6 @@ namespace WinterUniverse
             {
                 yield return delay;
             }
-            GameManager.StaticInstance.DialogueManager.ShowCurrentStageDialogue();
-            while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
-            {
-                yield return delay;
-            }
             GameManager.StaticInstance.StageManager.StartNextStage();
             yield return delay;
             GameManager.StaticInstance.StageManager.CurrentStage.TeleportPlayerToStartPoint();
@@ -56,6 +51,11 @@ namespace WinterUniverse
             GameManager.StaticInstance.Player.ActivateComponent();
             yield return delay;
             yield return GameManager.StaticInstance.UIManager.FadeScreen(0f);
+            GameManager.StaticInstance.DialogueManager.ShowDialogue(GameManager.StaticInstance.StageManager.CurrentStage.DialogueBeforeBattle);
+            while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
+            {
+                yield return delay;
+            }
             GameManager.StaticInstance.SetInputMode(InputMode.Game);
             _isInElevator = false;
         }

@@ -9,7 +9,7 @@ namespace WinterUniverse
         public override void InitializeComponent()
         {
             base.InitializeComponent();
-            Animator = GetComponent<Animator>();
+            Animator = GetComponentInChildren<Animator>();
         }
 
         public void PlayAction(string name, float fadeTime = 0.1f, bool changeActionState = true, bool isPerfomingAction = true)

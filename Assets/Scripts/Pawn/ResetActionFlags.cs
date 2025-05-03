@@ -11,7 +11,7 @@ namespace WinterUniverse
 
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            _pawn = animator.GetComponent<Pawn>();
+            _pawn = animator.GetComponentInParent<Pawn>();
             if (_toggleIsPerfomingAction)
             {
                 if (_isPerfomingActionState)

@@ -1,4 +1,3 @@
-using UnityEditor.Playables;
 using UnityEngine;
 
 namespace WinterUniverse
@@ -21,14 +20,14 @@ namespace WinterUniverse
             }
         }
 
-        public bool PerformAttack()
+        public bool PerformAttack(bool ignoreTargeting)
         {
-            return PerformAbility(BasicAttack);
+            return PerformAbility(BasicAttack, ignoreTargeting);
         }
 
-        public bool PerformAbility(AbilityPresetConfig ability)
+        public bool PerformAbility(AbilityPresetConfig ability, bool ignoreTargeting)
         {
-            if (CanPerformAbility(ability))
+            if (CanPerformAbility(ability, ignoreTargeting))
             {
                 CurrentAbility = ability;
                 if (CurrentAbility.PlayAnimationOnStart)
@@ -44,19 +43,26 @@ namespace WinterUniverse
             return false;
         }
 
-        private bool CanPerformAbility(AbilityPresetConfig ability)
+        private bool CanPerformAbility(AbilityPresetConfig ability, bool ignoreTargeting)
         {
             if (_pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action"))
             {
                 return false;
             }
-            if (DistanceToTarget > ability.CastType.Distance)
+            if(!ignoreTargeting)
             {
-                return false;
-            }
-            if (Mathf.Abs(AngleToTarget) > ability.CastType.AngleToCast / 2f)
-            {
-                return false;
+                if (DistanceToTarget >= ability.CastType.Distance)
+                {
+                    return false;
+                }
+                if (Mathf.Abs(AngleToTarget) >= ability.CastType.AngleToCast / 2f)
+                {
+                    return false;
+                }
+                if (ability.TargetType == AbilityTargetType.Target && Target == null)
+                {
+                    return false;
+                }
             }
             return ability.CastType.CanCast(_pawn, Target, transform.position, transform.eulerAngles, transform.forward, ability.HitTypes, ability.TargetType);
         }
