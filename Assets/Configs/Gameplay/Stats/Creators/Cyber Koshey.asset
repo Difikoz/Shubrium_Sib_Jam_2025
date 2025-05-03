@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3246422976ede6f40b20f7d9ac972e2b, type: 3}
-  m_Name: Cyber Ko
+  m_Name: Cyber Koshey
   m_EditorClassIdentifier: 
   <BaseStats>k__BackingField:
   - <Stat>k__BackingField: {fileID: 11400000, guid: 3aa46a57aaca6704da7a059040161c59, type: 2}

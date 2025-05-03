@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1865576760764836974}
   - component: {fileID: 3253425190103455603}
   m_Layer: 0
-  m_Name: koshei
+  m_Name: MESH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1162746869356520988}
-  - component: {fileID: 1660280082186863568}
+  - component: {fileID: 1911884935041179438}
   - component: {fileID: 2955175000031094459}
   - component: {fileID: 1857425928816004833}
   - component: {fileID: 8063090202695872784}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 981627780498341313}
   - component: {fileID: -6705910319037426639}
   m_Layer: 6
-  m_Name: Enemy Cyber Ko
+  m_Name: Enemy Cyber Koshey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ Transform:
   - {fileID: 8595073846505626896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1660280082186863568
+--- !u!114 &1911884935041179438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,12 +298,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 413677848155644667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a645e14ce11dc4ead0f3b2dcdf3f74, type: 3}
+  m_Script: {fileID: 11500000, guid: 18cd6048fe249174499b496f105674d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Faction>k__BackingField: 0
   <StatsCreator>k__BackingField: {fileID: 11400000, guid: 391c140afcbdb49459f53d12d9bab38a, type: 2}
   <ExplosionEffect>k__BackingField: {fileID: 1021272099366177520, guid: 1b536cfbf0b458a498f76379fd36aa56, type: 3}
+  _phase01:
+  - <Config>k__BackingField: {fileID: 11400000, guid: 4245e600b52480f42904e4aadd032383, type: 2}
+    <Count>k__BackingField: 2
+  _phase02:
+  - <Config>k__BackingField: {fileID: 11400000, guid: ba942966efef2b94e95d402dd5f259fc, type: 2}
+    <Count>k__BackingField: 2
+  _phase03:
+  - <Config>k__BackingField: {fileID: 11400000, guid: 4245e600b52480f42904e4aadd032383, type: 2}
+    <Count>k__BackingField: 2
+  - <Config>k__BackingField: {fileID: 11400000, guid: ba942966efef2b94e95d402dd5f259fc, type: 2}
+    <Count>k__BackingField: 2
 --- !u!114 &2955175000031094459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +390,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 413677848155644667}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 1.5
   m_Speed: 0
   m_Acceleration: 0
   avoidancePriority: 50
@@ -388,7 +399,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 4
+  m_Height: 6
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -411,10 +422,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Height: 4
+  m_Radius: 1.5
+  m_Height: 6
   m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &812535447584427867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,7 +1961,7 @@ Transform:
   m_GameObject: {fileID: 7129967134191814094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

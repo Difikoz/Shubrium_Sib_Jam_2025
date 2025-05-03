@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f727a8300e6df624ba7737c90131102a, type: 3}
-  m_Name: Cyber Ko
+  m_Name: Cyber Koshey
   m_EditorClassIdentifier: 
-  <Key>k__BackingField: Cyber Ko
-  <DisplayName>k__BackingField: Cyber Ko
+  <Key>k__BackingField: Cyber Koshey
+  <DisplayName>k__BackingField: Cyber Koshey
   <Description>k__BackingField: 
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <Icon>k__BackingField: {fileID: 0}
