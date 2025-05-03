@@ -5,6 +5,7 @@ namespace WinterUniverse
     public class PawnCombatComponent : PawnComponent
     {
         [field: SerializeField] public AbilityPresetConfig BasicAttack { get; private set; }
+        [field: SerializeField] public Transform ShootPoint { get; private set; }
 
         public AbilityPresetConfig CurrentAbility { get; private set; }
         public Pawn Target { get; private set; }
@@ -49,7 +50,7 @@ namespace WinterUniverse
             {
                 return false;
             }
-            if(!ignoreTargeting)
+            if (!ignoreTargeting)
             {
                 if (DistanceToTarget >= ability.CastType.Distance)
                 {
@@ -64,12 +65,12 @@ namespace WinterUniverse
                     return false;
                 }
             }
-            return ability.CastType.CanCast(_pawn, Target, transform.position, transform.eulerAngles, transform.forward, ability.HitTypes, ability.TargetType);
+            return ability.CastType.CanCast(_pawn, Target, ShootPoint.position, ShootPoint.eulerAngles, ShootPoint.forward, ability.HitTypes, ability.TargetType);
         }
 
         public void PerformAbilityCast()
         {
-            CurrentAbility.CastType.OnCast(_pawn, Target, transform.position, transform.eulerAngles, transform.forward, CurrentAbility.HitTypes, CurrentAbility.TargetType);
+            CurrentAbility.CastType.OnCast(_pawn, Target, ShootPoint.position, ShootPoint.eulerAngles, ShootPoint.forward, CurrentAbility.HitTypes, CurrentAbility.TargetType);
         }
 
         public void SetTarget(Pawn target)
