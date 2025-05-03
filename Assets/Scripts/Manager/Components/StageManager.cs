@@ -24,11 +24,18 @@ namespace WinterUniverse
         public void StartNextStage()
         {
             CurrentStageIndex++;
-            _components.Add(CurrentStage);
-            CurrentStage.ActivateComponent();
-            CurrentStage.EnableComponent();
-            GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
-            StartCoroutine(HandleStagesCoroutine());
+            if (CurrentStageIndex == Stages.Count)
+            {
+                GameManager.StaticInstance.GameComplete();
+            }
+            else
+            {
+                _components.Add(CurrentStage);
+                CurrentStage.ActivateComponent();
+                CurrentStage.EnableComponent();
+                GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
+                StartCoroutine(HandleStagesCoroutine());
+            }
         }
 
         public void DisableCurrentStage()
@@ -47,21 +54,14 @@ namespace WinterUniverse
                 yield return delay;
             }
             CurrentStage.CompleteStage();
-            if (CurrentStageIndex == Stages.Count - 1)
+            GameManager.StaticInstance.ElevatorManager.OpenDoors();
+            GameManager.StaticInstance.DialogueManager.ShowDialogue(GameManager.StaticInstance.StageManager.CurrentStage.DialogueAfterBattle);
+            GameManager.StaticInstance.SetInputMode(InputMode.UI);
+            while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
             {
-                GameManager.StaticInstance.GameComplete();
+                yield return delay;
             }
-            else
-            {
-                GameManager.StaticInstance.ElevatorManager.OpenDoors();
-                GameManager.StaticInstance.DialogueManager.ShowDialogue(GameManager.StaticInstance.StageManager.CurrentStage.DialogueAfterBattle);
-                GameManager.StaticInstance.SetInputMode(InputMode.UI);
-                while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
-                {
-                    yield return delay;
-                }
-                GameManager.StaticInstance.SetInputMode(InputMode.Game);
-            }
+            GameManager.StaticInstance.SetInputMode(InputMode.Game);
         }
     }
 }
