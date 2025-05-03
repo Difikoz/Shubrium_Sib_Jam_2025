@@ -18,7 +18,7 @@ namespace WinterUniverse
         public override void EnableComponent()
         {
             base.EnableComponent();
-            StartCoroutine(MoveToPlayerCoroutine());
+            StartCoroutine(LifetimeCoroutine());
         }
 
         public override void UpdateComponent()
@@ -32,13 +32,30 @@ namespace WinterUniverse
             Agent.velocity = Locomotion.GroundVelocity * GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + Locomotion.KnockbackVelocity + Locomotion.DashVelocity;
         }
 
-        private IEnumerator MoveToPlayerCoroutine()
+        private IEnumerator LifetimeCoroutine()
         {
-            WaitForSeconds delay = new(0.25f);
+            WaitForSeconds delay = new(0.5f);
+            Combat.SetTarget(GameManager.StaticInstance.Player);
             while (true)
             {
-                Agent.SetDestination(GameManager.StaticInstance.Player.transform.position);
-                yield return delay;
+                while (GameplayComponent.HasGameplayTag("Is Perfoming Action"))
+                {
+                    yield return null;
+                }
+                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance)
+                {
+                    Agent.SetDestination(Combat.Target.transform.position);
+                    yield return delay;
+                }
+                if (Agent.hasPath && Combat.DistanceToTarget < Combat.BasicAttack.CastType.Distance / 2f)
+                {
+                    Agent.ResetPath();
+                }
+                if (Combat.PerformAttack())
+                {
+                    yield return null;
+                }
+                yield return null;
             }
         }
     }

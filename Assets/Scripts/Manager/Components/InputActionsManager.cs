@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace WinterUniverse
@@ -15,10 +16,14 @@ namespace WinterUniverse
         public override void EnableComponent()
         {
             _inputActions.Enable();
+            _inputActions.Player.Dash.performed += ctx => OnDashPerfomed();
+            _inputActions.Player.Attack.performed += ctx => OnAttackPerfomed();
         }
 
         public override void DisableComponent()
         {
+            _inputActions.Player.Dash.performed -= ctx => OnDashPerfomed();
+            _inputActions.Player.Attack.performed -= ctx => OnAttackPerfomed();
             _inputActions.Disable();
         }
 
@@ -33,6 +38,24 @@ namespace WinterUniverse
             {
                 GameManager.StaticInstance.Player.Locomotion.MoveDirection = Vector3.zero;
             }
+        }
+
+        private void OnDashPerfomed()
+        {
+            if (GameManager.StaticInstance.InputMode != InputMode.Game)
+            {
+                return;
+            }
+            GameManager.StaticInstance.Player.Locomotion.PerformDash();
+        }
+
+        private void OnAttackPerfomed()
+        {
+            if (GameManager.StaticInstance.InputMode != InputMode.Game)
+            {
+                return;
+            }
+            GameManager.StaticInstance.Player.Combat.PerformAttack();
         }
     }
 }

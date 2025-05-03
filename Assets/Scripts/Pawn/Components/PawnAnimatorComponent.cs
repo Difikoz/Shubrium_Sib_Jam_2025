@@ -12,8 +12,19 @@ namespace WinterUniverse
             Animator = GetComponent<Animator>();
         }
 
-        public void PlayAction(string name, float fadeTime = 0.1f)
+        public void PlayAction(string name, float fadeTime = 0.1f, bool changeActionState = true, bool isPerfomingAction = true)
         {
+            if (changeActionState)
+            {
+                if (isPerfomingAction)
+                {
+                    _pawn.GameplayComponent.AddGameplayTag("Is Perfoming Action");
+                }
+                else
+                {
+                    _pawn.GameplayComponent.RemoveGameplayTag("Is Perfoming Action");
+                }
+            }
             Animator.CrossFade(name, fadeTime);
         }
 

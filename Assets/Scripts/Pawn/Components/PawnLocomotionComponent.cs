@@ -17,32 +17,38 @@ namespace WinterUniverse
 
         public override void UpdateComponent()
         {
-            if (MoveDirection != Vector3.zero)
+            if (MoveDirection != Vector3.zero && DashVelocity == Vector3.zero && KnockbackVelocity == Vector3.zero && !_pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action"))
             {
                 GroundVelocity = Vector3.MoveTowards(GroundVelocity, MoveDirection, 2f * Time.deltaTime);
             }
             else
             {
                 GroundVelocity = Vector3.MoveTowards(GroundVelocity, Vector3.zero, 4f * Time.deltaTime);
-            }
-            if (KnockbackVelocity != Vector3.zero)
-            {
-                KnockbackVelocity = Vector3.MoveTowards(KnockbackVelocity, Vector3.zero, Mass * Time.deltaTime);
+                if (KnockbackVelocity != Vector3.zero)
+                {
+                    KnockbackVelocity = Vector3.MoveTowards(KnockbackVelocity, Vector3.zero, Mass * Time.deltaTime);
+                }
             }
         }
 
         public void AddKnockback(Vector3 direction, float force)
         {
+            if (DashVelocity != Vector3.zero)
+            {
+                return;
+            }
             KnockbackVelocity += direction.normalized * force;
         }
 
         public void PerformDash()
         {
-            if (_dashCoroutine != null)
+            if (_dashCoroutine != null || _pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action"))
             {
                 return;
             }
-            DashVelocity = transform.forward * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue;
+            DashVelocity = transform.forward * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
+            KnockbackVelocity = Vector3.zero;
+            GroundVelocity = Vector3.zero;
             _dashCoroutine = StartCoroutine(DashCoroutine());
         }
 
