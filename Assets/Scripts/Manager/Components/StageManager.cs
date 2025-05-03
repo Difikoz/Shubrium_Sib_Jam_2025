@@ -40,7 +40,7 @@ namespace WinterUniverse
 
         private IEnumerator HandleStagesCoroutine()
         {
-            WaitForSeconds delay = new(5f);
+            WaitForSeconds delay = new(2f);
             yield return delay;
             while (!CurrentStage.CanCompleteStage())
             {

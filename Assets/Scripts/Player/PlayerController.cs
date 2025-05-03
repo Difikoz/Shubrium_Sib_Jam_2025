@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace WinterUniverse
@@ -21,6 +22,12 @@ namespace WinterUniverse
                 RB.rotation = Quaternion.RotateTowards(RB.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.fixedDeltaTime);
             }
             RB.linearVelocity = Locomotion.GroundVelocity * GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + Locomotion.KnockbackVelocity + Locomotion.DashVelocity;
+        }
+
+        public override IEnumerator PerformDeath()
+        {
+            yield return new WaitForSeconds(1f);
+            GameManager.StaticInstance.GameOver();
         }
     }
 }

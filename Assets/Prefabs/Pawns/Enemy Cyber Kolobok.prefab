@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3868963136490027850}
   - component: {fileID: 8773566249972841306}
   - component: {fileID: 981627780498341313}
+  - component: {fileID: 6641510429704334744}
   m_Layer: 6
   m_Name: Enemy Cyber Kolobok
   m_TagString: Untagged
@@ -140,6 +141,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &6641510429704334744
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413677848155644667}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2272402873300074802
 GameObject:
   m_ObjectHideFlags: 0

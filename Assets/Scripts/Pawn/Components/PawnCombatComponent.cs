@@ -58,12 +58,12 @@ namespace WinterUniverse
             {
                 return false;
             }
-            return ability.CastType.CanCast(_pawn, Target, transform.position, transform.forward, ability.HitTypes, ability.TargetType);
+            return ability.CastType.CanCast(_pawn, Target, transform.position, transform.eulerAngles, transform.forward, ability.HitTypes, ability.TargetType);
         }
 
         public void PerformAbilityCast()
         {
-            CurrentAbility.CastType.OnCast(_pawn, Target, transform.position, transform.forward, CurrentAbility.HitTypes, CurrentAbility.TargetType);
+            CurrentAbility.CastType.OnCast(_pawn, Target, transform.position, transform.eulerAngles, transform.forward, CurrentAbility.HitTypes, CurrentAbility.TargetType);
         }
 
         public void SetTarget(Pawn target)

@@ -58,5 +58,11 @@ namespace WinterUniverse
                 yield return null;
             }
         }
+
+        public override IEnumerator PerformDeath()
+        {
+            yield return new WaitForSeconds(2f);
+            gameObject.SetActive(false);
+        }
     }
 }

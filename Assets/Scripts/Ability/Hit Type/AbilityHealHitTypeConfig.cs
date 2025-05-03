@@ -9,7 +9,7 @@ namespace WinterUniverse
         [SerializeField] private string _test;
         [field: SerializeField] public int FixedValue { get; private set; }
 
-        public override void OnHit(Pawn caster, Pawn target, Vector3 position, Vector3 direction, AbilityTargetType targetType)
+        public override void OnHit(Pawn caster, Pawn target, Vector3 position, Vector3 eulerAngles, Vector3 direction, AbilityTargetType targetType)
         {
             switch (targetType)
             {

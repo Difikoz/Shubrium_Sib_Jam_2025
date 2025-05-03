@@ -13,6 +13,7 @@ namespace WinterUniverse
         public ElevatorManager ElevatorManager { get; private set; }
         public ImplantManager ImplantManager { get; private set; }
         public InputActionsManager InputActionsManager { get; private set; }
+        public LayersManager LayersManager { get; private set; }
         public SpawnManager SpawnManager { get; private set; }
         public StageManager StageManager { get; private set; }
         public UIManager UIManager { get; private set; }
@@ -31,6 +32,7 @@ namespace WinterUniverse
             ElevatorManager = FindFirstObjectByType<ElevatorManager>();
             ImplantManager = FindFirstObjectByType<ImplantManager>();
             InputActionsManager = FindFirstObjectByType<InputActionsManager>();
+            LayersManager = FindFirstObjectByType<LayersManager>();
             SpawnManager = FindFirstObjectByType<SpawnManager>();
             StageManager = FindFirstObjectByType<StageManager>();
             UIManager = FindFirstObjectByType<UIManager>();
@@ -40,6 +42,7 @@ namespace WinterUniverse
             _components.Add(ElevatorManager);
             _components.Add(ImplantManager);
             _components.Add(InputActionsManager);
+            _components.Add(LayersManager);
             _components.Add(SpawnManager);
             _components.Add(StageManager);
             _components.Add(UIManager);
@@ -106,12 +109,19 @@ namespace WinterUniverse
 
         public void GameComplete()
         {
-            Debug.Log("�� ���ب� ����, ���");
+            Debug.Log("Game Completed");
+            StartCoroutine(LeaveGame());
+        }
+
+        public void GameOver()
+        {
+            Debug.Log("Game Over");
             StartCoroutine(LeaveGame());
         }
 
         private IEnumerator LeaveGame()
         {
+            SetInputMode(InputMode.UI);
             yield return new WaitForSeconds(5f);
             SceneManager.LoadScene(0);
         }

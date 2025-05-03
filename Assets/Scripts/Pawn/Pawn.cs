@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace WinterUniverse
@@ -7,7 +8,7 @@ namespace WinterUniverse
     [RequireComponent(typeof(PawnEquipmentComponent))]
     [RequireComponent(typeof(PawnHealthComponent))]
     [RequireComponent(typeof(PawnLocomotionComponent))]
-    public class Pawn : BasicComponentHolder
+    public abstract class Pawn : BasicComponentHolder
     {
         [field: SerializeField] public GameplayStatsCreatorConfig StatsCreator { get; private set; }
 
@@ -41,5 +42,7 @@ namespace WinterUniverse
                 implant.OnTriggerPerfomed(trigger, this, targetOrSource);
             }
         }
+
+        public abstract IEnumerator PerformDeath();
     }
 }
