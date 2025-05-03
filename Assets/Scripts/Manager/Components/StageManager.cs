@@ -6,6 +6,8 @@ namespace WinterUniverse
 {
     public class StageManager : BasicComponentHolder
     {
+        [SerializeField] private int startStageIndex;
+
         [field: SerializeField] public List<Stage> Stages { get; private set; }
         public int CurrentStageIndex { get; private set; }
         public Stage CurrentStage => Stages[CurrentStageIndex];
@@ -13,7 +15,7 @@ namespace WinterUniverse
         public override void InitializeComponent()
         {
             base.InitializeComponent();
-            CurrentStageIndex = -1;
+            CurrentStageIndex = startStageIndex - 1;//-1;
             foreach (Stage stage in Stages)
             {
                 stage.InitializeComponent();
