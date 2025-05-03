@@ -44,6 +44,11 @@ namespace WinterUniverse
             {
                 yield return delay;
             }
+            GameManager.StaticInstance.DialogueManager.ShowCurrentStageDialogue();
+            while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
+            {
+                yield return delay;
+            }
             GameManager.StaticInstance.StageManager.StartNextStage();
             yield return delay;
             GameManager.StaticInstance.StageManager.CurrentStage.TeleportPlayerToStartPoint();

@@ -31,9 +31,6 @@ namespace WinterUniverse
 
             // Отмечаем, что выбор завершен
             IsSelectingImplant = false;
-
-            // Здесь можно добавить логику для показа диалогов
-            // ShowDialogUI();
         }
 
         public List<ImplantConfig> GetRandomImplants(int count)

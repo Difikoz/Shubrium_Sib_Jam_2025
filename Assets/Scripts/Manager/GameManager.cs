@@ -9,6 +9,7 @@ namespace WinterUniverse
         public bool Initialized { get; private set; }
         public PlayerController Player { get; private set; }
         public CameraManager CameraManager { get; private set; }
+        public DialogueManager DialogueManager { get; private set; }
         public ElevatorManager ElevatorManager { get; private set; }
         public ImplantManager ImplantManager { get; private set; }
         public InputActionsManager InputActionsManager { get; private set; }
@@ -26,6 +27,7 @@ namespace WinterUniverse
         {
             Player = FindFirstObjectByType<PlayerController>();
             CameraManager = FindFirstObjectByType<CameraManager>();
+            DialogueManager = FindFirstObjectByType<DialogueManager>();
             ElevatorManager = FindFirstObjectByType<ElevatorManager>();
             ImplantManager = FindFirstObjectByType<ImplantManager>();
             InputActionsManager = FindFirstObjectByType<InputActionsManager>();
@@ -34,6 +36,7 @@ namespace WinterUniverse
             UIManager = FindFirstObjectByType<UIManager>();
             _components.Add(Player);
             _components.Add(CameraManager);
+            _components.Add(DialogueManager);
             _components.Add(ElevatorManager);
             _components.Add(ImplantManager);
             _components.Add(InputActionsManager);
@@ -103,7 +106,7 @@ namespace WinterUniverse
 
         public void GameComplete()
         {
-            Debug.Log("ÒÛ ÏÐÎØ¨Ë ÈÃÐÓ, ÅÅÅ");
+            Debug.Log("ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¨ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½");
             StartCoroutine(LeaveGame());
         }
 

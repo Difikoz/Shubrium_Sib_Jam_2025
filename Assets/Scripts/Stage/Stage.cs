@@ -10,6 +10,9 @@ namespace WinterUniverse
         [field: SerializeField] public Transform PlayerStartPoint { get; private set; }
         [field: SerializeField] public List<Transform> SpawnPoints { get; private set; }
         [field: SerializeField] public List<EnemySpawnData> EnemiesToSpawn { get; private set; }
+        
+        // Диалог, который будет показываться для этого уровня после выбора импланта
+        [field: SerializeField] public DialogueConfig StageDialogue { get; private set; }
 
         public override void ActivateComponent()
         {

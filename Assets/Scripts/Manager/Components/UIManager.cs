@@ -10,15 +10,18 @@ namespace WinterUniverse
         public HealthUIController HealthUIController { get; private set; }
         public PlayerImplantsUI PlayerImplantsUI { get; private set; }
         public ImplantSelectionUI ImplantSelectionUI { get; private set; }
+        public DialogueUI DialogueUI { get; private set; }
 
         public override void FillComponents()
         {
             HealthUIController = GetComponentInChildren<HealthUIController>();
             PlayerImplantsUI = GetComponentInChildren<PlayerImplantsUI>();
             ImplantSelectionUI = GetComponentInChildren<ImplantSelectionUI>();
+            DialogueUI = GetComponentInChildren<DialogueUI>();
             _components.Add(HealthUIController);
             _components.Add(PlayerImplantsUI);
             _components.Add(ImplantSelectionUI);
+            _components.Add(DialogueUI);
         }
 
         public IEnumerator FadeScreen(float value)

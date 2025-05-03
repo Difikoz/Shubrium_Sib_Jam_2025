@@ -119,17 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &407164938 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8041068369043620583, guid: f2ef793282a05ef43a25d1c727745187, type: 3}
-  m_PrefabInstance: {fileID: 6696608270561464048}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11d1bf8d19034044a95c70d8ef535e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1097609283
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +135,7 @@ GameObject:
   - component: {fileID: 1097609289}
   - component: {fileID: 1097609291}
   - component: {fileID: 1097609290}
+  - component: {fileID: 1097609292}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -247,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveDirection: {x: 0, y: 0, z: 0}
+  <RotateSpeed>k__BackingField: 10
   <Mass>k__BackingField: 1
   <TimeToDash>k__BackingField: 0.1
 --- !u!114 &1097609290
@@ -273,6 +264,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb481e6961fd6c4d8ec4ed149a71e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1097609292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097609283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0876649b7b98e8e449241ea82dd60ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <BasicAttack>k__BackingField: {fileID: 0}
 --- !u!1 &1108725025
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +556,7 @@ GameObject:
   - component: {fileID: 1364193392}
   - component: {fileID: 1364193393}
   - component: {fileID: 1364193394}
+  - component: {fileID: 1364193395}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -592,7 +597,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d74c6db0cfaffe1468b1485e75723ea7, type: 2}
   - {fileID: 11400000, guid: d9c39c7f986981c44b03b9637f16a911, type: 2}
   _implantOptions: 3
-  _implantSelectionUI: {fileID: 407164938}
 --- !u!114 &1364193394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +609,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62af2b9ad70f54847ad8a1060e85791f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _testDoors: {fileID: 0}
+--- !u!114 &1364193395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364193391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00de2b1f4bd36c94686fd461975beb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _allDialogues:
+  - {fileID: 11400000, guid: 70caef88e1b74f546a91617e2e68168b, type: 2}
 --- !u!1001 &6696608270561464048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -693,10 +712,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4966380221891934095, guid: f2ef793282a05ef43a25d1c727745187, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1364193394}
     - target: {fileID: 7311504311911866702, guid: f2ef793282a05ef43a25d1c727745187, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -717,7 +732,7 @@ PrefabInstance:
     - target: {fileID: 1858447321534988414, guid: 4581385a891a3694f83a6d7349e4db0f, type: 3}
       propertyPath: _implantSelectionUI
       value: 
-      objectReference: {fileID: 407164938}
+      objectReference: {fileID: 0}
     - target: {fileID: 5458664913601852337, guid: 4581385a891a3694f83a6d7349e4db0f, type: 3}
       propertyPath: m_Name
       value: Game Manager
