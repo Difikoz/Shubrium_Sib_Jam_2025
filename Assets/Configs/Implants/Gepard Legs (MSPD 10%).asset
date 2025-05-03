@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Gepard Legs (MSPD 10%)
   m_EditorClassIdentifier: 
   <Key>k__BackingField: Gepard Legs
-  <DisplayName>k__BackingField: Gepard Legs
-  <Description>k__BackingField: 
+  <DisplayName>k__BackingField: "\u0421\u043A\u0430\u0442\u0435\u0440\u0442\u044C-\u0423\u043B\u0435\u0442\u0430\u0439\u043A\u0430"
+  <Description>k__BackingField: "\u041D\u0435 \u043F\u0443\u0442\u0430\u0442\u044C
+    \u0441\u043E \u0441\u043A\u0430\u0442\u0435\u0440\u0442\u044C\u044E-\u0441\u0430\u043C\u043E\u0431\u0440\u0430\u043D\u043A\u043E\u0439.
+    \u042D\u0442\u0430 \u043D\u0435 \u043A\u043E\u0440\u043C\u0438\u0442 \u2014 \u044D\u0442\u0430
+    \u0442\u0430\u0449\u0438\u0442 \u0438 \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
+    \u0442\u0432\u043E\u044E \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C. "
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <Icon>k__BackingField: {fileID: 21300000, guid: eba3149532958c440bfc999b11c7ff2c, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 633eb9333e4bfee4894fcf393a62302e, type: 3}
   <Chance>k__BackingField: 100
   <CanStack>k__BackingField: 1
   <RemoveAfterAnyTriggerPerfomed>k__BackingField: 0
