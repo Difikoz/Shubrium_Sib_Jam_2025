@@ -19,7 +19,7 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   <PlayAnimationOnStart>k__BackingField: 0
   <AnimationName>k__BackingField: 
-  <TargetType>k__BackingField: 1
+  <TargetType>k__BackingField: 3
   <CastType>k__BackingField: {fileID: 11400000, guid: 3db25b29fd28f0742b06c1c5f44cf85b, type: 2}
   <HitTypes>k__BackingField:
   - <HitType>k__BackingField: {fileID: 11400000, guid: f668e2f352726a3439b6dd65ba9a599a, type: 2}

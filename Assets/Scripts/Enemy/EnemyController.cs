@@ -1,3 +1,4 @@
+using Lean.Pool;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,6 +8,7 @@ namespace WinterUniverse
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyController : Pawn
     {
+        [field: SerializeField] public GameObject ExplosionEffect { get; private set; }
         public NavMeshAgent Agent { get; private set; }
 
         public override void FillComponents()
@@ -36,13 +38,17 @@ namespace WinterUniverse
         {
             WaitForSeconds delay = new(0.5f);
             Combat.SetTarget(GameManager.StaticInstance.Player);
-            while (true)
+            while (!GameplayComponent.HasGameplayTag("Is Dead"))
             {
+                while (GameManager.StaticInstance.InputMode != InputMode.Game)
+                {
+                    yield return null;
+                }
                 while (GameplayComponent.HasGameplayTag("Is Perfoming Action"))
                 {
                     yield return null;
                 }
-                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance)
+                if (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance)
                 {
                     Agent.SetDestination(Combat.Target.transform.position);
                     yield return delay;
@@ -61,7 +67,8 @@ namespace WinterUniverse
 
         public override IEnumerator PerformDeath()
         {
-            yield return new WaitForSeconds(2f);
+            LeanPool.Despawn(LeanPool.Spawn(ExplosionEffect, transform.position, Quaternion.identity), 10f);
+            yield return new WaitForSeconds(0.1f);
             gameObject.SetActive(false);
         }
     }

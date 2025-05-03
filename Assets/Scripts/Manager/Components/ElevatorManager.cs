@@ -33,13 +33,14 @@ namespace WinterUniverse
         {
             WaitForSeconds delay = new(0.1f);
             CloseDoors();
-            yield return delay;
+            yield return new WaitForSeconds(1f);
             GameManager.StaticInstance.SetInputMode(InputMode.UI);
             yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
-            GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
             yield return delay;
             GameManager.StaticInstance.Player.DeactivateComponent();
             GameManager.StaticInstance.StageManager.DisableCurrentStage();
+            yield return delay;
+            GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
             while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
             {
                 yield return delay;

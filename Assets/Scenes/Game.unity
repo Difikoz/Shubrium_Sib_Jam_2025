@@ -433,7 +433,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 05d031d10c9aa9142940807d764d44cd, type: 2}
   m_BuildHeightMesh: 0
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 1bae396683223dc4086ceb5f492a4bff, type: 2}
   m_BuildHeightMesh: 0
@@ -976,11 +976,7 @@ MonoBehaviour:
   - {fileID: 1733486926}
   - {fileID: 363205131}
   <EnemiesToSpawn>k__BackingField:
-  - <Config>k__BackingField: {fileID: 11400000, guid: bca42a1884ed729419b762b0949d2b6d, type: 2}
-    <Count>k__BackingField: 2
   - <Config>k__BackingField: {fileID: 11400000, guid: ba942966efef2b94e95d402dd5f259fc, type: 2}
-    <Count>k__BackingField: 2
-  - <Config>k__BackingField: {fileID: 11400000, guid: 7ed081817bce1624d93631ff61354de2, type: 2}
     <Count>k__BackingField: 2
   - <Config>k__BackingField: {fileID: 11400000, guid: 4245e600b52480f42904e4aadd032383, type: 2}
     <Count>k__BackingField: 2

@@ -5,6 +5,7 @@ namespace WinterUniverse
     public class PawnAnimatorComponent : PawnComponent
     {
         public Animator Animator { get; private set; }
+        public bool UsingRootMotion { get; private set; }
 
         public override void InitializeComponent()
         {
@@ -40,7 +41,7 @@ namespace WinterUniverse
 
         private void OnAnimatorMove()
         {
-            if (Animator != null)
+            if (Animator != null && UsingRootMotion)
             {
 
             }

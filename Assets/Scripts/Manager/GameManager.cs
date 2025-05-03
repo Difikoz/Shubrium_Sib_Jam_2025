@@ -65,16 +65,26 @@ namespace WinterUniverse
             yield return delay;
             EnableComponent();
             yield return delay;
+            Player.DeactivateComponent();
             StageManager.StartNextStage();
+            yield return delay;
+            StageManager.CurrentStage.TeleportPlayerToStartPoint();
+            yield return delay;
+            Player.ActivateComponent();
             Player.Health.Revive(Player);
             yield return UIManager.FadeScreen(0f);
+            DialogueManager.ShowDialogue(StageManager.CurrentStage.DialogueBeforeBattle);
+            while (DialogueManager.IsShowingDialogue)
+            {
+                yield return delay;
+            }
             Initialized = true;
             SetInputMode(InputMode.Game);
         }
 
         private void Update()
         {
-            if (!Initialized || InputMode != InputMode.Game)
+            if (!Initialized)
             {
                 return;
             }
@@ -83,7 +93,7 @@ namespace WinterUniverse
 
         private void FixedUpdate()
         {
-            if (!Initialized || InputMode != InputMode.Game)
+            if (!Initialized)
             {
                 return;
             }
@@ -92,7 +102,7 @@ namespace WinterUniverse
 
         private void LateUpdate()
         {
-            if (!Initialized || InputMode != InputMode.Game)
+            if (!Initialized)
             {
                 return;
             }

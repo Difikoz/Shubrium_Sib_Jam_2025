@@ -10,6 +10,7 @@ namespace WinterUniverse
     [RequireComponent(typeof(PawnLocomotionComponent))]
     public abstract class Pawn : BasicComponentHolder
     {
+        [field: SerializeField] public Faction Faction { get; private set; }
         [field: SerializeField] public GameplayStatsCreatorConfig StatsCreator { get; private set; }
 
         public PawnAnimatorComponent Animator { get; private set; }
