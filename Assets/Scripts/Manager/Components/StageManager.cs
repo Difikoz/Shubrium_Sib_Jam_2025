@@ -14,21 +14,15 @@ namespace WinterUniverse
         {
             base.InitializeComponent();
             CurrentStageIndex = -1;
-            foreach(Stage stage in Stages)
+            foreach (Stage stage in Stages)
             {
                 stage.InitializeComponent();
-                stage.DeactivateComponent();
+                //stage.DeactivateComponent();
             }
         }
 
         public void StartNextStage()
         {
-            if (CurrentStageIndex == Stages.Count - 1)
-            {
-                Debug.Log("ТЫ ПРОШЁЛ ИГРУ, ЕЕЕ");
-                // вызвать какой-нибудь метод
-                return;
-            }
             CurrentStageIndex++;
             _components.Add(CurrentStage);
             CurrentStage.ActivateComponent();
@@ -53,6 +47,14 @@ namespace WinterUniverse
                 yield return delay;
             }
             CurrentStage.CompleteStage();
+            if (CurrentStageIndex == Stages.Count - 1)
+            {
+                GameManager.StaticInstance.GameComplete();
+            }
+            else
+            {
+                GameManager.StaticInstance.ElevatorManager.OpenDoors();
+            }
         }
     }
 }

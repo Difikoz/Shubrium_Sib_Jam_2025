@@ -9,7 +9,12 @@ namespace WinterUniverse
         [SerializeField] private Transform _heartsContainer;
         [SerializeField] private int _maxHeartsToShow = 10; // Максимальное количество отображаемых сердец
 
-        private List<HeartUI> _hearts = new();
+        private List<HeartUI> _hearts;
+
+        public override void InitializeComponent()
+        {
+            _hearts = new();
+        }
 
         public override void EnableComponent()
         {
@@ -67,8 +72,6 @@ namespace WinterUniverse
                     heart.SetState(HeartUI.HeartState.Empty);
                 }
             }
-
-            Debug.Log($"[{GetType().Name}] Обновлен UI здоровья: {currentHealth}/{maxHealth} ({_hearts.Count} сердец)");
         }
     }
 }

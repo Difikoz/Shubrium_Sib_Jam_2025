@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace WinterUniverse
 {
     public class UIManager : BasicComponentHolder
     {
+        [field: SerializeField] public Image FadeImage { get; private set; }
         public HealthUIController HealthUIController { get; private set; }
         public PlayerImplantsUI PlayerImplantsUI { get; private set; }
         public ImplantSelectionUI ImplantSelectionUI { get; private set; }
@@ -16,6 +19,17 @@ namespace WinterUniverse
             _components.Add(HealthUIController);
             _components.Add(PlayerImplantsUI);
             _components.Add(ImplantSelectionUI);
+        }
+
+        public IEnumerator FadeScreen(float value)
+        {
+            Color c = FadeImage.color;
+            while (c.a != value)
+            {
+                c.a = Mathf.MoveTowards(c.a, value, Time.deltaTime);
+                FadeImage.color = c;
+                yield return null;
+            }
         }
     }
 }

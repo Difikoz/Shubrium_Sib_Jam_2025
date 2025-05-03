@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace WinterUniverse
 {
@@ -43,16 +44,19 @@ namespace WinterUniverse
 
         private IEnumerator Initialization()
         {
+            WaitForSeconds delay = new(0.1f);
             yield return new WaitForSeconds(1f);
             InitializeComponent();
-            yield return new WaitForSeconds(0.1f);
+            yield return delay;
             ActivateComponent();
-            yield return new WaitForSeconds(0.1f);
+            yield return delay;
             EnableComponent();
-            yield return new WaitForSeconds(0.1f);
+            yield return delay;
+            StageManager.StartNextStage();
+            Player.Health.Revive(Player);
+            yield return UIManager.FadeScreen(0f);
             Initialized = true;
             SetInputMode(InputMode.Game);
-            StageManager.StartNextStage();
         }
 
         private void Update()
@@ -95,6 +99,18 @@ namespace WinterUniverse
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
             }
+        }
+
+        public void GameComplete()
+        {
+            Debug.Log("“€ œ–Œÿ®À »√–”, ≈≈≈");
+            StartCoroutine(LeaveGame());
+        }
+
+        private IEnumerator LeaveGame()
+        {
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene(0);
         }
     }
 }

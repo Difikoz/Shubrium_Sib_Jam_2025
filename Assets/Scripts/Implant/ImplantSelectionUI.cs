@@ -1,3 +1,4 @@
+using Lean.Pool;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace WinterUniverse
     public class ImplantSelectionUI : BasicComponent
     {
         [SerializeField] private GameObject _uiRoot;
-        [SerializeField] private ImplantOptionUI _optionPrefab;
+        [SerializeField] private GameObject _optionPrefab;
         [SerializeField] private Transform _optionsContainer;
 
         private List<ImplantOptionUI> _spawnedOptions;
@@ -16,6 +17,7 @@ namespace WinterUniverse
         public override void InitializeComponent()
         {
             _spawnedOptions = new();
+            DeactivateComponent();
         }
 
         public void ShowImplantSelection(List<ImplantConfig> implants, Action<ImplantConfig> onSelected)
@@ -28,7 +30,7 @@ namespace WinterUniverse
             // Создаем UI для каждого импланта
             foreach (var implant in implants)
             {
-                ImplantOptionUI option = Instantiate(_optionPrefab, _optionsContainer);
+                ImplantOptionUI option = LeanPool.Spawn(_optionPrefab, _optionsContainer).GetComponent<ImplantOptionUI>();
                 option.Setup(implant, OnOptionClicked);
                 _spawnedOptions.Add(option);
             }
@@ -51,9 +53,8 @@ namespace WinterUniverse
         {
             foreach (var option in _spawnedOptions)
             {
-                Destroy(option.gameObject);
+                LeanPool.Despawn(option.gameObject);
             }
-
             _spawnedOptions.Clear();
         }
     }

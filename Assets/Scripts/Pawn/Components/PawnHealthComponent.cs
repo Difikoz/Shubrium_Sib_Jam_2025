@@ -63,5 +63,12 @@ namespace WinterUniverse
             OnValueChanged?.Invoke(Current, Max);
             _pawn.GameplayComponent.AddGameplayTag("Is Dead");
         }
+
+        public void Revive(Pawn source)
+        {
+            _pawn.GameplayComponent.RemoveGameplayTag("Is Dead");
+            _pawn.PerformTrigger("On Revived", source);
+            Restore(Max, source);
+        }
     }
 }

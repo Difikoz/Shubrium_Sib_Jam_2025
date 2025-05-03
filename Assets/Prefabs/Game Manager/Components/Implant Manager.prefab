@@ -44,6 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d70706d41d7864281f07a3cfd27572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allImplants: []
+  _allImplants:
+  - {fileID: 11400000, guid: a1433c22d2b013e439b3d8644b45511c, type: 2}
+  - {fileID: 11400000, guid: aad9319aac9469741bab16d6158a8956, type: 2}
+  - {fileID: 11400000, guid: a1e065714b05ebb47a89928cf9a1651d, type: 2}
+  - {fileID: 11400000, guid: 40f26d25a4d95114eadb5026aed2117a, type: 2}
+  - {fileID: 11400000, guid: 39c96d52a2ef0a94eab9910a2716a671, type: 2}
+  - {fileID: 11400000, guid: a74c8226174ae7a4d983a3f431bd41c5, type: 2}
+  - {fileID: 11400000, guid: 2c771d3d86b077d448a1a5e36c4950f0, type: 2}
+  - {fileID: 11400000, guid: 6b6afe89c3e8c29438c83918c68590ce, type: 2}
+  - {fileID: 11400000, guid: d47c8880f42b1b241b5fcad6760f77a9, type: 2}
   _implantOptions: 3
-  _implantSelectionUI: {fileID: 0}

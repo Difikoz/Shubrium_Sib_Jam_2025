@@ -53,21 +53,44 @@ namespace WinterUniverse
             if (validImplants.Count <= count)
                 return new List<ImplantConfig>(validImplants);
 
-            // Выбираем случайные импланты
-            List<ImplantConfig> result = new();
-            int randomIndex;
+            // рандомные учитывая шанс
+            List<ImplantConfig> randomImplants = new();
             for (int i = 0; i < count; i++)
             {
-                if (validImplants.Count == 0)
+                int selectedIndex;
+                int sum = 0;
+                for (int s = 0; s < validImplants.Count; s++)
                 {
-                    break;
+                    sum += validImplants[s].Chance;
                 }
-                randomIndex = Random.Range(0, validImplants.Count);
-                result.Add(validImplants[randomIndex]);
-                validImplants.RemoveAt(randomIndex);
+                int randomIndex = Random.Range(0, sum);
+                for (selectedIndex = 0; selectedIndex < validImplants.Count; selectedIndex++)
+                {
+                    randomIndex -= validImplants[selectedIndex].Chance;
+                    if (randomIndex < 0)
+                    {
+                        break;
+                    }
+                }
+                randomImplants.Add(validImplants[selectedIndex]);
+                validImplants.RemoveAt(selectedIndex);
             }
 
-            return result;
+            //// Выбираем случайные импланты
+            //List<ImplantConfig> result = new();
+            //int randomIndex;
+            //for (int i = 0; i < count; i++)
+            //{
+            //    if (validImplants.Count == 0)
+            //    {
+            //        break;
+            //    }
+            //    randomIndex = Random.Range(0, validImplants.Count);
+            //    result.Add(validImplants[randomIndex]);
+            //    validImplants.RemoveAt(randomIndex);
+            //}
+
+            return randomImplants;
         }
     }
 }

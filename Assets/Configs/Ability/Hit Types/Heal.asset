@@ -15,4 +15,4 @@ MonoBehaviour:
   <StatValue>k__BackingField: {fileID: 11400000, guid: 3aa46a57aaca6704da7a059040161c59, type: 2}
   <StatValueMultiplier>k__BackingField: 0.5
   _test: 
-  <FixedValue>k__BackingField: 1
+  <FixedValue>k__BackingField: 0

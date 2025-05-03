@@ -55,7 +55,6 @@ namespace WinterUniverse
                 LeanPool.Despawn(enemy.gameObject);
             }
             _components.Clear();
-            GameManager.StaticInstance.ElevatorManager.OpenDoors();
         }
     }
 }

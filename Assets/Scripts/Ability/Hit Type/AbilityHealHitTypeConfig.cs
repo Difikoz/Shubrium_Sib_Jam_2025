@@ -3,7 +3,7 @@ using UnityEngine;
 namespace WinterUniverse
 {
     [CreateAssetMenu(fileName = "Heal", menuName = "Winter Universe/Ability/Hit Type/New Heal")]
-    public class AbilityHealHitTypeConfig : AbilityHitTypeConfig
+    public class AbilityHealHitTypeConfig : AbilityValueBasedHitTypeConfig
     {
         [Header("Fixed Value Below")]
         [SerializeField] private string _test;

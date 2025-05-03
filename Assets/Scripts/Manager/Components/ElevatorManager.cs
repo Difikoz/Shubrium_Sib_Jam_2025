@@ -26,25 +26,32 @@ namespace WinterUniverse
                 return;
             }
             _isInElevator = true;
-            CloseDoors();
-            GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
             StartCoroutine(WaitForImplantSelection());
         }
 
         private IEnumerator WaitForImplantSelection()
         {
             WaitForSeconds delay = new(0.1f);
+            CloseDoors();
+            yield return delay;
+            GameManager.StaticInstance.SetInputMode(InputMode.UI);
+            yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
+            GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
             yield return delay;
             GameManager.StaticInstance.Player.DeactivateComponent();
             GameManager.StaticInstance.StageManager.DisableCurrentStage();
-            yield return delay;
-            GameManager.StaticInstance.StageManager.CurrentStage.TeleportPlayerToStartPoint();
             while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
             {
                 yield return delay;
             }
             GameManager.StaticInstance.StageManager.StartNextStage();
+            yield return delay;
+            GameManager.StaticInstance.StageManager.CurrentStage.TeleportPlayerToStartPoint();
+            yield return delay;
             GameManager.StaticInstance.Player.ActivateComponent();
+            yield return delay;
+            yield return GameManager.StaticInstance.UIManager.FadeScreen(0f);
+            GameManager.StaticInstance.SetInputMode(InputMode.Game);
             _isInElevator = false;
         }
 

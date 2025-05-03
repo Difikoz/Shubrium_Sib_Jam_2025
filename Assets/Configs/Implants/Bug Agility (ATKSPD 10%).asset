@@ -10,22 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca7c8a70c7b788f439bd570ed34bb421, type: 3}
-  m_Name: Fenix HP x0.25
+  m_Name: Bug Agility (ATKSPD 10%)
   m_EditorClassIdentifier: 
-  <Key>k__BackingField: Fenix
-  <DisplayName>k__BackingField: Fenix
+  <Key>k__BackingField: Bug Agility
+  <DisplayName>k__BackingField: Bug Agility
   <Description>k__BackingField: 
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <Icon>k__BackingField: {fileID: 0}
-  <CanStack>k__BackingField: 0
+  <Chance>k__BackingField: 100
+  <CanStack>k__BackingField: 1
   <RemoveAfterAnyTriggerPerfomed>k__BackingField: 0
   <Modifiers>k__BackingField:
-  - _config: {fileID: 11400000, guid: 3aa46a57aaca6704da7a059040161c59, type: 2}
+  - _config: {fileID: 11400000, guid: d09a397276d732d47bd39f860f07c076, type: 2}
     _modifier:
-      _type: 0
-      _value: 1
-  <Effects>k__BackingField:
-  - <Chance>k__BackingField: 1
-    <SingleUse>k__BackingField: 1
-    <Trigger>k__BackingField: {fileID: 11400000, guid: bcd02fe32d657e648a0cc95e522a9efa, type: 2}
-    <Effect>k__BackingField: {fileID: 11400000, guid: 661cffdb30c18c44897879bf5c977edb, type: 2}
+      _type: 1
+      _value: 10
+  <Effects>k__BackingField: []

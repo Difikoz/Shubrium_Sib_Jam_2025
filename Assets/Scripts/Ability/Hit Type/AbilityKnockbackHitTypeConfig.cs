@@ -3,7 +3,7 @@ using UnityEngine;
 namespace WinterUniverse
 {
     [CreateAssetMenu(fileName = "Knockback", menuName = "Winter Universe/Ability/Hit Type/New Knockback")]
-    public class AbilityKnockbackHitTypeConfig : AbilityHitTypeConfig
+    public class AbilityKnockbackHitTypeConfig : AbilityValueBasedHitTypeConfig
     {
         [Header("Fixed Value Below")]
         [SerializeField] private string _test;
