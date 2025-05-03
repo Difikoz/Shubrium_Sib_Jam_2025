@@ -168,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 532772204777751187}
   - component: {fileID: 5874072340333533417}
+  - component: {fileID: 14329403618964265}
   m_Layer: 0
   m_Name: ivan_anim
   m_TagString: Untagged
@@ -214,6 +215,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &14329403618964265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877948849632221225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bf085df995e6744a4fb03d6ee3cd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &893524448368861408
 GameObject:
   m_ObjectHideFlags: 0
