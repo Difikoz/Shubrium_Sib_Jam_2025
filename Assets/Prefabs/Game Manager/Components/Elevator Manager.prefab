@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 1624705278578732785}
   - component: {fileID: 9172964566610222580}
   - component: {fileID: 101114459368913730}
+  - component: {fileID: 1548568938116291641}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -279,6 +280,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1548568938116291641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2464643437519988373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0036462378, y: 0.04662989, z: 0.07306513}
+  m_Center: {x: -0.0025366598, y: 0.0020645084, z: -0.0010814653}
 --- !u!1 &2564900278412374759
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62af2b9ad70f54847ad8a1060e85791f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testDoors: {fileID: 0}
+  _doorAnimator: {fileID: 2262095062903421171}
 --- !u!65 &5780083165669115358
 BoxCollider:
   m_ObjectHideFlags: 0

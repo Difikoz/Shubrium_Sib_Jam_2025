@@ -7,16 +7,16 @@ namespace WinterUniverse
     {
         private bool _isInElevator = false;
 
-        [SerializeField] private GameObject _testDoors;
+        [SerializeField] private Animator _doorAnimator;
 
         public void OpenDoors()
         {
-            _testDoors.SetActive(false);
+            _doorAnimator.SetBool("Switched", true);
         }
 
         public void CloseDoors()
         {
-            _testDoors.SetActive(true);
+            _doorAnimator.SetBool("Switched", false);
         }
 
         private void OnPlayerEntered()
