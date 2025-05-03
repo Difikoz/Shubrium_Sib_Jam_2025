@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627469f68429c464fa4392906f6a0cd5, type: 3}
-  m_Name: Revive
+  m_Script: {fileID: 11500000, guid: 9f2cf0f801947bd478c8c062c6576ac7, type: 3}
+  m_Name: Is Perfoming Action
   m_EditorClassIdentifier: 
-  <Key>k__BackingField: Revive
-  <DisplayName>k__BackingField: Revive
-  <Description>k__BackingField: 
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <Icon>k__BackingField: {fileID: 0}
+  <Key>k__BackingField: Is Perfoming Action
