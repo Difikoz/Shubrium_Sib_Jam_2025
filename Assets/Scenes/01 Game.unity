@@ -6835,7 +6835,7 @@ PrefabInstance:
     - target: {fileID: 8113241087055301249, guid: 99ca0d1716972a349b9dfd33f5d07cb3, type: 3}
       propertyPath: '<Stages>k__BackingField.Array.data[1]'
       value: 
-      objectReference: {fileID: 869670360}
+      objectReference: {fileID: 1982234428}
     - target: {fileID: 8113241087055301249, guid: 99ca0d1716972a349b9dfd33f5d07cb3, type: 3}
       propertyPath: '<Stages>k__BackingField.Array.data[2]'
       value: 

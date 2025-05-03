@@ -7806,6 +7806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8210e0b62044d5449dd661f3190a50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Faction>k__BackingField: 0
   <StatsCreator>k__BackingField: {fileID: 11400000, guid: 5f1250727c588d8479993e0b0bfdd4c5, type: 2}
 --- !u!4 &827654178
 Transform:
@@ -7837,6 +7838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BasicAttack>k__BackingField: {fileID: 0}
+  <ShootPoint>k__BackingField: {fileID: 0}
 --- !u!1001 &835188027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19873,6 +19875,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1406758137724377686, guid: 4277b2cfb79ac9646a50b6cb163e65db, type: 3}
   m_PrefabInstance: {fileID: 2147147379}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6655456897759609092
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 413677848155644667, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_Name
+      value: Enemy Cyber Ko
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162746869356520988, guid: 73db3442400880840918c2668dfb4e98, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73db3442400880840918c2668dfb4e98, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -19890,3 +19949,4 @@ SceneRoots:
   - {fileID: 1616385288}
   - {fileID: 510174088}
   - {fileID: 565113993}
+  - {fileID: 6655456897759609092}
