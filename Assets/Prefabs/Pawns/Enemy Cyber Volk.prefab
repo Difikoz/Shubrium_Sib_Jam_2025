@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb481e6961fd6c4d8ec4ed149a71e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AddImplantsForTest>k__BackingField: []
 --- !u!114 &8063090202695872784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531ac937fa1f408e4707d37c9bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <DeathAudioPathName>k__BackingField: wolf
   <InvulnerableEffect>k__BackingField: {fileID: 3577779400953349115}
 --- !u!114 &8773566249972841306
 MonoBehaviour:

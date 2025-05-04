@@ -56,6 +56,8 @@ namespace WinterUniverse
         {
             if (other.TryGetComponent(out PlayerController player))
             {
+                AudioManager.StaticInstance.PlaySound("event:/ui/take_hp");
+
                 // Восстанавливаем здоровье
                 HealPlayer(player);
 
@@ -69,9 +71,6 @@ namespace WinterUniverse
 
         private void HealPlayer(PlayerController player)
         {
-            // Восстанавливаем здоровье игрока
-            Debug.Log($"[{GetType().Name}] Игрок подобрал сердечко: +{_healAmount} здоровья");
-
             // Используем метод Restore из PawnHealthComponent
             if (player.Health != null)
             {
