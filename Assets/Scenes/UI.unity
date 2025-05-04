@@ -252,6 +252,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531ac937fa1f408e4707d37c9bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <HitEventRef>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <DeathEventRef>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <InvulnerableEffect>k__BackingField: {fileID: 0}
 --- !u!114 &1097609291
 MonoBehaviour:
@@ -265,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb481e6961fd6c4d8ec4ed149a71e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AddImplantsForTest>k__BackingField: []
 --- !u!114 &1097609292
 MonoBehaviour:
   m_ObjectHideFlags: 0
