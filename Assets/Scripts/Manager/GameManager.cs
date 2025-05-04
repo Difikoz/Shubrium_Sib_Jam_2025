@@ -136,7 +136,7 @@ namespace WinterUniverse
         {
             AudioManager.StaticInstance.ChangeBackgroundMusic(4);
             SetInputMode(InputMode.UI);
-            UIManager.DeathScreenUI.ShowDeathScreen(OnDeathScreenButtonPressed);
+            StartCoroutine(UIManager.DeathScreenUI.ShowDeathScreen(OnDeathScreenButtonPressed));
         }
 
         private IEnumerator LoadOutroScene()
@@ -154,6 +154,7 @@ namespace WinterUniverse
         private IEnumerator LoadMainMenu()
         {
             yield return UIManager.FadeScreen(1f);
+            AudioManager.StaticInstance.ChangeBackgroundMusic(0);
             SceneManager.LoadScene(0);
         }
     }

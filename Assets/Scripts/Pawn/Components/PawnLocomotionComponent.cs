@@ -35,7 +35,7 @@ namespace WinterUniverse
         {
             if (_pawn.GameplayComponent.HasGameplayTag("Is Moving"))
             {
-                if (MoveDirection == Vector3.zero || DashVelocity != Vector3.zero || KnockbackVelocity != Vector3.zero || _pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action") || GameManager.StaticInstance.InputMode != InputMode.Game)
+                if (MoveDirection == Vector3.zero || DashVelocity != Vector3.zero || _pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action") || GameManager.StaticInstance.InputMode != InputMode.Game)
                 {
                     _pawn.GameplayComponent.RemoveGameplayTag("Is Moving");
                     _pawn.Animator.SetBool("Is Moving", false);
@@ -47,7 +47,7 @@ namespace WinterUniverse
             }
             else
             {
-                if (MoveDirection != Vector3.zero && DashVelocity == Vector3.zero && KnockbackVelocity == Vector3.zero && !_pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action") && GameManager.StaticInstance.InputMode == InputMode.Game)
+                if (MoveDirection != Vector3.zero && DashVelocity == Vector3.zero && !_pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action") && GameManager.StaticInstance.InputMode == InputMode.Game)
                 {
                     _pawn.GameplayComponent.AddGameplayTag("Is Moving");
                     _pawn.Animator.SetBool("Is Moving", true);
