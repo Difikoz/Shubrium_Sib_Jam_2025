@@ -712,10 +712,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5523440070991195014, guid: f2ef793282a05ef43a25d1c727745187, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7311504311911866702, guid: f2ef793282a05ef43a25d1c727745187, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -792,8 +788,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1108725028}
   - {fileID: 1308861458}
-  - {fileID: 6696608270561464048}
   - {fileID: 1339580930}
   - {fileID: 1364193392}
   - {fileID: 1097609288}
   - {fileID: 8015281721812861404}
+  - {fileID: 6696608270561464048}
