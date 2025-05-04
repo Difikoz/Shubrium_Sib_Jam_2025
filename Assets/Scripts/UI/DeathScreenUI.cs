@@ -13,6 +13,12 @@ namespace WinterUniverse
 
         private Action _onPressed;
 
+        public override void InitializeComponent()
+        {
+            base.InitializeComponent();
+            _button.onClick.AddListener(OnButtonPressed);
+        }
+
         public IEnumerator ShowDeathScreen(Action onPressed)
         {
             _button.Select();
@@ -26,6 +32,11 @@ namespace WinterUniverse
         }
 
         public void OnSubmit(BaseEventData eventData)
+        {
+            OnButtonPressed();
+        }
+
+        private void OnButtonPressed()
         {
             if (_canvasGroup.alpha != 1f)
             {

@@ -35,7 +35,7 @@ namespace WinterUniverse
             Color c = FadeImage.color;
             while (c.a != value)
             {
-                c.a = Mathf.MoveTowards(c.a, value, 2f * Time.deltaTime);
+                c.a = Mathf.MoveTowards(c.a, value, 0.5f * Time.deltaTime);
                 FadeImage.color = c;
                 yield return null;
             }
