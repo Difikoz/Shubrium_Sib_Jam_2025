@@ -11,6 +11,7 @@ namespace WinterUniverse
         [field: SerializeField] public List<Stage> Stages { get; private set; }
         public int CurrentStageIndex { get; private set; }
         public Stage CurrentStage => Stages[CurrentStageIndex];
+        public bool LastStage => CurrentStageIndex == Stages.Count - 1;
 
         public override void InitializeComponent()
         {
@@ -23,23 +24,15 @@ namespace WinterUniverse
             }
         }
 
-        public bool StartNextStage()
+        public void StartNextStage()
         {
             CurrentStageIndex++;
-            if (CurrentStageIndex == Stages.Count)
-            {
-                return false;
-            }
-            else
-            {
-                _components.Add(CurrentStage);
-                CurrentStage.ActivateComponent();
-                CurrentStage.EnableComponent();
-                GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
-                StartCoroutine(HandleStagesCoroutine());
-                GameManager.StaticInstance.Player.Equipment.UpdateImplantCooldown();
-                return true;
-            }
+            _components.Add(CurrentStage);
+            CurrentStage.ActivateComponent();
+            CurrentStage.EnableComponent();
+            GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
+            StartCoroutine(HandleStagesCoroutine());
+            GameManager.StaticInstance.Player.Equipment.UpdateImplantCooldown();
         }
 
         public void DisableCurrentStage()

@@ -36,18 +36,24 @@ namespace WinterUniverse
             CloseDoors();
             yield return new WaitForSeconds(1f);
             GameManager.StaticInstance.SetInputMode(InputMode.UI);
-            yield return GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
-            while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
+            if (GameManager.StaticInstance.StageManager.LastStage)
             {
-                yield return delay;
+                yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
+                GameManager.StaticInstance.GameComplete();
             }
-            yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
-            GameManager.StaticInstance.Player.DeactivateComponent();
-            yield return delay;
-            GameManager.StaticInstance.StageManager.DisableCurrentStage();
-            yield return delay;
-            if (GameManager.StaticInstance.StageManager.StartNextStage())
+            else
             {
+                yield return GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
+                while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
+                {
+                    yield return delay;
+                }
+                yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
+                GameManager.StaticInstance.Player.DeactivateComponent();
+                yield return delay;
+                GameManager.StaticInstance.StageManager.DisableCurrentStage();
+                yield return delay;
+                GameManager.StaticInstance.StageManager.StartNextStage();
                 yield return delay;
                 GameManager.StaticInstance.StageManager.CurrentStage.TeleportPlayerToStartPoint();
                 yield return delay;
@@ -62,10 +68,6 @@ namespace WinterUniverse
                 AudioManager.StaticInstance.ChangeBackgroundMusic(1);
                 GameManager.StaticInstance.SetInputMode(InputMode.Game);
                 _isInElevator = false;
-            }
-            else
-            {
-                GameManager.StaticInstance.GameComplete();
             }
         }
 

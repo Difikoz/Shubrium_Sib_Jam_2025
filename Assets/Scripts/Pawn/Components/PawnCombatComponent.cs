@@ -37,7 +37,7 @@ namespace WinterUniverse
                 CurrentAbility = ability;
                 if (CurrentAbility.PlayAnimationOnStart)
                 {
-                    _pawn.Animator.SetFloat("Attack Speed", AttackAnimationDuration / _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue);
+                    _pawn.Animator.SetFloat("Attack Speed", AttackAnimationDuration * _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue);
                     _pawn.Animator.PlayAction(CurrentAbility.AnimationName);
                 }
                 else
