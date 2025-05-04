@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11d1bf8d19034044a95c70d8ef535e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiRoot: {fileID: 749870006260568468}
+  _canvasGroup: {fileID: 0}
   _optionPrefab: {fileID: 1696525392730173519, guid: 1bc531f03da5dbc42b23385dd1c13d67, type: 3}
   _optionsContainer: {fileID: 6561415226935440771}
 --- !u!1 &7275734776878856733
