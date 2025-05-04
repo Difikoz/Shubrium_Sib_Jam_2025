@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 namespace WinterUniverse
 {
@@ -14,10 +15,13 @@ namespace WinterUniverse
         [SerializeField] private RectTransform _container;     // Контейнер для секций
         [SerializeField] private List<Sprite> _sectionSprites; // Спрайты секций
         [SerializeField] private float _scrollSpeed = 300f;    // Скорость в пикселях в секунду
+        [SerializeField] private float _sectionOverlap = 2f;   // Нахлест секций в пикселях
         
         // Приватные поля
         private List<RectTransform> _sections = new List<RectTransform>();
         private float _screenHeight;
+        private List<int> _shuffledSpriteIndices = new List<int>(); // Перемешанные индексы спрайтов
+        private int _currentSpriteIndex = 0; // Текущий индекс в перемешанном списке
         
         private void Start()
         {
@@ -33,10 +37,50 @@ namespace WinterUniverse
             _screenHeight = _container.rect.height;
             Debug.Log($"[{GetType().Name}] Высота экрана: {_screenHeight}");
             
-            // Создаем ровно 3 секции: одна видима, одна сверху, одна снизу
-            CreateSection(0, _screenHeight);      // Секция выше экрана
-            CreateSection(1, 0);                  // Секция на экране
-            CreateSection(2, -_screenHeight);     // Секция ниже экрана
+            // Перемешиваем индексы спрайтов
+            ShuffleSpriteIndices();
+            
+            // Создаем секции с нахлестом
+            CreateSection(0, _screenHeight - _sectionOverlap);  // Секция выше экрана (с нахлестом)
+            CreateSection(1, 0);                               // Секция на экране
+            CreateSection(2, -_screenHeight + _sectionOverlap); // Секция ниже экрана (с нахлестом)
+        }
+        
+        // Перемешивание индексов спрайтов
+        private void ShuffleSpriteIndices()
+        {
+            // Создаем новый список индексов
+            _shuffledSpriteIndices = Enumerable.Range(0, _sectionSprites.Count).ToList();
+            
+            // Перемешиваем список (алгоритм Фишера-Йейтса)
+            for (int i = _shuffledSpriteIndices.Count - 1; i > 0; i--)
+            {
+                int j = Random.Range(0, i + 1);
+                int temp = _shuffledSpriteIndices[i];
+                _shuffledSpriteIndices[i] = _shuffledSpriteIndices[j];
+                _shuffledSpriteIndices[j] = temp;
+            }
+            
+            // Сбрасываем текущий индекс
+            _currentSpriteIndex = 0;
+            
+            Debug.Log($"[{GetType().Name}] Спрайты перемешаны для нового цикла.");
+        }
+        
+        // Получение следующего спрайта из перемешанного списка
+        private Sprite GetNextSprite()
+        {
+            // Если мы использовали все спрайты, перемешиваем заново
+            if (_currentSpriteIndex >= _shuffledSpriteIndices.Count)
+            {
+                ShuffleSpriteIndices();
+            }
+            
+            // Берем спрайт из перемешанного списка
+            Sprite sprite = _sectionSprites[_shuffledSpriteIndices[_currentSpriteIndex]];
+            _currentSpriteIndex++;
+            
+            return sprite;
         }
         
         private void CreateSection(int index, float yPosition)
@@ -47,8 +91,8 @@ namespace WinterUniverse
             Image image = sectionObj.GetComponent<Image>();
             if (image != null)
             {
-                // Выбираем спрайт из списка случайно или по порядку
-                image.sprite = _sectionSprites[Random.Range(0, _sectionSprites.Count)];
+                // Используем спрайт из перемешанного списка
+                image.sprite = GetNextSprite();
             }
             
             // Настраиваем позицию
@@ -76,14 +120,15 @@ namespace WinterUniverse
                 if (pos.y < -_screenHeight * 1.5f)
                 {
                     // Перемещаем ее наверх и даем новый спрайт
-                    pos.y = _screenHeight * 1.5f;
+                    // Добавляем нахлест при перемещении секции наверх
+                    pos.y = _screenHeight * 1.5f - _sectionOverlap;
                     _sections[i].anchoredPosition = pos;
                     
-                    // Обновляем спрайт секции
+                    // Обновляем спрайт секции на следующий из перемешанного списка
                     Image image = _sections[i].GetComponent<Image>();
                     if (image != null)
                     {
-                        image.sprite = _sectionSprites[Random.Range(0, _sectionSprites.Count)];
+                        image.sprite = GetNextSprite();
                     }
                     
                     Debug.Log($"[{GetType().Name}] Секция {i} перемещена наверх.");
@@ -95,6 +140,12 @@ namespace WinterUniverse
         public void SetScrollSpeed(float speed)
         {
             _scrollSpeed = speed;
+        }
+        
+        // Метод для изменения нахлеста секций
+        public void SetSectionOverlap(float overlap)
+        {
+            _sectionOverlap = overlap;
         }
         
         // Очистка при уничтожении

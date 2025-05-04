@@ -1763,7 +1763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1041678766
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1832,6 +1832,10 @@ PrefabInstance:
     - target: {fileID: 3971593713400810, guid: 6f51a540fade15d4d9125649227e5dfc, type: 3}
       propertyPath: m_text
       value: "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043D\u0438\u0435"
+      objectReference: {fileID: 0}
+    - target: {fileID: 822578957811079372, guid: 6f51a540fade15d4d9125649227e5dfc, type: 3}
+      propertyPath: m_text
+      value: 800x600
       objectReference: {fileID: 0}
     - target: {fileID: 1508651575414602819, guid: 6f51a540fade15d4d9125649227e5dfc, type: 3}
       propertyPath: m_Name
@@ -2010,6 +2014,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1c07f5994b0390a4dbc08978abc7667f, type: 3}
   - {fileID: 21300000, guid: 460ecbaa68599b240aa4699bb67d242c, type: 3}
   _scrollSpeed: 100
+  _sectionOverlap: 2
 --- !u!1 &1208281998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +2080,63 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1001 &1342937180
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4485600945585968346, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282165870439603034, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb0a964ff7a1d4c489d12040af6f05e0, type: 3}
 --- !u!1001 &1412341535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2766,6 +2828,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1208281999}
     m_Modifications:
+    - target: {fileID: 822578957811079372, guid: 6f51a540fade15d4d9125649227e5dfc, type: 3}
+      propertyPath: m_text
+      value: Exclusive Fullscreen
+      objectReference: {fileID: 0}
     - target: {fileID: 1508651575414602819, guid: 6f51a540fade15d4d9125649227e5dfc, type: 3}
       propertyPath: m_Name
       value: PanelDropdown
@@ -3138,3 +3204,4 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 602567994}
   - {fileID: 465812710}
+  - {fileID: 1342937180}
