@@ -40,7 +40,7 @@ namespace WinterUniverse
 
             while (_canvasGroup.alpha != 1f)
             {
-                _canvasGroup.alpha = Mathf.MoveTowards(_canvasGroup.alpha, 1f, Time.deltaTime);
+                _canvasGroup.alpha = Mathf.MoveTowards(_canvasGroup.alpha, 1f, 2f * Time.deltaTime);
                 yield return null;
             }
         }
