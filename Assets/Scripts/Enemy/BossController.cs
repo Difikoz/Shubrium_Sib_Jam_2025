@@ -16,7 +16,7 @@ namespace WinterUniverse
         public override void ActivateComponent()
         {
             base.ActivateComponent();
-            if(_phase00.Count > 0)
+            if (_phase00.Count > 0)
             {
                 GameManager.StaticInstance.SpawnManager.SpawnEnemies(GameManager.StaticInstance.StageManager.CurrentStage, _phase00);
             }
@@ -73,8 +73,9 @@ namespace WinterUniverse
         {
             Health.AddInvulnerable();
             WaitForSeconds delay = new(0.5f);
-            while (GameManager.StaticInstance.StageManager.CurrentStage.EnemyCount > 0)
+            while (GameManager.StaticInstance.StageManager.CurrentStage.EnemyAlive())
             {
+                // отключение атаки
                 yield return delay;
             }
             Health.RemoveInvulnerable();

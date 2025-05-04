@@ -126,13 +126,11 @@ namespace WinterUniverse
 
         public void GameComplete()
         {
-            Debug.Log("Game Completed");
             StartCoroutine(LeaveGame(2, 1f));
         }
 
         public void GameOver()
         {
-            Debug.Log("Game Over");
             StartCoroutine(LeaveGame(0, 5f));
         }
 

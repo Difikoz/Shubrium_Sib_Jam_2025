@@ -13,11 +13,13 @@ namespace WinterUniverse
         public Vector3 GroundVelocity { get; private set; }
         public Vector3 KnockbackVelocity { get; private set; }
         public Vector3 DashVelocity { get; private set; }
-        [field: SerializeField, Range(10f, 720f)] public float RotateSpeed { get; private set; }
+        [field: SerializeField, Range(10f, 1440f)] public float RotateSpeed { get; private set; }
         [field: SerializeField, Range(1f, 100f)] public float Mass { get; private set; }
         [field: SerializeField, Range(0.1f, 0.5f)] public float TimeToDash { get; private set; }
 
         private Coroutine _dashCoroutine;
+
+        public Vector3 TotalVelocity => GroundVelocity * _pawn.GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + KnockbackVelocity + DashVelocity;
 
         public override void ActivateComponent()
         {

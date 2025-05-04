@@ -29,7 +29,7 @@ namespace WinterUniverse
         {
             Locomotion.MoveDirection = (Agent.steeringTarget - transform.position).normalized;
             base.UpdateComponent();
-            if (!GameplayComponent.HasGameplayTag("Is Perfoming Action")) //(Locomotion.GroundVelocity != Vector3.zero)
+            if (!GameplayComponent.HasGameplayTag("Is Perfoming Action"))
             {
                 if (IsRotatingToTarget && Combat.DirectionToTarget != Vector3.zero)
                 {
@@ -40,7 +40,7 @@ namespace WinterUniverse
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.deltaTime);
                 }
             }
-            Agent.velocity = Locomotion.GroundVelocity * GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + Locomotion.KnockbackVelocity + Locomotion.DashVelocity;
+            Agent.velocity = Locomotion.TotalVelocity;
         }
 
         private IEnumerator LifetimeCoroutine()

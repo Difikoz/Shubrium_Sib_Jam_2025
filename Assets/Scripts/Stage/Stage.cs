@@ -13,8 +13,6 @@ namespace WinterUniverse
         [field: SerializeField] public DialogueConfig DialogueBeforeBattle { get; private set; }
         [field: SerializeField] public DialogueConfig DialogueAfterBattle { get; private set; }
 
-        public int EnemyCount => _components.Count;
-
         public override void ActivateComponent()
         {
             gameObject.SetActive(true);
@@ -65,6 +63,18 @@ namespace WinterUniverse
         public Transform GetRandomSpawnPoint()
         {
             return SpawnPoints[Random.Range(0, SpawnPoints.Count)];
+        }
+
+        public bool EnemyAlive()
+        {
+            foreach (BasicComponent enemy in _components)
+            {
+                if (enemy.isActiveAndEnabled)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

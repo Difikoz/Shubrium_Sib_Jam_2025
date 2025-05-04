@@ -27,7 +27,7 @@ namespace WinterUniverse
             {
                 RB.rotation = Quaternion.RotateTowards(RB.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.fixedDeltaTime);
             }
-            RB.linearVelocity = Locomotion.GroundVelocity * GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + Locomotion.KnockbackVelocity + Locomotion.DashVelocity;
+            RB.linearVelocity = Locomotion.TotalVelocity;
         }
 
         private IEnumerator FindClosestEnemy()

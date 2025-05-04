@@ -7,6 +7,13 @@ namespace WinterUniverse
     {
         private Resolution[] _resolutions;
 
+        protected override void Start()
+        {
+            _resolutions = Screen.resolutions;
+            _defaultValue = _resolutions.Length - 1;
+            base.Start();
+        }
+
         protected override void UpdateDropdownSettings()
         {
             _resolutions = Screen.resolutions;
