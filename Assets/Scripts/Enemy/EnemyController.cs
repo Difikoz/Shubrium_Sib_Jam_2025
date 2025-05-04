@@ -1,3 +1,4 @@
+using Lean.Pool;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,6 +8,7 @@ namespace WinterUniverse
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyController : Pawn
     {
+        [field: SerializeField] public GameObject ExplosionEffect { get; private set; }
         public NavMeshAgent Agent { get; private set; }
 
         public override void FillComponents()
@@ -25,7 +27,7 @@ namespace WinterUniverse
         {
             Locomotion.MoveDirection = (Agent.steeringTarget - transform.position).normalized;
             base.UpdateComponent();
-            if (Locomotion.GroundVelocity != Vector3.zero)
+            if (!GameplayComponent.HasGameplayTag("Is Perfoming Action")) //(Locomotion.GroundVelocity != Vector3.zero)
             {
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.deltaTime);
             }
@@ -35,14 +37,19 @@ namespace WinterUniverse
         private IEnumerator LifetimeCoroutine()
         {
             WaitForSeconds delay = new(0.5f);
+            float waitTime;
             Combat.SetTarget(GameManager.StaticInstance.Player);
-            while (true)
+            while (!GameplayComponent.HasGameplayTag("Is Dead"))
             {
+                while (GameManager.StaticInstance.InputMode != InputMode.Game)
+                {
+                    yield return null;
+                }
                 while (GameplayComponent.HasGameplayTag("Is Perfoming Action"))
                 {
                     yield return null;
                 }
-                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance)
+                if (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance)
                 {
                     Agent.SetDestination(Combat.Target.transform.position);
                     yield return delay;
@@ -51,12 +58,26 @@ namespace WinterUniverse
                 {
                     Agent.ResetPath();
                 }
-                if (Combat.PerformAttack())
+                if (Combat.PerformAttack(false, out waitTime))
                 {
-                    yield return null;
+                    if (waitTime > 0f)
+                    {
+                        yield return new WaitForSeconds(waitTime);
+                    }
+                    else
+                    {
+                        yield return null;
+                    }
                 }
                 yield return null;
             }
+        }
+
+        public override IEnumerator PerformDeath()
+        {
+            LeanPool.Despawn(LeanPool.Spawn(ExplosionEffect, transform.position, Quaternion.identity), 10f);
+            yield return new WaitForSeconds(0.1f);
+            gameObject.SetActive(false);
         }
     }
 }

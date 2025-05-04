@@ -12,8 +12,8 @@ namespace WinterUniverse
     }
     
     [CreateAssetMenu(fileName = "Dialogue", menuName = "Winter Universe/Dialogue/New Dialogue")]
-    public class DialogueConfig : BasicInfoConfig
+    public class DialogueConfig : ScriptableObject
     {
-        [field: SerializeField] public List<DialogueLine> Lines { get; private set; } = new List<DialogueLine>();
+        [field: SerializeField] public List<DialogueLine> Lines { get; private set; }
     }
 } 

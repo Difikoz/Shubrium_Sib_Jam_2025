@@ -1,4 +1,3 @@
-using UnityEditor.Playables;
 using UnityEngine;
 
 namespace WinterUniverse
@@ -6,6 +5,7 @@ namespace WinterUniverse
     public class PawnCombatComponent : PawnComponent
     {
         [field: SerializeField] public AbilityPresetConfig BasicAttack { get; private set; }
+        [field: SerializeField] public Transform ShootPoint { get; private set; }
 
         public AbilityPresetConfig CurrentAbility { get; private set; }
         public Pawn Target { get; private set; }
@@ -21,22 +21,25 @@ namespace WinterUniverse
             }
         }
 
-        public bool PerformAttack()
+        public bool PerformAttack(bool ignoreTargeting, out float waitTime)
         {
-            return PerformAbility(BasicAttack);
+            return PerformAbility(BasicAttack, ignoreTargeting, out waitTime);
         }
 
-        public bool PerformAbility(AbilityPresetConfig ability)
+        public bool PerformAbility(AbilityPresetConfig ability, bool ignoreTargeting, out float waitTime)
         {
-            if (CanPerformAbility(ability))
+            waitTime = 0f;
+            if (CanPerformAbility(ability, ignoreTargeting))
             {
                 CurrentAbility = ability;
                 if (CurrentAbility.PlayAnimationOnStart)
                 {
+                    _pawn.Animator.SetFloat("Attack Speed", _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue);
                     _pawn.Animator.PlayAction(CurrentAbility.AnimationName);
                 }
                 else
                 {
+                    waitTime = 1f / _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue;
                     PerformAbilityCast();
                 }
                 return true;
@@ -44,26 +47,33 @@ namespace WinterUniverse
             return false;
         }
 
-        private bool CanPerformAbility(AbilityPresetConfig ability)
+        private bool CanPerformAbility(AbilityPresetConfig ability, bool ignoreTargeting)
         {
             if (_pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action"))
             {
                 return false;
             }
-            if (DistanceToTarget > ability.CastType.Distance)
+            if (!ignoreTargeting)
             {
-                return false;
+                if (DistanceToTarget >= ability.CastType.Distance)
+                {
+                    return false;
+                }
+                if (Mathf.Abs(AngleToTarget) >= ability.CastType.AngleToCast / 2f)
+                {
+                    return false;
+                }
+                if (ability.TargetType == AbilityTargetType.Target && Target == null)
+                {
+                    return false;
+                }
             }
-            if (Mathf.Abs(AngleToTarget) > ability.CastType.AngleToCast / 2f)
-            {
-                return false;
-            }
-            return ability.CastType.CanCast(_pawn, Target, transform.position, transform.forward, ability.HitTypes, ability.TargetType);
+            return ability.CastType.CanCast(_pawn, Target, ShootPoint.position, ShootPoint.eulerAngles, ShootPoint.forward, ability.HitTypes, ability.TargetType);
         }
 
         public void PerformAbilityCast()
         {
-            CurrentAbility.CastType.OnCast(_pawn, Target, transform.position, transform.forward, CurrentAbility.HitTypes, CurrentAbility.TargetType);
+            CurrentAbility.CastType.OnCast(_pawn, Target, ShootPoint.position, ShootPoint.eulerAngles, ShootPoint.forward, CurrentAbility.HitTypes, CurrentAbility.TargetType);
         }
 
         public void SetTarget(Pawn target)

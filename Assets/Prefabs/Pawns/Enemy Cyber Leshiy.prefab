@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3868963136490027850}
   - component: {fileID: 8773566249972841306}
   - component: {fileID: 981627780498341313}
+  - component: {fileID: 455135026925607616}
   m_Layer: 6
   m_Name: Enemy Cyber Leshiy
   m_TagString: Untagged
@@ -38,6 +39,7 @@ Transform:
   m_Children:
   - {fileID: 6288055514136328752}
   - {fileID: 4459339982240307999}
+  - {fileID: 3453754204873091552}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1660280082186863568
@@ -52,7 +54,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a645e14ce11dc4ead0f3b2dcdf3f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Faction>k__BackingField: 0
   <StatsCreator>k__BackingField: {fileID: 11400000, guid: e0bb1db8a05722d4193a4989468ceb3b, type: 2}
+  <ExplosionEffect>k__BackingField: {fileID: 1021272099366177520, guid: 1b536cfbf0b458a498f76379fd36aa56, type: 3}
 --- !u!114 &2955175000031094459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BasicAttack>k__BackingField: {fileID: 11400000, guid: 2e4d4a0b58d63bb47ae0bc20e87af51a, type: 2}
+  <ShootPoint>k__BackingField: {fileID: 3453754204873091552}
 --- !u!114 &3868963136490027850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +145,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &455135026925607616
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413677848155644667}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2272402873300074802
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +276,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6837038800774654039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3453754204873091552}
+  m_Layer: 0
+  m_Name: Shoot Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3453754204873091552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837038800774654039}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1162746869356520988}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9155937071428612475
 GameObject:
   m_ObjectHideFlags: 0

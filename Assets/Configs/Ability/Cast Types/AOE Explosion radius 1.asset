@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: AOE Explosion radius 1
   m_EditorClassIdentifier: 
   <Distance>k__BackingField: 1
+  <AngleToCast>k__BackingField: 45

@@ -6,6 +6,8 @@ namespace WinterUniverse
 {
     public class StageManager : BasicComponentHolder
     {
+        [SerializeField] private int startStageIndex;
+
         [field: SerializeField] public List<Stage> Stages { get; private set; }
         public int CurrentStageIndex { get; private set; }
         public Stage CurrentStage => Stages[CurrentStageIndex];
@@ -13,7 +15,7 @@ namespace WinterUniverse
         public override void InitializeComponent()
         {
             base.InitializeComponent();
-            CurrentStageIndex = -1;
+            CurrentStageIndex = startStageIndex - 1;//-1;
             foreach (Stage stage in Stages)
             {
                 stage.InitializeComponent();
@@ -24,11 +26,18 @@ namespace WinterUniverse
         public void StartNextStage()
         {
             CurrentStageIndex++;
-            _components.Add(CurrentStage);
-            CurrentStage.ActivateComponent();
-            CurrentStage.EnableComponent();
-            GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
-            StartCoroutine(HandleStagesCoroutine());
+            if (CurrentStageIndex == Stages.Count)
+            {
+                GameManager.StaticInstance.GameComplete();
+            }
+            else
+            {
+                _components.Add(CurrentStage);
+                CurrentStage.ActivateComponent();
+                CurrentStage.EnableComponent();
+                GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
+                StartCoroutine(HandleStagesCoroutine());
+            }
         }
 
         public void DisableCurrentStage()
@@ -40,21 +49,21 @@ namespace WinterUniverse
 
         private IEnumerator HandleStagesCoroutine()
         {
-            WaitForSeconds delay = new(5f);
+            WaitForSeconds delay = new(2f);
             yield return delay;
             while (!CurrentStage.CanCompleteStage())
             {
                 yield return delay;
             }
             CurrentStage.CompleteStage();
-            if (CurrentStageIndex == Stages.Count - 1)
+            GameManager.StaticInstance.ElevatorManager.OpenDoors();
+            GameManager.StaticInstance.DialogueManager.ShowDialogue(GameManager.StaticInstance.StageManager.CurrentStage.DialogueAfterBattle);
+            GameManager.StaticInstance.SetInputMode(InputMode.UI);
+            while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
             {
-                GameManager.StaticInstance.GameComplete();
+                yield return delay;
             }
-            else
-            {
-                GameManager.StaticInstance.ElevatorManager.OpenDoors();
-            }
+            GameManager.StaticInstance.SetInputMode(InputMode.Game);
         }
     }
 }

@@ -5,5 +5,7 @@ namespace WinterUniverse
         Caster,
         Target,
         All,
+        OnlyPlayer,
+        OnlyEnemy,
     }
 }

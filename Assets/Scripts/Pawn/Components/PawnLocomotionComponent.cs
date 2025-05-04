@@ -9,24 +9,47 @@ namespace WinterUniverse
         public Vector3 GroundVelocity { get; private set; }
         public Vector3 KnockbackVelocity { get; private set; }
         public Vector3 DashVelocity { get; private set; }
-        [field: SerializeField, Range(10f, 360f)] public float RotateSpeed { get; private set; }
+        [field: SerializeField, Range(10f, 720f)] public float RotateSpeed { get; private set; }
         [field: SerializeField, Range(1f, 100f)] public float Mass { get; private set; }
         [field: SerializeField, Range(0.1f, 0.5f)] public float TimeToDash { get; private set; }
 
         private Coroutine _dashCoroutine;
 
+        public override void ActivateComponent()
+        {
+            base.ActivateComponent();
+            _dashCoroutine = null;
+            _pawn.Animator.SetBool("Is Dashing", false);
+        }
+
         public override void UpdateComponent()
         {
-            if (MoveDirection != Vector3.zero && DashVelocity == Vector3.zero && KnockbackVelocity == Vector3.zero && !_pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action"))
+            if (_pawn.GameplayComponent.HasGameplayTag("Is Moving"))
             {
-                GroundVelocity = Vector3.MoveTowards(GroundVelocity, MoveDirection, 2f * Time.deltaTime);
+                if (MoveDirection == Vector3.zero || DashVelocity != Vector3.zero || KnockbackVelocity != Vector3.zero || _pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action"))
+                {
+                    _pawn.GameplayComponent.RemoveGameplayTag("Is Moving");
+                    _pawn.Animator.SetBool("Is Moving", false);
+                }
+                else
+                {
+                    GroundVelocity = Vector3.MoveTowards(GroundVelocity, MoveDirection, 2f * Time.deltaTime);
+                }
             }
             else
             {
-                GroundVelocity = Vector3.MoveTowards(GroundVelocity, Vector3.zero, 4f * Time.deltaTime);
-                if (KnockbackVelocity != Vector3.zero)
+                if (MoveDirection != Vector3.zero && DashVelocity == Vector3.zero && KnockbackVelocity == Vector3.zero && !_pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action"))
                 {
-                    KnockbackVelocity = Vector3.MoveTowards(KnockbackVelocity, Vector3.zero, Mass * Time.deltaTime);
+                    _pawn.GameplayComponent.AddGameplayTag("Is Moving");
+                    _pawn.Animator.SetBool("Is Moving", true);
+                }
+                else
+                {
+                    GroundVelocity = Vector3.MoveTowards(GroundVelocity, Vector3.zero, 4f * Time.deltaTime);
+                    if (KnockbackVelocity != Vector3.zero)
+                    {
+                        KnockbackVelocity = Vector3.MoveTowards(KnockbackVelocity, Vector3.zero, Mass * Time.deltaTime);
+                    }
                 }
             }
         }
@@ -49,6 +72,7 @@ namespace WinterUniverse
             DashVelocity = transform.forward * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
             KnockbackVelocity = Vector3.zero;
             GroundVelocity = Vector3.zero;
+            _pawn.Animator.SetBool("Is Dashing", true);
             _dashCoroutine = StartCoroutine(DashCoroutine());
         }
 
@@ -56,6 +80,7 @@ namespace WinterUniverse
         {
             yield return new WaitForSeconds(TimeToDash);
             DashVelocity = Vector3.zero;
+            _pawn.Animator.SetBool("Is Dashing", false);
             yield return new WaitForSeconds(_pawn.GameplayComponent.GetGameplayStat("Dash Cooldown").CurrentValue);
             _dashCoroutine = null;
         }

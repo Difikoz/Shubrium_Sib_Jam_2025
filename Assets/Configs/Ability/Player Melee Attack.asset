@@ -17,9 +17,9 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <Icon>k__BackingField: {fileID: 0}
-  <PlayAnimationOnStart>k__BackingField: 0
-  <AnimationName>k__BackingField: 
-  <TargetType>k__BackingField: 1
+  <PlayAnimationOnStart>k__BackingField: 1
+  <AnimationName>k__BackingField: Attack
+  <TargetType>k__BackingField: 4
   <CastType>k__BackingField: {fileID: 11400000, guid: f9b0bbc36335ba3429e28e7c3c4eb835, type: 2}
   <HitTypes>k__BackingField:
   - <HitType>k__BackingField: {fileID: 11400000, guid: 9f3eecc4c69c6b141808201a6dffb565, type: 2}

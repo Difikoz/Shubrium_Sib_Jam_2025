@@ -8,7 +8,7 @@ namespace WinterUniverse
     {
         public Action<int, int> OnValueChanged;
 
-        public int Current { get; private set; }
+        [field: SerializeField] public int Current { get; private set; }
         public int Max => Mathf.RoundToInt(_pawn.GameplayComponent.GetGameplayStat("Health").CurrentValue);
 
         public void ApplyDamages(List<DamageType> damageTypes, Pawn source)
@@ -62,6 +62,8 @@ namespace WinterUniverse
             Current = 0;
             OnValueChanged?.Invoke(Current, Max);
             _pawn.GameplayComponent.AddGameplayTag("Is Dead");
+            _pawn.Animator.PlayAction("Death");
+            StartCoroutine(_pawn.PerformDeath());
         }
 
         public void Revive(Pawn source)

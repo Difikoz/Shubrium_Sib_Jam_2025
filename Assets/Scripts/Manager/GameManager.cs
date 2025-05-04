@@ -13,6 +13,7 @@ namespace WinterUniverse
         public ElevatorManager ElevatorManager { get; private set; }
         public ImplantManager ImplantManager { get; private set; }
         public InputActionsManager InputActionsManager { get; private set; }
+        public LayersManager LayersManager { get; private set; }
         public SpawnManager SpawnManager { get; private set; }
         public StageManager StageManager { get; private set; }
         public UIManager UIManager { get; private set; }
@@ -31,6 +32,7 @@ namespace WinterUniverse
             ElevatorManager = FindFirstObjectByType<ElevatorManager>();
             ImplantManager = FindFirstObjectByType<ImplantManager>();
             InputActionsManager = FindFirstObjectByType<InputActionsManager>();
+            LayersManager = FindFirstObjectByType<LayersManager>();
             SpawnManager = FindFirstObjectByType<SpawnManager>();
             StageManager = FindFirstObjectByType<StageManager>();
             UIManager = FindFirstObjectByType<UIManager>();
@@ -40,6 +42,7 @@ namespace WinterUniverse
             _components.Add(ElevatorManager);
             _components.Add(ImplantManager);
             _components.Add(InputActionsManager);
+            _components.Add(LayersManager);
             _components.Add(SpawnManager);
             _components.Add(StageManager);
             _components.Add(UIManager);
@@ -49,15 +52,32 @@ namespace WinterUniverse
         {
             WaitForSeconds delay = new(0.1f);
             yield return new WaitForSeconds(1f);
+            //_components = new();
             InitializeComponent();
+            //foreach (BasicComponent component in _components)
+            //{
+            //    Debug.LogError($"Initialize {component.gameObject.name}");
+            //    component.InitializeComponent();
+            //    Debug.LogError($"{component.gameObject.name} Initialized");
+            //}
             yield return delay;
             ActivateComponent();
             yield return delay;
             EnableComponent();
             yield return delay;
+            Player.DeactivateComponent();
             StageManager.StartNextStage();
+            yield return delay;
+            StageManager.CurrentStage.TeleportPlayerToStartPoint();
+            yield return delay;
+            Player.ActivateComponent();
             Player.Health.Revive(Player);
             yield return UIManager.FadeScreen(0f);
+            DialogueManager.ShowDialogue(StageManager.CurrentStage.DialogueBeforeBattle);
+            while (DialogueManager.IsShowingDialogue)
+            {
+                yield return delay;
+            }
             Initialized = true;
             SetInputMode(InputMode.Game);
         }
@@ -106,14 +126,21 @@ namespace WinterUniverse
 
         public void GameComplete()
         {
-            Debug.Log("�� ���ب� ����, ���");
-            StartCoroutine(LeaveGame());
+            Debug.Log("Game Completed");
+            StartCoroutine(LeaveGame(2, 1f));
         }
 
-        private IEnumerator LeaveGame()
+        public void GameOver()
         {
-            yield return new WaitForSeconds(5f);
-            SceneManager.LoadScene(0);
+            Debug.Log("Game Over");
+            StartCoroutine(LeaveGame(0, 5f));
+        }
+
+        private IEnumerator LeaveGame(int scene, float delay)
+        {
+            SetInputMode(InputMode.UI);
+            yield return new WaitForSeconds(delay);
+            SceneManager.LoadScene(scene);
         }
     }
 }

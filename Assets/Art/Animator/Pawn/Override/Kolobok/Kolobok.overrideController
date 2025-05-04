@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Kolobok
+  m_Controller: {fileID: 9100000, guid: 4ff5ab714d5075b499228f79ec28d58d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a5305baa974d0c943a8ac968b0dd849e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 430de7d40511f3941b728872fb32cc6a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f3c7716776c1a9f4db844a56a45ed223, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1e6e77c6efebfa047b34f7a4e2af09aa, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3b1293dae52abca44bef17a37e1f1dde, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8746d6f9cf549a442b659806eff66528, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ee4a5c46d9dfbb148a604e3dbf863f09, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ba85972567803844dad05de44ee64aef, type: 2}

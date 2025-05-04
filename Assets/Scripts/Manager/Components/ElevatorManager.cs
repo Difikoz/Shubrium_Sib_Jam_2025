@@ -33,19 +33,15 @@ namespace WinterUniverse
         {
             WaitForSeconds delay = new(0.1f);
             CloseDoors();
-            yield return delay;
+            yield return new WaitForSeconds(1f);
             GameManager.StaticInstance.SetInputMode(InputMode.UI);
             yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
-            GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
             yield return delay;
             GameManager.StaticInstance.Player.DeactivateComponent();
             GameManager.StaticInstance.StageManager.DisableCurrentStage();
+            yield return delay;
+            GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
             while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
-            {
-                yield return delay;
-            }
-            GameManager.StaticInstance.DialogueManager.ShowCurrentStageDialogue();
-            while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
             {
                 yield return delay;
             }
@@ -56,6 +52,11 @@ namespace WinterUniverse
             GameManager.StaticInstance.Player.ActivateComponent();
             yield return delay;
             yield return GameManager.StaticInstance.UIManager.FadeScreen(0f);
+            GameManager.StaticInstance.DialogueManager.ShowDialogue(GameManager.StaticInstance.StageManager.CurrentStage.DialogueBeforeBattle);
+            while (GameManager.StaticInstance.DialogueManager.IsShowingDialogue)
+            {
+                yield return delay;
+            }
             GameManager.StaticInstance.SetInputMode(InputMode.Game);
             _isInElevator = false;
         }

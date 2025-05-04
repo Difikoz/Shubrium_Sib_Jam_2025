@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.InputSystem;
 
 namespace WinterUniverse
 {
@@ -21,38 +20,11 @@ namespace WinterUniverse
         public override void InitializeComponent()
         {
             _nextButton.onClick.AddListener(AdvanceDialogue);
-            
-            // Явно выключаем UI-корень
-            if (_uiRoot != null)
-            {
-                _uiRoot.SetActive(false);
-            }
-        }
-        
-        public override void EnableComponent()
-        {
-            
-        }
-        
-        public override void DisableComponent()
-        {
-            
-        }
-        
-        public override void UpdateComponent()
-        {
-            
         }
         
         public void ShowDialogue(DialogueConfig dialogue, Action onCompleted = null)
         {
-            if (dialogue == null || dialogue.Lines.Count == 0)
-            {
-                Debug.LogError($"[{GetType().Name}] Попытка показать пустой диалог");
-                return;
-            }
-            
-            _currentLines = dialogue.Lines;
+            _currentLines = new(dialogue.Lines);
             _currentLineIndex = 0;
             _onDialogueCompleted = onCompleted;
             

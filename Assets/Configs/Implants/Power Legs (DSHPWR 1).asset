@@ -16,7 +16,7 @@ MonoBehaviour:
   <DisplayName>k__BackingField: Power Legs
   <Description>k__BackingField: 
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 633eb9333e4bfee4894fcf393a62302e, type: 3}
   <Chance>k__BackingField: 100
   <CanStack>k__BackingField: 1
   <RemoveAfterAnyTriggerPerfomed>k__BackingField: 0
