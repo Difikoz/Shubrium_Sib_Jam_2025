@@ -5902,7 +5902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f795ddd9276e3fe4d9057812e377995c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiRoot: {fileID: 6790755081831945878}
+  _uiRoot: {fileID: 7806032758428679899}
   _speakerNameText: {fileID: 2700872296087877372}
   _dialogueText: {fileID: 5320824122052869681}
   _nextButton: {fileID: 4557885776513075294}

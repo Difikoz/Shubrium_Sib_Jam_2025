@@ -12,6 +12,7 @@ namespace WinterUniverse
         public ImplantSelectionUI ImplantSelectionUI { get; private set; }
         public DialogueUI DialogueUI { get; private set; }
         public DashUI DashUI { get; private set; }
+        public DeathScreenUI DeathScreenUI { get; private set; }
 
         public override void FillComponents()
         {
@@ -20,11 +21,13 @@ namespace WinterUniverse
             ImplantSelectionUI = GetComponentInChildren<ImplantSelectionUI>();
             DialogueUI = GetComponentInChildren<DialogueUI>();
             DashUI = GetComponentInChildren<DashUI>();
+            DeathScreenUI = GetComponentInChildren<DeathScreenUI>();
             _components.Add(HealthUIController);
             _components.Add(PlayerImplantsUI);
             _components.Add(ImplantSelectionUI);
             _components.Add(DialogueUI);
             _components.Add(DashUI);
+            _components.Add(DeathScreenUI);
         }
 
         public IEnumerator FadeScreen(float value)

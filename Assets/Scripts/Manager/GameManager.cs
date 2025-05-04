@@ -8,7 +8,7 @@ namespace WinterUniverse
     {
         public bool Initialized { get; private set; }
         [field: SerializeField] public PlayerController Player { get; private set; }
-        [field:SerializeField]public CameraManager CameraManager { get; private set; }
+        [field: SerializeField] public CameraManager CameraManager { get; private set; }
         [field: SerializeField] public DialogueManager DialogueManager { get; private set; }
         [field: SerializeField] public ElevatorManager ElevatorManager { get; private set; }
         [field: SerializeField] public ImplantManager ImplantManager { get; private set; }
@@ -129,21 +129,32 @@ namespace WinterUniverse
         public void GameComplete()
         {
             AudioManager.StaticInstance.ChangeBackgroundMusic(5);
-            StartCoroutine(LeaveGame(2, 1f));
+            StartCoroutine(LoadOutroScene());
         }
 
         public void GameOver()
         {
             AudioManager.StaticInstance.ChangeBackgroundMusic(4);
-            // сделать UI смерти
-            StartCoroutine(LeaveGame(0, 5f));
+            SetInputMode(InputMode.UI);
+            UIManager.DeathScreenUI.ShowDeathScreen(OnDeathScreenButtonPressed);
         }
 
-        private IEnumerator LeaveGame(int scene, float delay)
+        private IEnumerator LoadOutroScene()
         {
             SetInputMode(InputMode.UI);
-            yield return new WaitForSeconds(delay);
-            SceneManager.LoadScene(scene);
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene(2);
+        }
+
+        private void OnDeathScreenButtonPressed()
+        {
+            StartCoroutine(LoadMainMenu());
+        }
+
+        private IEnumerator LoadMainMenu()
+        {
+            yield return UIManager.FadeScreen(1f);
+            SceneManager.LoadScene(0);
         }
     }
 }
