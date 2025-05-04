@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531ac937fa1f408e4707d37c9bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Current>k__BackingField: 0
 --- !u!114 &1097609291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BasicAttack>k__BackingField: {fileID: 0}
+  <ShootPoint>k__BackingField: {fileID: 0}
 --- !u!1 &1108725025
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62af2b9ad70f54847ad8a1060e85791f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testDoors: {fileID: 0}
+  _doorAnimator: {fileID: 0}
 --- !u!114 &1364193395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,8 +624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00de2b1f4bd36c94686fd461975beb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allDialogues:
-  - {fileID: 11400000, guid: 70caef88e1b74f546a91617e2e68168b, type: 2}
 --- !u!1001 &6696608270561464048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -710,6 +710,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2376012320287503804, guid: f2ef793282a05ef43a25d1c727745187, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523440070991195014, guid: f2ef793282a05ef43a25d1c727745187, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7311504311911866702, guid: f2ef793282a05ef43a25d1c727745187, type: 3}

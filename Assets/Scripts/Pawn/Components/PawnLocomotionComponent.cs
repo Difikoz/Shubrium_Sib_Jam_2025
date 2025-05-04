@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,6 +6,9 @@ namespace WinterUniverse
 {
     public class PawnLocomotionComponent : PawnComponent
     {
+        // Единственное событие для обновления UI рывка
+        public event Action<float> OnDashCooldownUpdate;
+        
         public Vector3 MoveDirection;
         public Vector3 GroundVelocity { get; private set; }
         public Vector3 KnockbackVelocity { get; private set; }
@@ -20,6 +24,9 @@ namespace WinterUniverse
             base.ActivateComponent();
             _dashCoroutine = null;
             _pawn.Animator.SetBool("Is Dashing", false);
+            
+            // Рывок доступен сразу
+            OnDashCooldownUpdate?.Invoke(1f);
         }
 
         public override void UpdateComponent()
@@ -69,10 +76,15 @@ namespace WinterUniverse
             {
                 return;
             }
+            
             DashVelocity = transform.forward * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
             KnockbackVelocity = Vector3.zero;
             GroundVelocity = Vector3.zero;
             _pawn.Animator.SetBool("Is Dashing", true);
+            
+            // Сообщаем UI, что рывок использован
+            OnDashCooldownUpdate?.Invoke(0f);
+            
             _dashCoroutine = StartCoroutine(DashCoroutine());
         }
 
@@ -81,7 +93,24 @@ namespace WinterUniverse
             yield return new WaitForSeconds(TimeToDash);
             DashVelocity = Vector3.zero;
             _pawn.Animator.SetBool("Is Dashing", false);
-            yield return new WaitForSeconds(_pawn.GameplayComponent.GetGameplayStat("Dash Cooldown").CurrentValue);
+            
+            // Получаем время кулдауна
+            float dashCooldown = _pawn.GameplayComponent.GetGameplayStat("Dash Cooldown").CurrentValue;
+            
+            // Постепенно обновляем UI во время кулдауна
+            float startTime = Time.time;
+            float endTime = startTime + dashCooldown;
+            
+            while (Time.time < endTime)
+            {
+                float progress = (Time.time - startTime) / dashCooldown;
+                OnDashCooldownUpdate?.Invoke(progress);
+                yield return null; // Ждем следующий кадр
+            }
+            
+            // Финальное обновление - рывок полностью готов
+            OnDashCooldownUpdate?.Invoke(1f);
+            
             _dashCoroutine = null;
         }
     }
