@@ -20,6 +20,7 @@ namespace WinterUniverse
             {
                 GameManager.StaticInstance.SpawnManager.SpawnEnemies(GameManager.StaticInstance.StageManager.CurrentStage, _phase00);
             }
+            AudioManager.StaticInstance.ChangeBackgroundMusic(3);
         }
 
         public override void EnableComponent()

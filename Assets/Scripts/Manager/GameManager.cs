@@ -51,15 +51,9 @@ namespace WinterUniverse
         private IEnumerator Initialization()
         {
             WaitForSeconds delay = new(0.1f);
+            AudioManager.StaticInstance.ChangeBackgroundMusic(1);
             yield return new WaitForSeconds(1f);
-            //_components = new();
             InitializeComponent();
-            //foreach (BasicComponent component in _components)
-            //{
-            //    Debug.LogError($"Initialize {component.gameObject.name}");
-            //    component.InitializeComponent();
-            //    Debug.LogError($"{component.gameObject.name} Initialized");
-            //}
             yield return delay;
             ActivateComponent();
             yield return delay;
@@ -126,11 +120,13 @@ namespace WinterUniverse
 
         public void GameComplete()
         {
+            AudioManager.StaticInstance.ChangeBackgroundMusic(5);
             StartCoroutine(LeaveGame(2, 1f));
         }
 
         public void GameOver()
         {
+            AudioManager.StaticInstance.ChangeBackgroundMusic(4);
             StartCoroutine(LeaveGame(0, 5f));
         }
 

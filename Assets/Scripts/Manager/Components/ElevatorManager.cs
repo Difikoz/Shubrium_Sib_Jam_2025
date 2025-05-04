@@ -26,6 +26,7 @@ namespace WinterUniverse
                 return;
             }
             _isInElevator = true;
+            AudioManager.StaticInstance.ChangeBackgroundMusic(2);
             StartCoroutine(WaitForImplantSelection());
         }
 
@@ -57,6 +58,7 @@ namespace WinterUniverse
             {
                 yield return delay;
             }
+            AudioManager.StaticInstance.ChangeBackgroundMusic(1);
             GameManager.StaticInstance.SetInputMode(InputMode.Game);
             _isInElevator = false;
         }
