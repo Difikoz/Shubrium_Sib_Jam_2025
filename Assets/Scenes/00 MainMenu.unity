@@ -2200,11 +2200,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86b08fc4764f714cbfbc702274e6234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dontDestroyOnLoad: 1
   showConsole: 0
   saveToFile: 1
+  allowKeyboardToggle: 1
   consolePanel: {fileID: 712965283}
   consoleWidthPercent: 0.3
-  _toggleKey: 32
 --- !u!4 &602567994
 Transform:
   m_ObjectHideFlags: 0
