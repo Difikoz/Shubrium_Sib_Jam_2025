@@ -576,7 +576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &450579105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3671,6 +3671,26 @@ PrefabInstance:
       propertyPath: <AllImplants>k__BackingField.Array.size
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1433c22d2b013e439b3d8644b45511c, type: 2}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: aad9319aac9469741bab16d6158a8956, type: 2}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1e065714b05ebb47a89928cf9a1651d, type: 2}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 40f26d25a4d95114eadb5026aed2117a, type: 2}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 39c96d52a2ef0a94eab9910a2716a671, type: 2}
     - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
       propertyPath: '<AllImplants>k__BackingField.Array.data[5]'
       value: 
