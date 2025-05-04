@@ -224,6 +224,8 @@ GameObject:
   - component: {fileID: 5941795367721230335}
   - component: {fileID: 8333057959317405781}
   - component: {fileID: 6384552995407272692}
+  - component: {fileID: 4729440105013608360}
+  - component: {fileID: 7246413772065453018}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -351,3 +353,65 @@ MonoBehaviour:
   spriteOff: {fileID: 0}
   image: {fileID: 5941795367721230335}
   _targetObject: {fileID: 554228101368106057}
+--- !u!114 &4729440105013608360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6016226687299748946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2018862736
+      Data2: 1263908014
+      Data3: -1441622104
+      Data4: -316461303
+    Path: event:/ui/button_click_overlap
+  Event: 
+  EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &7246413772065453018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6016226687299748946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
