@@ -3667,6 +3667,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: <AllImplants>k__BackingField.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b6afe89c3e8c29438c83918c68590ce, type: 2}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d47c8880f42b1b241b5fcad6760f77a9, type: 2}
+    - target: {fileID: 2408551663261471371, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
+      propertyPath: '<AllImplants>k__BackingField.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c771d3d86b077d448a1a5e36c4950f0, type: 2}
     - target: {fileID: 3254534042568382930, guid: f074905bab4f6bc4d8d540465ff74142, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
