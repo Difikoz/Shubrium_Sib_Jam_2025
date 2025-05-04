@@ -51,6 +51,7 @@ namespace WinterUniverse
                 }
             }
             _rb.linearVelocity = Vector3.zero;
+            LeanPool.Despawn(LeanPool.Spawn(_config.HitEffect, transform.position, Quaternion.identity), 10f);
             LeanPool.Despawn(gameObject);
         }
     }

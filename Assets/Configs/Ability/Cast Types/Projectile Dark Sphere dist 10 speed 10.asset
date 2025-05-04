@@ -15,6 +15,7 @@ MonoBehaviour:
   <Distance>k__BackingField: 10
   <AngleToCast>k__BackingField: 10
   <Prefab>k__BackingField: {fileID: 4050856305836690513, guid: df7bc3d62b05f55489df7d4681ed6b43, type: 3}
+  <HitEffect>k__BackingField: {fileID: 1021272099366177520, guid: 01e41c0f5ead22947952f61248987a00, type: 3}
   <Homing>k__BackingField: 0
   <Speed>k__BackingField: 10
   <Count>k__BackingField: 1
