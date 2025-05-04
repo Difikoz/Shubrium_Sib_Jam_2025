@@ -8,7 +8,7 @@ namespace WinterUniverse
     {
         public Action<int, int> OnValueChanged;
 
-        [field: SerializeField] public int Current { get; private set; }
+        public int Current { get; private set; }
         public int Max => Mathf.RoundToInt(_pawn.GameplayComponent.GetGameplayStat("Health").CurrentValue);
 
         public void ApplyDamages(List<DamageType> damageTypes, Pawn source)

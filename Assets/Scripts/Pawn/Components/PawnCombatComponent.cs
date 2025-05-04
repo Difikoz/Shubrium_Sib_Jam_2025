@@ -5,6 +5,7 @@ namespace WinterUniverse
     public class PawnCombatComponent : PawnComponent
     {
         [field: SerializeField] public AbilityPresetConfig BasicAttack { get; private set; }
+        [field: SerializeField] public float AttackAnimationDuration { get; private set; }
         [field: SerializeField] public Transform ShootPoint { get; private set; }
 
         public AbilityPresetConfig CurrentAbility { get; private set; }
@@ -34,7 +35,7 @@ namespace WinterUniverse
                 CurrentAbility = ability;
                 if (CurrentAbility.PlayAnimationOnStart)
                 {
-                    _pawn.Animator.SetFloat("Attack Speed", _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue);
+                    _pawn.Animator.SetFloat("Attack Speed", AttackAnimationDuration / _pawn.GameplayComponent.GetGameplayStat("Attack Speed").CurrentValue);
                     _pawn.Animator.PlayAction(CurrentAbility.AnimationName);
                 }
                 else
