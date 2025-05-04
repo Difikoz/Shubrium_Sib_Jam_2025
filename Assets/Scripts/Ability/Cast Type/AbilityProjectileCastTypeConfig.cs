@@ -8,6 +8,7 @@ namespace WinterUniverse
     public class AbilityProjectileCastTypeConfig : AbilityCastTypeConfig
     {
         [field: SerializeField] public GameObject Prefab { get; private set; }
+        [field: SerializeField] public GameObject HitEffect { get; private set; }
         [field: SerializeField] public bool Homing { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }
         [field: SerializeField] public int Count { get; private set; }

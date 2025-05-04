@@ -9,6 +9,7 @@ namespace WinterUniverse
     public class EnemyController : Pawn
     {
         [field: SerializeField] public GameObject ExplosionEffect { get; private set; }
+        [field: SerializeField, Range(0f, 1f)] public float ChanceToRelocate { get; private set; }
         public NavMeshAgent Agent { get; private set; }
         public bool IsRotatingToTarget { get; private set; }
 
@@ -52,13 +53,14 @@ namespace WinterUniverse
                 {
                     yield return null;
                 }
-                IsRotatingToTarget = true;
+                IsRotatingToTarget = false;
                 while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance * 0.75f)
                 {
                     Agent.SetDestination(Combat.Target.transform.position);
                     yield return delay;
                 }
                 Agent.ResetPath();
+                IsRotatingToTarget = true;
                 if (Combat.PerformAttack(false, out float waitTime))
                 {
                     if (waitTime > 0f)
@@ -70,13 +72,17 @@ namespace WinterUniverse
                         yield return null;
                     }
                 }
-                IsRotatingToTarget = false;
-                Agent.SetDestination(GameManager.StaticInstance.StageManager.CurrentStage.GetRandomSpawnPoint().position);
-                while (Agent.remainingDistance > 0.1f)
+                if (Random.value < ChanceToRelocate)
                 {
+                    IsRotatingToTarget = false;
+                    Agent.SetDestination(GameManager.StaticInstance.StageManager.CurrentStage.GetRandomSpawnPoint().position);
                     yield return delay;
+                    while (Agent.remainingDistance > 0.1f)
+                    {
+                        yield return delay;
+                    }
+                    Agent.ResetPath();
                 }
-                Agent.ResetPath();
                 yield return null;
             }
         }

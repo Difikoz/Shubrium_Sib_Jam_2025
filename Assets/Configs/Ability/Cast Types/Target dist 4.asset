@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Target dist 4
   m_EditorClassIdentifier: 
   <Distance>k__BackingField: 4
+  <AngleToCast>k__BackingField: 90
