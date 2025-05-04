@@ -22,6 +22,7 @@ namespace WinterUniverse
         private float _screenHeight;
         private List<int> _shuffledSpriteIndices = new List<int>(); // Перемешанные индексы спрайтов
         private int _currentSpriteIndex = 0; // Текущий индекс в перемешанном списке
+        private float _totalScrollDistance = 0f; // Общее пройденное расстояние для отслеживания
         
         private void Start()
         {
@@ -108,32 +109,115 @@ namespace WinterUniverse
         
         private void Update()
         {
+            // Расчет приращения прокрутки
+            float scrollIncrement = _scrollSpeed * Time.deltaTime;
+            _totalScrollDistance += scrollIncrement;
+            
+            // Проверяем, не пора ли выполнить перестановку секций
+            bool needsRearrangement = false;
+            int bottomSectionIndex = -1;
+            float lowestY = float.MaxValue;
+            
             // Двигаем все секции вниз с одинаковой скоростью
             for (int i = 0; i < _sections.Count; i++)
             {
                 // Двигаем секцию вниз
                 Vector2 pos = _sections[i].anchoredPosition;
-                pos.y -= _scrollSpeed * Time.deltaTime;
+                pos.y -= scrollIncrement;
                 _sections[i].anchoredPosition = pos;
                 
-                // Если секция полностью ушла вниз за экран
+                // Отслеживаем самую нижнюю секцию
+                if (pos.y < lowestY)
+                {
+                    lowestY = pos.y;
+                    bottomSectionIndex = i;
+                }
+                
+                // Проверяем, нужна ли перестановка
                 if (pos.y < -_screenHeight * 1.5f)
                 {
-                    // Перемещаем ее наверх и даем новый спрайт
-                    // Добавляем нахлест при перемещении секции наверх
-                    pos.y = _screenHeight * 1.5f - _sectionOverlap;
-                    _sections[i].anchoredPosition = pos;
-                    
-                    // Обновляем спрайт секции на следующий из перемешанного списка
-                    Image image = _sections[i].GetComponent<Image>();
-                    if (image != null)
-                    {
-                        image.sprite = GetNextSprite();
-                    }
-                    
-                    Debug.Log($"[{GetType().Name}] Секция {i} перемещена наверх.");
+                    needsRearrangement = true;
                 }
             }
+            
+            // Если нужна перестановка - переставляем секции и обновляем их позиции
+            if (needsRearrangement && bottomSectionIndex >= 0)
+            {
+                RearrangeSections(bottomSectionIndex);
+            }
+        }
+        
+        // Метод для перестановки секций с точными позициями
+        private void RearrangeSections(int bottomSectionIndex)
+        {
+            // Получаем самую верхнюю секцию
+            int topSectionIndex = -1;
+            float highestY = float.MinValue;
+            
+            for (int i = 0; i < _sections.Count; i++)
+            {
+                if (i != bottomSectionIndex && _sections[i].anchoredPosition.y > highestY)
+                {
+                    highestY = _sections[i].anchoredPosition.y;
+                    topSectionIndex = i;
+                }
+            }
+            
+            if (topSectionIndex < 0) return;
+            
+            // Перемещаем нижнюю секцию наверх на строго определенную позицию
+            RectTransform bottomSection = _sections[bottomSectionIndex];
+            RectTransform topSection = _sections[topSectionIndex];
+            
+            // Точно рассчитываем позицию новой верхней секции
+            Vector2 newPosition = topSection.anchoredPosition;
+            newPosition.y += _screenHeight - _sectionOverlap;
+            bottomSection.anchoredPosition = newPosition;
+            
+            // Обновляем спрайт
+            Image image = bottomSection.GetComponent<Image>();
+            if (image != null)
+            {
+                image.sprite = GetNextSprite();
+            }
+            
+            Debug.Log($"[{GetType().Name}] Секция {bottomSectionIndex} перемещена наверх.");
+        }
+        
+        // Каждые N секунд принудительно выравниваем все секции для предотвращения дрейфа
+        private void FixedUpdate()
+        {
+            // Каждые 5 секунд выполняем выравнивание
+            if (Time.frameCount % 150 == 0) 
+            {
+                AlignAllSections();
+            }
+        }
+        
+        // Выравнивание всех секций относительно друг друга
+        private void AlignAllSections()
+        {
+            if (_sections.Count < 3) return;
+            
+            // Сортируем секции по их Y-позиции (сверху вниз)
+            List<RectTransform> sortedSections = _sections
+                .OrderByDescending(s => s.anchoredPosition.y)
+                .ToList();
+            
+            // Берем верхнюю секцию как опорную и выравниваем остальные относительно неё
+            Vector2 topPos = sortedSections[0].anchoredPosition;
+            
+            // Выравниваем среднюю секцию
+            Vector2 middlePos = topPos;
+            middlePos.y -= _screenHeight - _sectionOverlap;
+            sortedSections[1].anchoredPosition = middlePos;
+            
+            // Выравниваем нижнюю секцию
+            Vector2 bottomPos = middlePos;
+            bottomPos.y -= _screenHeight - _sectionOverlap;
+            sortedSections[2].anchoredPosition = bottomPos;
+            
+            Debug.Log($"[{GetType().Name}] Выполнено выравнивание всех секций.");
         }
         
         // Метод для изменения скорости прокрутки

@@ -2014,7 +2014,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1c07f5994b0390a4dbc08978abc7667f, type: 3}
   - {fileID: 21300000, guid: 460ecbaa68599b240aa4699bb67d242c, type: 3}
   _scrollSpeed: 100
-  _sectionOverlap: 5
+  _sectionOverlap: 10
 --- !u!1 &1208281998
 GameObject:
   m_ObjectHideFlags: 0
