@@ -58,7 +58,7 @@ namespace WinterUniverse
 
         public void Reduce(int value, DamageTypeConfig type, Pawn source)
         {
-            if (_pawn.GameplayComponent.HasGameplayTag("Is Dead") || value <= 0 || _pawn.GameplayComponent.HasGameplayTag("Is Invulnerable"))
+            if (_pawn.GameplayComponent.HasGameplayTag("Is Dead") || value <= 0 || _pawn.GameplayComponent.HasGameplayTag("Is Invulnerable") || GameManager.StaticInstance.StageManager.CurrentStage.GetActiveEnemyCount() == 0)
             {
                 return;
             }

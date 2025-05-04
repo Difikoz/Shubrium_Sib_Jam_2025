@@ -397,7 +397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218199605650098014, guid: 7ba7346773c79b34392c79ebb4a0d937, type: 3}
       propertyPath: m_text
-      value: "\u0413\u0440\u043E\u043C\u043A\u043E\u0441\u0442\u044C \u0437\u0432\u0443\u043A\u043E\u0432"
+      value: "\u0417\u0432\u0443\u043A"
       objectReference: {fileID: 0}
     - target: {fileID: 7387771491790226260, guid: 7ba7346773c79b34392c79ebb4a0d937, type: 3}
       propertyPath: m_Pivot.x
@@ -499,7 +499,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4103232925134840425, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
       propertyPath: m_text
-      value: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0410\u0443\u0434\u0438\u043E"
+      value: "\u0410\u0443\u0434\u0438\u043E"
       objectReference: {fileID: 0}
     - target: {fileID: 4103232925134840425, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
       propertyPath: m_fontSize
@@ -1293,7 +1293,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4103232925134840425, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
       propertyPath: m_text
-      value: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0413\u0440\u0430\u0444\u0438\u043A\u0438"
+      value: "\u0413\u0440\u0430\u0444\u0438\u043A\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 5674704058774355251, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
       propertyPath: m_Pivot.x
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1c07f5994b0390a4dbc08978abc7667f, type: 3}
   - {fileID: 21300000, guid: 460ecbaa68599b240aa4699bb67d242c, type: 3}
   _scrollSpeed: 100
-  _sectionOverlap: 2
+  _sectionOverlap: 5
 --- !u!1 &1208281998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218199605650098014, guid: 7ba7346773c79b34392c79ebb4a0d937, type: 3}
       propertyPath: m_text
-      value: "\u0413\u0440\u043E\u043C\u043A\u043E\u0441\u0442\u044C \u043C\u0443\u0437\u044B\u043A\u0438"
+      value: "\u041C\u0443\u0437\u044B\u043A\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 7387771491790226260, guid: 7ba7346773c79b34392c79ebb4a0d937, type: 3}
       propertyPath: m_Pivot.x
