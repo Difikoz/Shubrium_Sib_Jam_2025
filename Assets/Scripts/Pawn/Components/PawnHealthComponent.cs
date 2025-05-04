@@ -12,9 +12,32 @@ namespace WinterUniverse
         [field: SerializeField] public GameObject InvulnerableEffect { get; private set; }
 
         public int Current { get; private set; }
-        public int Max => Mathf.RoundToInt(_pawn.GameplayComponent.GetGameplayStat("Health").CurrentValue);
+        public int Max { get; private set; }
 
         private Coroutine _invulnerableCoroutine;
+
+        public override void EnableComponent()
+        {
+            base.EnableComponent();
+            _pawn.GameplayComponent.OnStatsChanged += OnStatsChanged;
+        }
+
+        public override void DisableComponent()
+        {
+            _pawn.GameplayComponent.OnStatsChanged -= OnStatsChanged;
+            base.DisableComponent();
+        }
+
+        private void OnStatsChanged(Dictionary<string, GameplayStat> stats)
+        {
+            int lastMax = Max;
+            Max = Mathf.RoundToInt(_pawn.GameplayComponent.GetGameplayStat("Health").CurrentValue);
+            if (Max > lastMax)
+            {
+                Current += Max - lastMax;
+            }
+            OnValueChanged?.Invoke(Current, Max);
+        }
 
         public void ApplyDamages(List<DamageType> damageTypes, Pawn source)
         {
