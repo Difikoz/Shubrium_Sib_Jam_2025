@@ -9,7 +9,7 @@ namespace WinterUniverse
         [SerializeField] private int startStageIndex;
 
         [field: SerializeField] public List<Stage> Stages { get; private set; }
-        public int CurrentStageIndex { get; private set; }
+        public int CurrentStageIndex;
         public Stage CurrentStage => Stages[CurrentStageIndex];
         public bool LastStage => CurrentStageIndex == Stages.Count - 1;
 
