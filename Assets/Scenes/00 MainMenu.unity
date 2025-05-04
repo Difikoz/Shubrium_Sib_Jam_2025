@@ -3058,6 +3058,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 7246413772065453018, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/ui/button_click_start
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246413772065453018, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: -487122445
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246413772065453018, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1210657898
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246413772065453018, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 1198401462
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246413772065453018, guid: 4e5d01f1564ffc045ad2ec8aaebffa6a, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -698659556
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

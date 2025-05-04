@@ -78,8 +78,14 @@ namespace WinterUniverse
             {
                 return;
             }
-
-            DashVelocity = transform.forward * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
+            if (MoveDirection != Vector3.zero)
+            {
+                DashVelocity = MoveDirection.normalized * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
+            }
+            else
+            {
+                DashVelocity = transform.forward * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
+            }
             KnockbackVelocity = Vector3.zero;
             GroundVelocity = Vector3.zero;
             _pawn.Animator.SetBool("Is Dashing", true);

@@ -36,7 +36,18 @@ namespace WinterUniverse
 
         public bool CanAddImplant(ImplantConfig implant)
         {
-            return implant.CanStack || !Implants.Contains(implant);
+            if (implant.CanStack)
+            {
+                return true;
+            }
+            foreach (ImplantConfig config in Implants)
+            {
+                if (config.Key == implant.Key)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public void AddImplant(ImplantConfig config)

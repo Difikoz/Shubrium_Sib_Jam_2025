@@ -54,7 +54,7 @@ namespace WinterUniverse
                     yield return null;
                 }
                 IsRotatingToTarget = false;
-                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance * 0.75f && !GameplayComponent.HasGameplayTag("Is Freezed"))
+                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance * 0.8f && !GameplayComponent.HasGameplayTag("Is Freezed"))
                 {
                     Agent.SetDestination(Combat.Target.transform.position);
                     yield return delay;
