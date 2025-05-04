@@ -24,9 +24,6 @@ namespace Seedon
         [Range(0.1f, 1f)]
         public float consoleWidthPercent = 0.3f;    // Ширина консоли в процентах от экрана
 
-        [Header("Управление")]
-        [SerializeField] private KeyCode _toggleKey = KeyCode.Space;  // Клавиша для переключения
-
         private string LogsFolderPath => Path.Combine(Application.streamingAssetsPath, "Logs");
 
         protected override void OnAwake()
