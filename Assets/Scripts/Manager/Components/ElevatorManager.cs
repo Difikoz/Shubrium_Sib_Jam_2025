@@ -35,16 +35,16 @@ namespace WinterUniverse
             CloseDoors();
             yield return new WaitForSeconds(1f);
             GameManager.StaticInstance.SetInputMode(InputMode.UI);
-            yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
-            yield return delay;
             GameManager.StaticInstance.Player.DeactivateComponent();
-            GameManager.StaticInstance.StageManager.DisableCurrentStage();
             yield return delay;
             GameManager.StaticInstance.ImplantManager.ShowImplantSelection();
             while (GameManager.StaticInstance.ImplantManager.IsSelectingImplant)
             {
                 yield return delay;
             }
+            GameManager.StaticInstance.StageManager.DisableCurrentStage();
+            yield return GameManager.StaticInstance.UIManager.FadeScreen(1f);
+            yield return delay;
             GameManager.StaticInstance.StageManager.StartNextStage();
             yield return delay;
             GameManager.StaticInstance.StageManager.CurrentStage.TeleportPlayerToStartPoint();
