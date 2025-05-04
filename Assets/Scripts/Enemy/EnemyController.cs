@@ -45,7 +45,7 @@ namespace WinterUniverse
 
         private IEnumerator LifetimeCoroutine()
         {
-            WaitForSeconds delay = new(0.5f);
+            WaitForSeconds delay = new(0.1f);
             Combat.SetTarget(GameManager.StaticInstance.Player);
             while (!GameplayComponent.HasGameplayTag("Is Dead"))
             {
