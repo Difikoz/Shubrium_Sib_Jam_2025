@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.68235296, g: 0.90588236, b: 0.972549, a: 1}
+  m_Color: {r: 0.68293875, g: 0.90745527, b: 0.9716981, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5434858656033062190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -488,10 +488,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dashFillImage: {fileID: 4775305743117818828}
-  _dashReadyIndicator: {fileID: 0}
-  _filledColor: {r: 0, g: 1, b: 0, a: 1}
-  _emptyColor: {r: 1, g: 0, b: 0, a: 1}
-  _useColorGradient: 1
+  _readyColor: {r: 0, g: 1, b: 0, a: 1}
+  _cooldownColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &6498106765364947044
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

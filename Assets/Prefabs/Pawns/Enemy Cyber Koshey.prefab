@@ -305,6 +305,7 @@ MonoBehaviour:
   <Faction>k__BackingField: 0
   <StatsCreator>k__BackingField: {fileID: 11400000, guid: 391c140afcbdb49459f53d12d9bab38a, type: 2}
   <ExplosionEffect>k__BackingField: {fileID: 1021272099366177520, guid: 1b536cfbf0b458a498f76379fd36aa56, type: 3}
+  _phase00: []
   _phase01:
   - <Config>k__BackingField: {fileID: 11400000, guid: 4245e600b52480f42904e4aadd032383, type: 2}
     <Count>k__BackingField: 2
@@ -421,7 +422,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
