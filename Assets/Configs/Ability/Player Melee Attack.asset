@@ -24,5 +24,3 @@ MonoBehaviour:
   <HitTypes>k__BackingField:
   - <HitType>k__BackingField: {fileID: 11400000, guid: 9f3eecc4c69c6b141808201a6dffb565, type: 2}
     <ChanceToTrigger>k__BackingField: 1
-  - <HitType>k__BackingField: {fileID: 11400000, guid: dfc5861e362df9f4da0375744e014aa5, type: 2}
-    <ChanceToTrigger>k__BackingField: 1
