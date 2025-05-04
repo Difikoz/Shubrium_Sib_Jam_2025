@@ -1981,7 +1981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveDirection: {x: 0, y: 0, z: 0}
-  <RotateSpeed>k__BackingField: 720
+  <RotateSpeed>k__BackingField: 1440
   <Mass>k__BackingField: 1
   <TimeToDash>k__BackingField: 0.5
 --- !u!54 &1169019287275465584
