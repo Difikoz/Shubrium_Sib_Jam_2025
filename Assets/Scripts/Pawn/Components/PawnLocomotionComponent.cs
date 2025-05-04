@@ -18,36 +18,15 @@ namespace WinterUniverse
         [field: SerializeField, Range(1f, 100f)] public float Mass { get; private set; }
         [field: SerializeField, Range(0.1f, 0.5f)] public float TimeToDash { get; private set; }
 
-        private float _maxSpeed;
         private Coroutine _dashCoroutine;
 
-        public Vector3 TotalVelocity => GroundVelocity * _maxSpeed + KnockbackVelocity + DashVelocity;
-
-        public override void EnableComponent()
-        {
-            base.EnableComponent();
-            _pawn.GameplayComponent.OnStatsChanged += OnStatsChanged;
-        }
-
-        public override void DisableComponent()
-        {
-            _pawn.GameplayComponent.OnStatsChanged -= OnStatsChanged;
-            base.DisableComponent();
-        }
-
-        private void OnStatsChanged(Dictionary<string, GameplayStat> stats)
-        {
-            _maxSpeed = _pawn.GameplayComponent.GetGameplayStat("Move Speed").CurrentValue;
-            _pawn.Animator.SetFloat("Move Speed", _maxSpeed / 4f);
-        }
+        public Vector3 TotalVelocity => GroundVelocity * _pawn.GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + KnockbackVelocity + DashVelocity;
 
         public override void ActivateComponent()
         {
             base.ActivateComponent();
             _dashCoroutine = null;
             _pawn.Animator.SetBool("Is Dashing", false);
-            _maxSpeed = _pawn.GameplayComponent.GetGameplayStat("Move Speed").CurrentValue;
-            _pawn.Animator.SetFloat("Move Speed", _maxSpeed / 4f);
             // Рывок доступен сразу
             OnDashCooldownUpdate?.Invoke(1f);
         }
