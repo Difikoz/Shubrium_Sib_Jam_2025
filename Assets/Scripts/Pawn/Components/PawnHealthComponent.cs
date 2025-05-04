@@ -16,6 +16,12 @@ namespace WinterUniverse
 
         private Coroutine _invulnerableCoroutine;
 
+        public override void InitializeComponent()
+        {
+            base.InitializeComponent();
+            Max = Mathf.RoundToInt(_pawn.GameplayComponent.GetGameplayStat("Health").CurrentValue);
+        }
+
         public override void EnableComponent()
         {
             base.EnableComponent();
