@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Distance>k__BackingField: 5
   <AngleToCast>k__BackingField: 90
-  <Angle>k__BackingField: 180
+  <Angle>k__BackingField: 90
