@@ -16,7 +16,7 @@ MonoBehaviour:
   - <Stat>k__BackingField: {fileID: 11400000, guid: 3aa46a57aaca6704da7a059040161c59, type: 2}
     <BaseValue>k__BackingField: 1
   - <Stat>k__BackingField: {fileID: 11400000, guid: b9c50432f62d96548857942322362b4c, type: 2}
-    <BaseValue>k__BackingField: 5
+    <BaseValue>k__BackingField: 10
   - <Stat>k__BackingField: {fileID: 11400000, guid: d09a397276d732d47bd39f860f07c076, type: 2}
     <BaseValue>k__BackingField: 1
   - <Stat>k__BackingField: {fileID: 11400000, guid: c3f026a09333bf9468652c91549ce4ec, type: 2}

@@ -35,7 +35,7 @@ namespace WinterUniverse
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Combat.DirectionToTarget), Locomotion.RotateSpeed * Time.deltaTime);
                 }
-                else
+                else if (Locomotion.GroundVelocity != Vector3.zero)
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.deltaTime);
                 }
@@ -61,6 +61,11 @@ namespace WinterUniverse
                 }
                 Agent.ResetPath();
                 IsRotatingToTarget = true;
+                while (Combat.DirectionToTarget != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Combat.DirectionToTarget), Locomotion.RotateSpeed * Time.deltaTime);
+                    yield return null;
+                }
                 if (Combat.PerformAttack(false, out float waitTime))
                 {
                     if (waitTime > 0f)
@@ -77,7 +82,7 @@ namespace WinterUniverse
                     IsRotatingToTarget = false;
                     Agent.SetDestination(GameManager.StaticInstance.StageManager.CurrentStage.GetRandomSpawnPoint().position);
                     yield return delay;
-                    while (Agent.remainingDistance > 0.1f)
+                    while (Agent.remainingDistance > 1f)
                     {
                         yield return delay;
                     }
