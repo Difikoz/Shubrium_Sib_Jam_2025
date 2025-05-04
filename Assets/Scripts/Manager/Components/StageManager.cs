@@ -37,6 +37,7 @@ namespace WinterUniverse
                 CurrentStage.EnableComponent();
                 GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
                 StartCoroutine(HandleStagesCoroutine());
+                GameManager.StaticInstance.Player.Equipment.UpdateImplantCooldown();
             }
         }
 

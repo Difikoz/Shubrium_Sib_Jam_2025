@@ -10,6 +10,7 @@ namespace WinterUniverse
 
         public AbilityPresetConfig CurrentAbility { get; private set; }
         public Pawn Target { get; private set; }
+        public Vector3 DirectionToTarget { get; private set; }
         public float DistanceToTarget { get; private set; }
         public float AngleToTarget { get; private set; }
 
@@ -17,8 +18,9 @@ namespace WinterUniverse
         {
             if (Target != null)
             {
+                DirectionToTarget = (Target.transform.position - transform.position).normalized;
                 DistanceToTarget = Vector3.Distance(transform.position, Target.transform.position);
-                AngleToTarget = Vector3.SignedAngle(transform.forward, (Target.transform.position - transform.position).normalized, Vector3.up);
+                AngleToTarget = Vector3.SignedAngle(transform.forward, DirectionToTarget, Vector3.up);
             }
         }
 

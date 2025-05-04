@@ -40,5 +40,20 @@ namespace WinterUniverse
                 }
             }
         }
+
+        public void UpdateImplantCooldown()
+        {
+            for (int i = 0; i < Implants.Count; i++)
+            {
+                foreach (ImplantConfig implant in GameManager.StaticInstance.ImplantManager.AllImplants)
+                {
+                    if (Implants[i].Key == implant.Key)
+                    {
+                        Implants[i] = Instantiate(implant);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +9,12 @@ namespace WinterUniverse
     {
         public Action<int, int> OnValueChanged;
 
+        [field: SerializeField] public GameObject InvulnerableEffect { get; private set; }
+
         public int Current { get; private set; }
         public int Max => Mathf.RoundToInt(_pawn.GameplayComponent.GetGameplayStat("Health").CurrentValue);
+
+        private Coroutine _invulnerableCoroutine;
 
         public void ApplyDamages(List<DamageType> damageTypes, Pawn source)
         {
@@ -21,7 +26,7 @@ namespace WinterUniverse
 
         public void Reduce(int value, DamageTypeConfig type, Pawn source)
         {
-            if (_pawn.GameplayComponent.HasGameplayStat("Is Dead") || value <= 0)
+            if (_pawn.GameplayComponent.HasGameplayTag("Is Dead") || value <= 0 || _pawn.GameplayComponent.HasGameplayTag("Is Invulnerable"))
             {
                 return;
             }
@@ -39,7 +44,7 @@ namespace WinterUniverse
 
         public void Restore(int value, Pawn source)
         {
-            if (_pawn.GameplayComponent.HasGameplayStat("Is Dead") || value <= 0)
+            if (_pawn.GameplayComponent.HasGameplayTag("Is Dead") || value <= 0)
             {
                 return;
             }
@@ -50,7 +55,7 @@ namespace WinterUniverse
 
         public void Die(Pawn source)
         {
-            if (_pawn.GameplayComponent.HasGameplayStat("Is Dead"))
+            if (_pawn.GameplayComponent.HasGameplayTag("Is Dead"))
             {
                 return;
             }
@@ -71,6 +76,51 @@ namespace WinterUniverse
             _pawn.GameplayComponent.RemoveGameplayTag("Is Dead");
             _pawn.PerformTrigger("On Revived", source);
             Restore(Max, source);
+        }
+
+        public void AddInvulnerable(float duration = -1f)
+        {
+            RemoveInvulnerable();
+            _invulnerableCoroutine = StartCoroutine(InvulnerableTimer(duration));
+        }
+
+        public void RemoveInvulnerable()
+        {
+            if (_invulnerableCoroutine != null)
+            {
+                StopCoroutine(_invulnerableCoroutine);
+                StopInvulnerable();
+                _invulnerableCoroutine = null;
+            }
+        }
+
+        private IEnumerator InvulnerableTimer(float duration)
+        {
+            float currentTime = 0f;
+            StartInvulnerable();
+            while (true)
+            {
+                currentTime += Time.deltaTime;
+                if (duration != -1f && currentTime >= duration)
+                {
+                    break;
+                }
+                yield return null;
+            }
+            StopInvulnerable();
+            _invulnerableCoroutine = null;
+        }
+
+        private void StartInvulnerable()
+        {
+            _pawn.GameplayComponent.AddGameplayTag("Is Invulnerable");
+            InvulnerableEffect.SetActive(true);
+        }
+
+        private void StopInvulnerable()
+        {
+            InvulnerableEffect.SetActive(false);
+            _pawn.GameplayComponent.RemoveGameplayTag("Is Invulnerable");
         }
     }
 }

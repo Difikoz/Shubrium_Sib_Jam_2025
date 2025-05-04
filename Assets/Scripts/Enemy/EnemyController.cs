@@ -10,6 +10,7 @@ namespace WinterUniverse
     {
         [field: SerializeField] public GameObject ExplosionEffect { get; private set; }
         public NavMeshAgent Agent { get; private set; }
+        public bool IsRotatingToTarget { get; private set; }
 
         public override void FillComponents()
         {
@@ -29,7 +30,14 @@ namespace WinterUniverse
             base.UpdateComponent();
             if (!GameplayComponent.HasGameplayTag("Is Perfoming Action")) //(Locomotion.GroundVelocity != Vector3.zero)
             {
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.deltaTime);
+                if (IsRotatingToTarget && Combat.DirectionToTarget != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Combat.DirectionToTarget), Locomotion.RotateSpeed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.deltaTime);
+                }
             }
             Agent.velocity = Locomotion.GroundVelocity * GameplayComponent.GetGameplayStat("Move Speed").CurrentValue + Locomotion.KnockbackVelocity + Locomotion.DashVelocity;
         }
@@ -40,23 +48,17 @@ namespace WinterUniverse
             Combat.SetTarget(GameManager.StaticInstance.Player);
             while (!GameplayComponent.HasGameplayTag("Is Dead"))
             {
-                while (GameManager.StaticInstance.InputMode != InputMode.Game)
+                while (GameplayComponent.HasGameplayTag("Is Perfoming Action") || GameManager.StaticInstance.InputMode != InputMode.Game)
                 {
                     yield return null;
                 }
-                while (GameplayComponent.HasGameplayTag("Is Perfoming Action"))
-                {
-                    yield return null;
-                }
-                if (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance)
+                IsRotatingToTarget = true;
+                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance * 0.75f)
                 {
                     Agent.SetDestination(Combat.Target.transform.position);
                     yield return delay;
                 }
-                if (Agent.hasPath && Combat.DistanceToTarget < Combat.BasicAttack.CastType.Distance / 2f)
-                {
-                    Agent.ResetPath();
-                }
+                Agent.ResetPath();
                 if (Combat.PerformAttack(false, out float waitTime))
                 {
                     if (waitTime > 0f)
@@ -68,6 +70,13 @@ namespace WinterUniverse
                         yield return null;
                     }
                 }
+                IsRotatingToTarget = false;
+                Agent.SetDestination(GameManager.StaticInstance.StageManager.CurrentStage.GetRandomSpawnPoint().position);
+                while (Agent.remainingDistance > 0.1f)
+                {
+                    yield return delay;
+                }
+                Agent.ResetPath();
                 yield return null;
             }
         }

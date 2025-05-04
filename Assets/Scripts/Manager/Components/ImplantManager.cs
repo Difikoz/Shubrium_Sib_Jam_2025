@@ -5,7 +5,7 @@ namespace WinterUniverse
 {
     public class ImplantManager : BasicComponent
     {
-        [SerializeField] private List<ImplantConfig> _allImplants = new();
+        [field: SerializeField] public List<ImplantConfig> AllImplants { get; private set; }
         [SerializeField] private int _implantOptions = 3;
 
         public bool IsSelectingImplant { get; private set; } = false;
@@ -38,7 +38,7 @@ namespace WinterUniverse
             List<ImplantConfig> validImplants = new();
 
             // Фильтруем только те импланты, которые можно добавить
-            foreach (var implant in _allImplants)
+            foreach (var implant in AllImplants)
             {
                 if (GameManager.StaticInstance.Player.Equipment.CanAddImplant(implant))
                 {
