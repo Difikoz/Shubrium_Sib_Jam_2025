@@ -313,11 +313,13 @@ MonoBehaviour:
   _phase02:
   - <Config>k__BackingField: {fileID: 11400000, guid: ba942966efef2b94e95d402dd5f259fc, type: 2}
     <Count>k__BackingField: 2
+  - <Config>k__BackingField: {fileID: 11400000, guid: 4245e600b52480f42904e4aadd032383, type: 2}
+    <Count>k__BackingField: 1
   _phase03:
   - <Config>k__BackingField: {fileID: 11400000, guid: 4245e600b52480f42904e4aadd032383, type: 2}
     <Count>k__BackingField: 2
   - <Config>k__BackingField: {fileID: 11400000, guid: ba942966efef2b94e95d402dd5f259fc, type: 2}
-    <Count>k__BackingField: 2
+    <Count>k__BackingField: 3
 --- !u!114 &2955175000031094459
 MonoBehaviour:
   m_ObjectHideFlags: 0
