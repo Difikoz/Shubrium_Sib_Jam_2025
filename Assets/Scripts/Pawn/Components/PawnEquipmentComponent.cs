@@ -15,6 +15,7 @@ namespace WinterUniverse
         {
             base.InitializeComponent();
             Implants = new();
+            AddImplantsForTest = new();
         }
 
         public override void UpdateComponent()
