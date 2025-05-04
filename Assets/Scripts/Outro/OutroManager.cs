@@ -20,6 +20,7 @@ namespace WinterUniverse
         private IEnumerator ProccessCoroutine()
         {
             yield return FadeScreen(0f);
+            AudioManager.StaticInstance.ChangeBackgroundMusic(5);
             yield return new WaitForSeconds(3f);
             StartCoroutine(_dialogueUI.ShowDialogue(_dialogueConfig, OnDialogComplete));
         }

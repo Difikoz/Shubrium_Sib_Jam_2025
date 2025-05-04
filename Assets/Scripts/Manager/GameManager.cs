@@ -128,7 +128,6 @@ namespace WinterUniverse
 
         public void GameComplete()
         {
-            AudioManager.StaticInstance.ChangeBackgroundMusic(5);
             StartCoroutine(LoadOutroScene());
         }
 
