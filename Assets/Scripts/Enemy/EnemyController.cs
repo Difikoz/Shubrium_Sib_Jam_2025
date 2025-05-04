@@ -61,7 +61,7 @@ namespace WinterUniverse
                 }
                 Agent.ResetPath();
                 IsRotatingToTarget = true;
-                while (Combat.DirectionToTarget != Vector3.zero)
+                while (Mathf.Abs(Combat.AngleToTarget) > Combat.BasicAttack.CastType.AngleToCast / 2f)
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Combat.DirectionToTarget), Locomotion.RotateSpeed * Time.deltaTime);
                     yield return null;
