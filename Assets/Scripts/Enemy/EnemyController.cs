@@ -37,7 +37,6 @@ namespace WinterUniverse
         private IEnumerator LifetimeCoroutine()
         {
             WaitForSeconds delay = new(0.5f);
-            float waitTime;
             Combat.SetTarget(GameManager.StaticInstance.Player);
             while (!GameplayComponent.HasGameplayTag("Is Dead"))
             {
@@ -58,7 +57,7 @@ namespace WinterUniverse
                 {
                     Agent.ResetPath();
                 }
-                if (Combat.PerformAttack(false, out waitTime))
+                if (Combat.PerformAttack(false, out float waitTime))
                 {
                     if (waitTime > 0f)
                     {

@@ -1822,7 +1822,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Faction>k__BackingField: 1
   <StatsCreator>k__BackingField: {fileID: 11400000, guid: 5f1250727c588d8479993e0b0bfdd4c5, type: 2}
-  <Health>k__BackingField: {fileID: 0}
 --- !u!114 &1764866398028753044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,6 +1859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BasicAttack>k__BackingField: {fileID: 11400000, guid: fd4c4a1d29eba1f4c9b568f2227a9c8c, type: 2}
+  <AttackAnimationDuration>k__BackingField: 1.3
   <ShootPoint>k__BackingField: {fileID: 1852679227854148249}
 --- !u!114 &4256585870088205301
 MonoBehaviour:
@@ -1873,7 +1873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531ac937fa1f408e4707d37c9bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Current>k__BackingField: 0
 --- !u!114 &7463387415205474730
 MonoBehaviour:
   m_ObjectHideFlags: 0
