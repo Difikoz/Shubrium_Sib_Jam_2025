@@ -53,7 +53,13 @@ namespace WinterUniverse
             WaitForSeconds delay = new(0.1f);
             AudioManager.StaticInstance.ChangeBackgroundMusic(1);
             yield return new WaitForSeconds(1f);
-            InitializeComponent();
+            //InitializeComponent();
+            foreach (BasicComponent compoonent in _components)
+            {
+                Debug.Log($"Try Initialize {compoonent.gameObject.name}");
+                compoonent.InitializeComponent();
+                Debug.Log($"{compoonent.gameObject.name} Initialized");
+            }
             yield return delay;
             ActivateComponent();
             yield return delay;
