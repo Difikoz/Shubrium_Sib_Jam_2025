@@ -14,7 +14,7 @@ namespace WinterUniverse
         public IEnumerator ShowImplantSelection()
         {
             IsSelectingImplant = true;
-
+            AudioManager.StaticInstance.PlaySound("event:/ui/bonus_appear");
             // Получаем случайные импланты для выбора
             var implants = GetRandomImplants(_implantOptions);
 

@@ -10,7 +10,7 @@ namespace WinterUniverse
         public HealthUIController HealthUIController { get; private set; }
         public PlayerImplantsUI PlayerImplantsUI { get; private set; }
         public ImplantSelectionUI ImplantSelectionUI { get; private set; }
-        public DialogueUI DialogueUI { get; private set; }        
+        public DialogueUI DialogueUI { get; private set; }
         public DashUI DashUI { get; private set; }
 
         public override void FillComponents()
@@ -32,7 +32,7 @@ namespace WinterUniverse
             Color c = FadeImage.color;
             while (c.a != value)
             {
-                c.a = Mathf.MoveTowards(c.a, value, Time.deltaTime);
+                c.a = Mathf.MoveTowards(c.a, value, 2f * Time.deltaTime);
                 FadeImage.color = c;
                 yield return null;
             }

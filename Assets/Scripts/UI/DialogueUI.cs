@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 namespace WinterUniverse
 {
     public class DialogueUI : BasicComponent, ISubmitHandler
     {
-        [SerializeField] private GameObject _uiRoot;
+        [SerializeField] private CanvasGroup _uiRoot;
         [SerializeField] private TextMeshProUGUI _speakerNameText;
         [SerializeField] private TextMeshProUGUI _dialogueText;
         [SerializeField] private Button _nextButton;
@@ -22,10 +23,9 @@ namespace WinterUniverse
         {
             base.InitializeComponent();
             _nextButton.onClick.AddListener(AdvanceDialogue);
-            _uiRoot.SetActive(false);
         }
 
-        public void ShowDialogue(DialogueConfig dialogue, Action onCompleted = null)
+        public IEnumerator ShowDialogue(DialogueConfig dialogue, Action onCompleted = null)
         {
             _nextButton.Select();
             _currentLines = new(dialogue.Lines);
@@ -35,12 +35,24 @@ namespace WinterUniverse
             // Показываем первую строку
             DisplayCurrentLine();
 
-            _uiRoot.SetActive(true);
+            _uiRoot.gameObject.SetActive(true);
+
+            while (_uiRoot.alpha != 1f)
+            {
+                _uiRoot.alpha = Mathf.MoveTowards(_uiRoot.alpha, 1f, 2f * Time.deltaTime);
+                yield return null;
+            }
+
         }
 
-        public void HideDialogue()
+        public IEnumerator HideDialogue()
         {
-            _uiRoot.SetActive(false);
+            while (_uiRoot.alpha != 0f)
+            {
+                _uiRoot.alpha = Mathf.MoveTowards(_uiRoot.alpha, 0f, 2f * Time.deltaTime);
+                yield return null;
+            }
+            _uiRoot.gameObject.SetActive(false);
             _currentLines = null;
         }
 
@@ -56,18 +68,26 @@ namespace WinterUniverse
 
         private void AdvanceDialogue()
         {
-            _currentLineIndex++;
-            AudioManager.StaticInstance.PlaySound("event:/ui/dialog_click");
-            if (_currentLineIndex < _currentLines.Count)
+            StartCoroutine(AdvanceDialogueCoroutine());
+        }
+
+        private IEnumerator AdvanceDialogueCoroutine()
+        {
+            if (_uiRoot.alpha == 1f)
             {
-                // Еще есть строки, показываем следующую
-                DisplayCurrentLine();
-            }
-            else
-            {
-                // Диалог закончился
-                _onDialogueCompleted?.Invoke();
-                HideDialogue();
+                _currentLineIndex++;
+                AudioManager.StaticInstance.PlaySound("event:/ui/dialog_click");
+                if (_currentLineIndex < _currentLines.Count)
+                {
+                    // Еще есть строки, показываем следующую
+                    DisplayCurrentLine();
+                }
+                else
+                {
+                    // Диалог закончился
+                    yield return HideDialogue();
+                    _onDialogueCompleted?.Invoke();
+                }
             }
         }
 

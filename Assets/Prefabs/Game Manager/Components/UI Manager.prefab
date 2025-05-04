@@ -756,6 +756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 953509544021069499}
+  - component: {fileID: 6628119499589439022}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -784,6 +785,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &6628119499589439022
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562860330969179895}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5523440070991195014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f795ddd9276e3fe4d9057812e377995c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiRoot: {fileID: 4562860330969179895}
+  _uiRoot: {fileID: 6628119499589439022}
   _speakerNameText: {fileID: 4905686101079148189}
   _dialogueText: {fileID: 2934182938866896464}
   _nextButton: {fileID: 6786870179633051711}
