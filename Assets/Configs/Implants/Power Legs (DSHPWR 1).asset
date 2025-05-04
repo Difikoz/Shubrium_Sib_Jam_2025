@@ -33,5 +33,5 @@ MonoBehaviour:
   - _config: {fileID: 11400000, guid: ece7e8fd30644db46b5ac40c82593ef3, type: 2}
     _modifier:
       _type: 0
-      _value: 1
+      _value: 3
   <Effects>k__BackingField: []

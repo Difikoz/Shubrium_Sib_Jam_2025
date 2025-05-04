@@ -68,7 +68,6 @@ namespace WinterUniverse
                 MultiplierValue /= 100f;
             }
             CurrentValue = Mathf.Clamp(BaseValue + FlatValue + MultiplierValue, Config.MinValue, Config.MaxValue);
-            Debug.Log($"{Config.DisplayName} now is {CurrentValue}");
         }
     }
 }

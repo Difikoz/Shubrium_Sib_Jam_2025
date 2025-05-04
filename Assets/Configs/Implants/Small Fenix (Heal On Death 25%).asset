@@ -22,7 +22,7 @@ MonoBehaviour:
     \u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0430."
   <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <Icon>k__BackingField: {fileID: 21300000, guid: 79880543738cbbf40b4df8dbe8992d8f, type: 3}
-  <Chance>k__BackingField: 25
+  <Chance>k__BackingField: 50
   <CanStack>k__BackingField: 0
   <RemoveAfterAnyTriggerPerfomed>k__BackingField: 0
   <Modifiers>k__BackingField: []

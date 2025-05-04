@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b2be87cd0171f47b08fdf6967bf461, type: 3}
   m_Name: Player Cone distance 5 angle 180
   m_EditorClassIdentifier: 
-  <Distance>k__BackingField: 3.5
+  <Distance>k__BackingField: 4
   <AngleToCast>k__BackingField: 90
   <Angle>k__BackingField: 120
