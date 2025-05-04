@@ -1,3 +1,4 @@
+using Seedon;
 using System;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace WinterUniverse
             _inputActions.Player.Dash.performed += ctx => OnDashPerfomed();
             _inputActions.Player.Attack.performed += ctx => OnAttackPerfomed();
             _inputActions.Player.ToggleCursor.performed += ctx => OnToggleCursorPerfomed();
+            _inputActions.Player.ToggleConsole.performed += ctx => OnToggleConsolePerfomed();
             _inputActions.UI.Pick1.performed += ctx => OnPick1Perfomed();
             _inputActions.UI.Pick2.performed += ctx => OnPick2Perfomed();
             _inputActions.UI.Pick3.performed += ctx => OnPick3Perfomed();
@@ -29,6 +31,7 @@ namespace WinterUniverse
             _inputActions.Player.Dash.performed -= ctx => OnDashPerfomed();
             _inputActions.Player.Attack.performed -= ctx => OnAttackPerfomed();
             _inputActions.Player.ToggleCursor.performed -= ctx => OnToggleCursorPerfomed();
+            _inputActions.Player.ToggleConsole.performed -= ctx => OnToggleConsolePerfomed();
             _inputActions.UI.Pick1.performed -= ctx => OnPick1Perfomed();
             _inputActions.UI.Pick2.performed -= ctx => OnPick2Perfomed();
             _inputActions.UI.Pick3.performed -= ctx => OnPick3Perfomed();
@@ -76,6 +79,11 @@ namespace WinterUniverse
             {
                 GameManager.StaticInstance.SetInputMode(InputMode.Game);
             }
+        }
+
+        private void OnToggleConsolePerfomed()
+        {
+            ConsoleToGUI.StaticInstance.ToggleConsole();
         }
 
         private void OnPick1Perfomed()

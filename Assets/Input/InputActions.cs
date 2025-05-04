@@ -128,6 +128,15 @@ namespace WinterUniverse
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleConsole"",
+                    ""type"": ""Button"",
+                    ""id"": ""f231f2b1-9328-4def-8af0-2b341517f0b0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -282,6 +291,17 @@ namespace WinterUniverse
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ToggleCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d0b226a-8866-4cc6-8f7c-ae37c5d58ece"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ToggleConsole"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -702,6 +722,7 @@ namespace WinterUniverse
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_ToggleCursor = m_Player.FindAction("ToggleCursor", throwIfNotFound: true);
+            m_Player_ToggleConsole = m_Player.FindAction("ToggleConsole", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -802,6 +823,7 @@ namespace WinterUniverse
         private readonly InputAction m_Player_Attack;
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_ToggleCursor;
+        private readonly InputAction m_Player_ToggleConsole;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -829,6 +851,10 @@ namespace WinterUniverse
             /// Provides access to the underlying input action "Player/ToggleCursor".
             /// </summary>
             public InputAction @ToggleCursor => m_Wrapper.m_Player_ToggleCursor;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/ToggleConsole".
+            /// </summary>
+            public InputAction @ToggleConsole => m_Wrapper.m_Player_ToggleConsole;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -867,6 +893,9 @@ namespace WinterUniverse
                 @ToggleCursor.started += instance.OnToggleCursor;
                 @ToggleCursor.performed += instance.OnToggleCursor;
                 @ToggleCursor.canceled += instance.OnToggleCursor;
+                @ToggleConsole.started += instance.OnToggleConsole;
+                @ToggleConsole.performed += instance.OnToggleConsole;
+                @ToggleConsole.canceled += instance.OnToggleConsole;
             }
 
             /// <summary>
@@ -890,6 +919,9 @@ namespace WinterUniverse
                 @ToggleCursor.started -= instance.OnToggleCursor;
                 @ToggleCursor.performed -= instance.OnToggleCursor;
                 @ToggleCursor.canceled -= instance.OnToggleCursor;
+                @ToggleConsole.started -= instance.OnToggleConsole;
+                @ToggleConsole.performed -= instance.OnToggleConsole;
+                @ToggleConsole.canceled -= instance.OnToggleConsole;
             }
 
             /// <summary>
@@ -1199,6 +1231,13 @@ namespace WinterUniverse
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnToggleCursor(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "ToggleConsole" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnToggleConsole(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
