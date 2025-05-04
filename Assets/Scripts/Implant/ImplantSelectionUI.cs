@@ -57,5 +57,43 @@ namespace WinterUniverse
             }
             _spawnedOptions.Clear();
         }
+        
+        // Новые методы для выбора имплантов через кнопки 1, 2, 3
+        
+        /// <summary>
+        /// Выбирает имплант по индексу (0, 1, 2)
+        /// </summary>
+        public void SelectImplantByIndex(int index)
+        {
+            if (_uiRoot.activeSelf && index >= 0 && index < _spawnedOptions.Count)
+            {
+                ImplantOptionUI option = _spawnedOptions[index];
+                option.SelectImplant();
+            }
+        }
+        
+        /// <summary>
+        /// Выбирает первый имплант (кнопка 1)
+        /// </summary>
+        public void SelectImplant1()
+        {
+            SelectImplantByIndex(0);
+        }
+        
+        /// <summary>
+        /// Выбирает второй имплант (кнопка 2)
+        /// </summary>
+        public void SelectImplant2()
+        {
+            SelectImplantByIndex(1);
+        }
+        
+        /// <summary>
+        /// Выбирает третий имплант (кнопка 3)
+        /// </summary>
+        public void SelectImplant3()
+        {
+            SelectImplantByIndex(2);
+        }
     }
 }
