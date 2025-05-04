@@ -7,16 +7,16 @@ namespace WinterUniverse
     public class GameManager : Singleton<GameManager>
     {
         public bool Initialized { get; private set; }
-        public PlayerController Player { get; private set; }
-        public CameraManager CameraManager { get; private set; }
-        public DialogueManager DialogueManager { get; private set; }
-        public ElevatorManager ElevatorManager { get; private set; }
-        public ImplantManager ImplantManager { get; private set; }
-        public InputActionsManager InputActionsManager { get; private set; }
-        public LayersManager LayersManager { get; private set; }
-        public SpawnManager SpawnManager { get; private set; }
-        public StageManager StageManager { get; private set; }
-        public UIManager UIManager { get; private set; }
+        [field: SerializeField] public PlayerController Player { get; private set; }
+        [field:SerializeField]public CameraManager CameraManager { get; private set; }
+        [field: SerializeField] public DialogueManager DialogueManager { get; private set; }
+        [field: SerializeField] public ElevatorManager ElevatorManager { get; private set; }
+        [field: SerializeField] public ImplantManager ImplantManager { get; private set; }
+        [field: SerializeField] public InputActionsManager InputActionsManager { get; private set; }
+        [field: SerializeField] public LayersManager LayersManager { get; private set; }
+        [field: SerializeField] public SpawnManager SpawnManager { get; private set; }
+        [field: SerializeField] public StageManager StageManager { get; private set; }
+        [field: SerializeField] public UIManager UIManager { get; private set; }
         public InputMode InputMode { get; private set; }
 
         protected override void OnAwake()
@@ -54,6 +54,8 @@ namespace WinterUniverse
             AudioManager.StaticInstance.ChangeBackgroundMusic(1);
             yield return new WaitForSeconds(1f);
             //InitializeComponent();
+            _components = new();
+            FillComponents();
             foreach (BasicComponent compoonent in _components)
             {
                 Debug.Log($"Try Initialize {compoonent.gameObject.name}");
