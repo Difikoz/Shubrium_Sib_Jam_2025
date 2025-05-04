@@ -127,6 +127,7 @@ namespace WinterUniverse
         public void GameOver()
         {
             AudioManager.StaticInstance.ChangeBackgroundMusic(4);
+            // сделать UI смерти
             StartCoroutine(LeaveGame(0, 5f));
         }
 

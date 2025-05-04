@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5842170159132760649}
+  - component: {fileID: 7299539517544658516}
   m_Layer: 6
   m_Name: Invulnerable Effect
   m_TagString: Untagged
@@ -63,6 +64,37 @@ Transform:
   - {fileID: 994274902555648163}
   m_Father: {fileID: 4972001946492746057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7299539517544658516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189524920849365754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -611054729
+      Data2: 1226408756
+      Data3: -1839370871
+      Data4: 232067408
+    Path: event:/player/player_shield
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &278211933225732156
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +292,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bf085df995e6744a4fb03d6ee3cd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackRef:
+    Guid:
+      Data1: 491130924
+      Data2: 1299359871
+      Data3: -1814217064
+      Data4: 1426945585
+    Path: event:/player/player_attack
+  _footstepRef:
+    Guid:
+      Data1: 979552608
+      Data2: 1180182537
+      Data3: -1676699741
+      Data4: 85055262
+    Path: event:/player/player_footsteps
 --- !u!136 &7478042735515335587
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1907,7 +1953,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531ac937fa1f408e4707d37c9bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DeathAudioPathName>k__BackingField: player
+  <HitEventRef>k__BackingField:
+    Guid:
+      Data1: -904361869
+      Data2: 1218661561
+      Data3: -258350191
+      Data4: 776842293
+    Path: event:/player/player_hit
+  <DeathEventRef>k__BackingField:
+    Guid:
+      Data1: 825437246
+      Data2: 1287602643
+      Data3: -467232113
+      Data4: -2070349536
+    Path: event:/deathSound/player_death
   <InvulnerableEffect>k__BackingField: {fileID: 189524920849365754}
 --- !u!114 &7463387415205474730
 MonoBehaviour:

@@ -110,7 +110,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531ac937fa1f408e4707d37c9bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DeathAudioPathName>k__BackingField: ball
+  <HitEventRef>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <DeathEventRef>k__BackingField:
+    Guid:
+      Data1: -1284723488
+      Data2: 1189734343
+      Data3: -1311243107
+      Data4: 128275868
+    Path: event:/deathSound/ball_death
   <InvulnerableEffect>k__BackingField: {fileID: 2613894363552890897}
 --- !u!114 &8773566249972841306
 MonoBehaviour:
@@ -213,6 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3131402168474430018}
+  - component: {fileID: 1687134588745689091}
   m_Layer: 6
   m_Name: Invulnerable Effect
   m_TagString: Untagged
@@ -236,6 +250,37 @@ Transform:
   - {fileID: 6207246645489790227}
   m_Father: {fileID: 1162746869356520988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1687134588745689091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2613894363552890897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -611054729
+      Data2: 1226408756
+      Data3: -1839370871
+      Data4: 232067408
+    Path: event:/player/player_shield
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3842941021007242628
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +439,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bf085df995e6744a4fb03d6ee3cd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackRef:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _footstepRef:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &8883220777530403466
 GameObject:
   m_ObjectHideFlags: 0

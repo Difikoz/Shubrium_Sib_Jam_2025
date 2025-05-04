@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,8 @@ namespace WinterUniverse
     {
         public Action<int, int> OnValueChanged;
 
-        [field: SerializeField] public string DeathAudioPathName { get; private set; }
+        [field: SerializeField] public EventReference HitEventRef { get; private set; }
+        [field: SerializeField] public EventReference DeathEventRef { get; private set; }
         [field: SerializeField] public GameObject InvulnerableEffect { get; private set; }
 
         public int Current { get; private set; }
@@ -68,6 +70,10 @@ namespace WinterUniverse
             }
             else
             {
+                if (HitEventRef.Path != string.Empty)
+                {
+                    RuntimeManager.PlayOneShotAttached(HitEventRef, gameObject);
+                }
                 OnValueChanged?.Invoke(Current, Max);
             }
         }
@@ -96,7 +102,10 @@ namespace WinterUniverse
             }
             Current = 0;
             OnValueChanged?.Invoke(Current, Max);
-            AudioManager.StaticInstance.PlaySound($"event:/deathSound/{DeathAudioPathName}_death");
+            if (DeathEventRef.Path != string.Empty)
+            {
+                RuntimeManager.PlayOneShotAttached(DeathEventRef, gameObject);
+            }
             _pawn.GameplayComponent.AddGameplayTag("Is Dead");
             _pawn.Animator.PlayAction("Death");
             StartCoroutine(_pawn.PerformDeath());
