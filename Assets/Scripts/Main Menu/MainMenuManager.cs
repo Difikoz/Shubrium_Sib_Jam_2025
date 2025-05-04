@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,6 +33,11 @@ namespace WinterUniverse
         [Header("Настройки звука")]
         [SerializeField] private GameObject _audioSettingsMenuWindow;
         [SerializeField] private Button _audioSettingsMenuButtonBackToMainSettingsMenu;
+
+        private void Awake()
+        {
+            Application.runInBackground = true;
+        }
 
         private IEnumerator Start()
         {
