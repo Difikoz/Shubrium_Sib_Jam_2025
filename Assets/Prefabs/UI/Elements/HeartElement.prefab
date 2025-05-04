@@ -89,6 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heartImage: {fileID: 6561786804687520177}
-  _fullHeartSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  _halfHeartSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  _emptyHeartSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  _fullHeartSprite: {fileID: 21300000, guid: 0520bd636f7d10c4d948327a44b5260a, type: 3}
+  _halfHeartSprite: {fileID: 21300000, guid: 650fb9fd4b5028b4383f195af96d834e, type: 3}
+  _emptyHeartSprite: {fileID: 21300000, guid: cbc03bf5ae3f328429e3b7ba1ef9358f, type: 3}
