@@ -70,7 +70,7 @@ namespace WinterUniverse
             }
             else
             {
-                if (HitEventRef.Path != string.Empty)
+                if (HitEventRef.ToString() != string.Empty)
                 {
                     RuntimeManager.PlayOneShotAttached(HitEventRef, gameObject);
                 }
@@ -102,7 +102,7 @@ namespace WinterUniverse
             }
             Current = 0;
             OnValueChanged?.Invoke(Current, Max);
-            if (DeathEventRef.Path != string.Empty)
+            if (DeathEventRef.ToString() != string.Empty)
             {
                 RuntimeManager.PlayOneShotAttached(DeathEventRef, gameObject);
             }
