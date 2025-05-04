@@ -18,5 +18,5 @@ MonoBehaviour:
   <HitEffect>k__BackingField: {fileID: 1021272099366177520, guid: c3b6d4b4ed8b0364fa6c7f39ebce92d2, type: 3}
   <Homing>k__BackingField: 0
   <Speed>k__BackingField: 10
-  <Count>k__BackingField: 3
-  <Spread>k__BackingField: 90
+  <Count>k__BackingField: 1
+  <Spread>k__BackingField: 0
