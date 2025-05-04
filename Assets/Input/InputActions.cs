@@ -380,6 +380,33 @@ namespace WinterUniverse
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pick1"",
+                    ""type"": ""Button"",
+                    ""id"": ""034eb5a3-40f2-4c9c-9ece-03627cfab6e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pick2"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d08a16c-47ee-4584-8c2d-0a3483c4a2f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pick3"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b75299c-a660-4dca-9be9-cb8ff95f497a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -561,6 +588,39 @@ namespace WinterUniverse
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a608e0b6-d591-44fb-8694-ec0a4a15510b"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Pick1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c32641ba-757e-49d7-b1c3-77b33b23cd49"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Pick2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b284c101-963b-42b6-9bdd-5877b404879a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Pick3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4c191405-5738-4d4b-a523-c6a301dbf754"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -621,6 +681,9 @@ namespace WinterUniverse
             m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+            m_UI_Pick1 = m_UI.FindAction("Pick1", throwIfNotFound: true);
+            m_UI_Pick2 = m_UI.FindAction("Pick2", throwIfNotFound: true);
+            m_UI_Pick3 = m_UI.FindAction("Pick3", throwIfNotFound: true);
         }
 
         ~@InputActions()
@@ -841,6 +904,9 @@ namespace WinterUniverse
         private readonly InputAction m_UI_ScrollWheel;
         private readonly InputAction m_UI_TrackedDevicePosition;
         private readonly InputAction m_UI_TrackedDeviceOrientation;
+        private readonly InputAction m_UI_Pick1;
+        private readonly InputAction m_UI_Pick2;
+        private readonly InputAction m_UI_Pick3;
         /// <summary>
         /// Provides access to input actions defined in input action map "UI".
         /// </summary>
@@ -892,6 +958,18 @@ namespace WinterUniverse
             /// Provides access to the underlying input action "UI/TrackedDeviceOrientation".
             /// </summary>
             public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+            /// <summary>
+            /// Provides access to the underlying input action "UI/Pick1".
+            /// </summary>
+            public InputAction @Pick1 => m_Wrapper.m_UI_Pick1;
+            /// <summary>
+            /// Provides access to the underlying input action "UI/Pick2".
+            /// </summary>
+            public InputAction @Pick2 => m_Wrapper.m_UI_Pick2;
+            /// <summary>
+            /// Provides access to the underlying input action "UI/Pick3".
+            /// </summary>
+            public InputAction @Pick3 => m_Wrapper.m_UI_Pick3;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -948,6 +1026,15 @@ namespace WinterUniverse
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @Pick1.started += instance.OnPick1;
+                @Pick1.performed += instance.OnPick1;
+                @Pick1.canceled += instance.OnPick1;
+                @Pick2.started += instance.OnPick2;
+                @Pick2.performed += instance.OnPick2;
+                @Pick2.canceled += instance.OnPick2;
+                @Pick3.started += instance.OnPick3;
+                @Pick3.performed += instance.OnPick3;
+                @Pick3.canceled += instance.OnPick3;
             }
 
             /// <summary>
@@ -989,6 +1076,15 @@ namespace WinterUniverse
                 @TrackedDeviceOrientation.started -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
+                @Pick1.started -= instance.OnPick1;
+                @Pick1.performed -= instance.OnPick1;
+                @Pick1.canceled -= instance.OnPick1;
+                @Pick2.started -= instance.OnPick2;
+                @Pick2.performed -= instance.OnPick2;
+                @Pick2.canceled -= instance.OnPick2;
+                @Pick3.started -= instance.OnPick3;
+                @Pick3.performed -= instance.OnPick3;
+                @Pick3.canceled -= instance.OnPick3;
             }
 
             /// <summary>
@@ -1148,6 +1244,27 @@ namespace WinterUniverse
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Pick1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPick1(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Pick2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPick2(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Pick3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPick3(InputAction.CallbackContext context);
         }
     }
 }

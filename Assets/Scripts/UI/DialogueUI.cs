@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace WinterUniverse
 {
-    public class DialogueUI : BasicComponent
+    public class DialogueUI : BasicComponent, ISubmitHandler
     {
         [SerializeField] private GameObject _uiRoot;
         [SerializeField] private TextMeshProUGUI _speakerNameText;
@@ -17,13 +18,9 @@ namespace WinterUniverse
         private int _currentLineIndex;
         private Action _onDialogueCompleted;
         
-        public override void InitializeComponent()
-        {
-            _nextButton.onClick.AddListener(AdvanceDialogue);
-        }
-        
         public void ShowDialogue(DialogueConfig dialogue, Action onCompleted = null)
         {
+            _nextButton.Select();
             _currentLines = new(dialogue.Lines);
             _currentLineIndex = 0;
             _onDialogueCompleted = onCompleted;
@@ -65,6 +62,11 @@ namespace WinterUniverse
                 _onDialogueCompleted?.Invoke();
                 HideDialogue();
             }
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+            AdvanceDialogue();
         }
     }
 } 
