@@ -737,6 +737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1103044082583302486}
   - component: {fileID: 6462349266504690476}
+  - component: {fileID: 6462349266504690477}
   m_Layer: 0
   m_Name: Princessa
   m_TagString: Untagged
@@ -3816,6 +3817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3478703274016593644}
   - component: {fileID: 7396875307439000726}
+  - component: {fileID: 7396875307439000727}
   m_Layer: 0
   m_Name: Ivan
   m_TagString: Untagged
@@ -5262,6 +5264,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6462349266504690477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289668619557219308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bf085df995e6744a4fb03d6ee3cd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRef:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _footstepRef:
+    Guid:
+      Data1: 979552608
+      Data2: 1180182537
+      Data3: -1676699741
+      Data4: 85055262
+    Path: event:/player/player_footsteps
 --- !u!4 &6473020565989277748
 Transform:
   m_ObjectHideFlags: 0
@@ -5670,6 +5698,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7396875307439000727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4255064501898906710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bf085df995e6744a4fb03d6ee3cd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRef:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _footstepRef:
+    Guid:
+      Data1: 979552608
+      Data2: 1180182537
+      Data3: -1676699741
+      Data4: 85055262
+    Path: event:/player/player_footsteps
 --- !u!4 &7412031518107821966
 Transform:
   m_ObjectHideFlags: 0

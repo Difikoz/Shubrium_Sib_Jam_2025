@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 namespace WinterUniverse
@@ -5,6 +6,9 @@ namespace WinterUniverse
     public class AnimatorEvents : MonoBehaviour
     {
         private Pawn _pawn;
+
+        [SerializeField] private EventReference _attackRef;
+        [SerializeField] private EventReference _footstepRef;
 
         private void Awake()
         {
@@ -14,6 +18,24 @@ namespace WinterUniverse
         public void PerformAbilityCast()
         {
             _pawn.Combat.PerformAbilityCast();
+        }
+
+        public void PlayAttackSound()
+        {
+            if(_attackRef.Path == string.Empty)
+            {
+                return;
+            }
+            RuntimeManager.PlayOneShotAttached(_attackRef, gameObject);
+        }
+
+        public void PlayFootstepSound()
+        {
+            if (_footstepRef.Path == string.Empty)
+            {
+                return;
+            }
+            RuntimeManager.PlayOneShotAttached(_footstepRef, gameObject);
         }
     }
 }

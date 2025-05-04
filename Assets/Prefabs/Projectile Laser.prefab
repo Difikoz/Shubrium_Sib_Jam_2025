@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6542887082187714734}
   - component: {fileID: 7608709304919228893}
   - component: {fileID: 7250036958312959246}
+  - component: {fileID: 7147062456363679322}
   m_Layer: 8
   m_Name: Projectile Laser
   m_TagString: Untagged
@@ -98,6 +99,37 @@ CapsuleCollider:
   m_Height: 0.6
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7147062456363679322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4050856305836690513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1600932702
+      Data2: 1208837743
+      Data3: 229164430
+      Data4: -1327332940
+    Path: event:/enemy/ball_attack
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5804954527480738040
 GameObject:
   m_ObjectHideFlags: 0

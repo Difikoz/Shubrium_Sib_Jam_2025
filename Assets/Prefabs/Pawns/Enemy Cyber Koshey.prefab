@@ -370,7 +370,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531ac937fa1f408e4707d37c9bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DeathAudioPathName>k__BackingField: lich
+  <HitEventRef>k__BackingField:
+    Guid:
+      Data1: -1589870205
+      Data2: 1163981114
+      Data3: 1855378076
+      Data4: -1950863697
+    Path: event:/enemy/enemyHit
+  <DeathEventRef>k__BackingField:
+    Guid:
+      Data1: -2135780474
+      Data2: 1306545559
+      Data3: 826407301
+      Data4: 781010584
+    Path: event:/deathSound/lich_death
   <InvulnerableEffect>k__BackingField: {fileID: 5782432957415856862}
 --- !u!114 &8773566249972841306
 MonoBehaviour:
@@ -1244,6 +1257,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1bf085df995e6744a4fb03d6ee3cd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackRef:
+    Guid:
+      Data1: -1936833920
+      Data2: 1244957565
+      Data3: 902562203
+      Data4: -39935225
+    Path: event:/enemy/lich_attack
+  _footstepRef:
+    Guid:
+      Data1: -1560868858
+      Data2: 1126002964
+      Data3: -1093481825
+      Data4: 1077580095
+    Path: event:/enemy/lich_footsteps
 --- !u!95 &4109436860584782475
 Animator:
   serializedVersion: 7
@@ -1621,6 +1648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4989764250508317757}
+  - component: {fileID: 8589019266165686089}
   m_Layer: 6
   m_Name: Invulnerable Effect
   m_TagString: Untagged
@@ -1644,6 +1672,37 @@ Transform:
   - {fileID: 136017665033564920}
   m_Father: {fileID: 1162746869356520988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8589019266165686089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5782432957415856862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -611054729
+      Data2: 1226408756
+      Data3: -1839370871
+      Data4: 232067408
+    Path: event:/player/player_shield
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6006759010297831893
 GameObject:
   m_ObjectHideFlags: 0

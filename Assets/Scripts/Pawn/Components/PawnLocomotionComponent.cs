@@ -86,7 +86,7 @@ namespace WinterUniverse
 
             // Сообщаем UI, что рывок использован
             OnDashCooldownUpdate?.Invoke(0f);
-
+            AudioManager.StaticInstance.PlaySoundAttached($"event:/player/player_dash", gameObject);
             _dashCoroutine = StartCoroutine(DashCoroutine());
         }
 

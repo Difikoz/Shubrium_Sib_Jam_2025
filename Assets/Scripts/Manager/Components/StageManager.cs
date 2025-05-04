@@ -23,12 +23,12 @@ namespace WinterUniverse
             }
         }
 
-        public void StartNextStage()
+        public bool StartNextStage()
         {
             CurrentStageIndex++;
             if (CurrentStageIndex == Stages.Count)
             {
-                GameManager.StaticInstance.GameComplete();
+                return false;
             }
             else
             {
@@ -38,6 +38,7 @@ namespace WinterUniverse
                 GameManager.StaticInstance.SpawnManager.SpawnEnemies(CurrentStage);
                 StartCoroutine(HandleStagesCoroutine());
                 GameManager.StaticInstance.Player.Equipment.UpdateImplantCooldown();
+                return true;
             }
         }
 
