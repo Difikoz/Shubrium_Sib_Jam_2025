@@ -81,6 +81,7 @@ namespace WinterUniverse
             if (MoveDirection != Vector3.zero)
             {
                 DashVelocity = MoveDirection.normalized * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
+                transform.rotation = Quaternion.LookRotation(MoveDirection.normalized);
             }
             else
             {
