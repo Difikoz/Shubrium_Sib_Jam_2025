@@ -32,5 +32,13 @@ namespace WinterUniverse
         {
             _onClicked?.Invoke(_implant);
         }
+        
+        /// <summary>
+        /// Метод для программного выбора импланта (вызов по кнопке)
+        /// </summary>
+        public void SelectImplant()
+        {
+            OnButtonClicked();
+        }
     }
 } 
