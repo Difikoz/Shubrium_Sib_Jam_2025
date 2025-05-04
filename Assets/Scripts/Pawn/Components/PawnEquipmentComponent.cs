@@ -9,11 +9,28 @@ namespace WinterUniverse
         public Action<List<ImplantConfig>> OnImplantsChanged;
 
         public List<ImplantConfig> Implants { get; private set; }
+        [field: SerializeField] public List<ImplantConfig> AddImplantsForTest { get; private set; }
 
         public override void InitializeComponent()
         {
             base.InitializeComponent();
             Implants = new();
+        }
+
+        public override void UpdateComponent()
+        {
+            base.UpdateComponent();
+            if (AddImplantsForTest.Count > 0)
+            {
+                foreach (ImplantConfig implant in AddImplantsForTest)
+                {
+                    if (CanAddImplant(implant))
+                    {
+                        AddImplant(implant);
+                    }
+                }
+                AddImplantsForTest.Clear();
+            }
         }
 
         public bool CanAddImplant(ImplantConfig implant)

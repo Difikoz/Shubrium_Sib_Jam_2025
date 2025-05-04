@@ -24,6 +24,34 @@ namespace WinterUniverse
         public void ChangeBackgroundMusic(int value)
         {
             _musicEvent.setParameterByName("gameState", value);
+            _ambientEvent.setParameterByName("gameState", value);
+        }
+
+        public void PlaySound(string eventPath)
+        {
+            EventReference eventRef = new()
+            {
+                Path = eventPath
+            };
+            RuntimeManager.PlayOneShot(eventRef);
+        }
+
+        public void PlaySoundAtPosition(string eventPath, Vector3 position)
+        {
+            EventReference eventRef = new()
+            {
+                Path = eventPath
+            };
+            RuntimeManager.PlayOneShot(eventRef, position);
+        }
+
+        public void PlaySoundAttached(string eventPath, GameObject go)
+        {
+            EventReference eventRef = new()
+            {
+                Path = eventPath
+            };
+            RuntimeManager.PlayOneShotAttached(eventRef, go);
         }
 
         // 0 - main menu
