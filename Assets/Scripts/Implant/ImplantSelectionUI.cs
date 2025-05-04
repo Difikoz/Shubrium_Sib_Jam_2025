@@ -1,5 +1,6 @@
 using Lean.Pool;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace WinterUniverse
 {
     public class ImplantSelectionUI : BasicComponent
     {
-        [SerializeField] private GameObject _uiRoot;
+        [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private GameObject _optionPrefab;
         [SerializeField] private Transform _optionsContainer;
 
@@ -20,7 +21,7 @@ namespace WinterUniverse
             DeactivateComponent();
         }
 
-        public void ShowImplantSelection(List<ImplantConfig> implants, Action<ImplantConfig> onSelected)
+        public IEnumerator ShowImplantSelection(List<ImplantConfig> implants, Action<ImplantConfig> onSelected)
         {
             _onImplantSelected = onSelected;
 
@@ -35,17 +36,32 @@ namespace WinterUniverse
                 _spawnedOptions.Add(option);
             }
 
-            _uiRoot.SetActive(true);
+            _canvasGroup.gameObject.SetActive(true);
+
+            while (_canvasGroup.alpha != 1f)
+            {
+                _canvasGroup.alpha = Mathf.MoveTowards(_canvasGroup.alpha, 1f, Time.deltaTime);
+                yield return null;
+            }
         }
 
-        public void HideImplantSelection()
+        public IEnumerator HideImplantSelection()
         {
-            _uiRoot.SetActive(false);
+            while (_canvasGroup.alpha != 0f)
+            {
+                _canvasGroup.alpha = Mathf.MoveTowards(_canvasGroup.alpha, 0f, Time.deltaTime);
+                yield return null;
+            }
             ClearOptions();
+            _canvasGroup.gameObject.SetActive(false);
         }
 
         private void OnOptionClicked(ImplantConfig implant)
         {
+            if (_canvasGroup.alpha != 1f)
+            {
+                return;
+            }
             _onImplantSelected?.Invoke(implant);
         }
 
@@ -57,21 +73,21 @@ namespace WinterUniverse
             }
             _spawnedOptions.Clear();
         }
-        
+
         // Новые методы для выбора имплантов через кнопки 1, 2, 3
-        
+
         /// <summary>
         /// Выбирает имплант по индексу (0, 1, 2)
         /// </summary>
         public void SelectImplantByIndex(int index)
         {
-            if (_uiRoot.activeSelf && index >= 0 && index < _spawnedOptions.Count)
+            if (_canvasGroup.gameObject.activeSelf && index >= 0 && index < _spawnedOptions.Count)
             {
                 ImplantOptionUI option = _spawnedOptions[index];
                 option.SelectImplant();
             }
         }
-        
+
         /// <summary>
         /// Выбирает первый имплант (кнопка 1)
         /// </summary>
@@ -79,7 +95,7 @@ namespace WinterUniverse
         {
             SelectImplantByIndex(0);
         }
-        
+
         /// <summary>
         /// Выбирает второй имплант (кнопка 2)
         /// </summary>
@@ -87,7 +103,7 @@ namespace WinterUniverse
         {
             SelectImplantByIndex(1);
         }
-        
+
         /// <summary>
         /// Выбирает третий имплант (кнопка 3)
         /// </summary>

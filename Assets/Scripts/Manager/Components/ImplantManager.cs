@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace WinterUniverse
 
         public bool IsSelectingImplant { get; private set; } = false;
 
-        public void ShowImplantSelection()
+        public IEnumerator ShowImplantSelection()
         {
             IsSelectingImplant = true;
 
@@ -18,7 +19,7 @@ namespace WinterUniverse
             var implants = GetRandomImplants(_implantOptions);
 
             // Активируем UI выбора имплантов
-            GameManager.StaticInstance.UIManager.ImplantSelectionUI.ShowImplantSelection(implants, OnImplantSelected);
+            yield return GameManager.StaticInstance.UIManager.ImplantSelectionUI.ShowImplantSelection(implants, OnImplantSelected);
         }
 
         private void OnImplantSelected(ImplantConfig selectedImplant)
@@ -27,7 +28,7 @@ namespace WinterUniverse
             GameManager.StaticInstance.Player.Equipment.AddImplant(selectedImplant);
 
             // Закрываем UI выбора
-            GameManager.StaticInstance.UIManager.ImplantSelectionUI.HideImplantSelection();
+            StartCoroutine(GameManager.StaticInstance.UIManager.ImplantSelectionUI.HideImplantSelection());
 
             // Отмечаем, что выбор завершен
             IsSelectingImplant = false;
