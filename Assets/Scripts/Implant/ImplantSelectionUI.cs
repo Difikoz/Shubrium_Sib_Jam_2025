@@ -28,10 +28,10 @@ namespace WinterUniverse
             ClearOptions();
 
             // Создаем UI для каждого импланта
-            foreach (var implant in implants)
+            for (int i = 0; i < implants.Count; i++)
             {
                 ImplantOptionUI option = LeanPool.Spawn(_optionPrefab, _optionsContainer).GetComponent<ImplantOptionUI>();
-                option.Setup(implant, OnOptionClicked);
+                option.Setup(implants[i], OnOptionClicked, i);
                 _spawnedOptions.Add(option);
             }
 
