@@ -42,6 +42,7 @@ namespace WinterUniverse
             {
                 return;
             }
+            _button.onClick.RemoveAllListeners();
             _onPressed?.Invoke();
         }
     }

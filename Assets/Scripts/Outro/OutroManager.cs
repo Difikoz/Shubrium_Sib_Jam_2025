@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace WinterUniverse
@@ -25,7 +26,7 @@ namespace WinterUniverse
 
         private void OnDialogComplete()
         {
-            //
+            StartCoroutine(LoadMainMenuScene());
         }
 
         public IEnumerator FadeScreen(float value)
@@ -37,6 +38,13 @@ namespace WinterUniverse
                 _fadeImage.color = c;
                 yield return null;
             }
+        }
+
+        private IEnumerator LoadMainMenuScene()
+        {
+            yield return FadeScreen(1f);
+            AudioManager.StaticInstance.ChangeBackgroundMusic(0);
+            SceneManager.LoadScene(0);
         }
     }
 }
