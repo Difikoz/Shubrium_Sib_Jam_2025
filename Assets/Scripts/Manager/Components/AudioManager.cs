@@ -29,29 +29,17 @@ namespace WinterUniverse
 
         public void PlaySound(string eventPath)
         {
-            EventReference eventRef = new()
-            {
-                Path = eventPath
-            };
-            RuntimeManager.PlayOneShot(eventRef);
+            RuntimeManager.PlayOneShot(eventPath);
         }
 
         public void PlaySoundAtPosition(string eventPath, Vector3 position)
         {
-            EventReference eventRef = new()
-            {
-                Path = eventPath
-            };
-            RuntimeManager.PlayOneShot(eventRef, position);
+            RuntimeManager.PlayOneShot(eventPath, position);
         }
 
         public void PlaySoundAttached(string eventPath, GameObject go)
         {
-            EventReference eventRef = new()
-            {
-                Path = eventPath
-            };
-            RuntimeManager.PlayOneShotAttached(eventRef, go);
+            RuntimeManager.PlayOneShotAttached(eventPath, go);
         }
 
         // 0 - main menu

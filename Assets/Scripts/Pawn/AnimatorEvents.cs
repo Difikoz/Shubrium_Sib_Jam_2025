@@ -22,7 +22,7 @@ namespace WinterUniverse
 
         public void PlayAttackSound()
         {
-            if(_attackRef.Path == string.Empty)
+            if(_attackRef.ToString() == string.Empty)
             {
                 return;
             }
@@ -31,7 +31,7 @@ namespace WinterUniverse
 
         public void PlayFootstepSound()
         {
-            if (_footstepRef.Path == string.Empty)
+            if (_footstepRef.ToString() == string.Empty)
             {
                 return;
             }
