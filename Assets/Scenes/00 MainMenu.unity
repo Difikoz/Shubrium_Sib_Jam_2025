@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 31792041}
   - component: {fileID: 31792040}
   - component: {fileID: 31792043}
+  - component: {fileID: 31792044}
   m_Layer: 5
   m_Name: Gameplay Settings Menu Button Back To Main Settings Menu
   m_TagString: Untagged
@@ -272,6 +273,37 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &31792044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31792038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &33605646
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +317,7 @@ GameObject:
   - component: {fileID: 33605649}
   - component: {fileID: 33605648}
   - component: {fileID: 33605651}
+  - component: {fileID: 33605652}
   m_Layer: 5
   m_Name: Main Game Menu Button Settings
   m_TagString: Untagged
@@ -416,6 +449,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &33605652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33605646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -694,6 +758,7 @@ GameObject:
   - component: {fileID: 58575503}
   - component: {fileID: 58575502}
   - component: {fileID: 58575505}
+  - component: {fileID: 58575506}
   m_Layer: 5
   m_Name: Graphics Settings Menu Button Back To Main Settings Menu
   m_TagString: Untagged
@@ -825,6 +890,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &58575506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58575500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -2094,6 +2190,7 @@ GameObject:
   - component: {fileID: 583931242}
   - component: {fileID: 583931241}
   - component: {fileID: 583931244}
+  - component: {fileID: 583931245}
   m_Layer: 5
   m_Name: Main Game Menu Button Quit Game
   m_TagString: Untagged
@@ -2225,6 +2322,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &583931245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583931239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -3531,6 +3659,7 @@ GameObject:
   - component: {fileID: 784019680}
   - component: {fileID: 784019679}
   - component: {fileID: 784019682}
+  - component: {fileID: 784019683}
   m_Layer: 5
   m_Name: Main Settings Menu Button Back To Main Game Menu
   m_TagString: Untagged
@@ -3662,6 +3791,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &784019683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784019677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -4027,6 +4187,7 @@ GameObject:
   - component: {fileID: 924450186}
   - component: {fileID: 924450185}
   - component: {fileID: 924450188}
+  - component: {fileID: 924450189}
   m_Layer: 5
   m_Name: Main Settings Menu Button Graphics Settings
   m_TagString: Untagged
@@ -4158,6 +4319,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &924450189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924450183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -6112,6 +6304,7 @@ GameObject:
   - component: {fileID: 1277172316}
   - component: {fileID: 1277172315}
   - component: {fileID: 1277172318}
+  - component: {fileID: 1277172319}
   m_Layer: 5
   m_Name: Main Settings Menu Button Gameplay Settings
   m_TagString: Untagged
@@ -6243,6 +6436,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1277172319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277172313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -6939,6 +7163,7 @@ GameObject:
   - component: {fileID: 1634754116}
   - component: {fileID: 1634754115}
   - component: {fileID: 1634754118}
+  - component: {fileID: 1634754119}
   m_Layer: 5
   m_Name: Main Game Menu Button New Game
   m_TagString: Untagged
@@ -7070,6 +7295,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1634754119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634754113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -487122445
+      Data2: 1210657898
+      Data3: 1198401462
+      Data4: -698659556
+    Path: event:/ui/button_click_start
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -7228,6 +7484,7 @@ GameObject:
   - component: {fileID: 1677226848}
   - component: {fileID: 1677226847}
   - component: {fileID: 1677226850}
+  - component: {fileID: 1677226851}
   m_Layer: 5
   m_Name: Audio Settings Menu Button Back To Main Settings Menu
   m_TagString: Untagged
@@ -7359,6 +7616,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1677226851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677226845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -8079,6 +8367,7 @@ GameObject:
   - component: {fileID: 1824814836}
   - component: {fileID: 1824814835}
   - component: {fileID: 1824814838}
+  - component: {fileID: 1824814839}
   m_Layer: 5
   m_Name: Main Settings Menu Button Audio Settings
   m_TagString: Untagged
@@ -8210,6 +8499,37 @@ MonoBehaviour:
     Path: event:/ui/button_click_overlap
   Event: 
   EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1824814839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824814833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2014871306
+      Data2: 1161666774
+      Data3: 91898783
+      Data4: 872423534
+    Path: event:/ui/button_click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0

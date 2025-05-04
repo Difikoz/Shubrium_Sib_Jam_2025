@@ -62,6 +62,7 @@ namespace WinterUniverse
             {
                 return;
             }
+            AudioManager.StaticInstance.PlaySound("event:/ui/take_bonus");
             _onImplantSelected?.Invoke(implant);
         }
 

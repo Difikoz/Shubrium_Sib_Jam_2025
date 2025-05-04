@@ -57,7 +57,7 @@ namespace WinterUniverse
         private void AdvanceDialogue()
         {
             _currentLineIndex++;
-
+            AudioManager.StaticInstance.PlaySound("event:/ui/dialog_click");
             if (_currentLineIndex < _currentLines.Count)
             {
                 // Еще есть строки, показываем следующую
