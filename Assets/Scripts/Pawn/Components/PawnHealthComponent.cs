@@ -128,8 +128,8 @@ namespace WinterUniverse
         {
             if (_invulnerableCoroutine != null)
             {
-                StopCoroutine(_invulnerableCoroutine);
                 StopInvulnerable();
+                StopCoroutine(_invulnerableCoroutine);
                 _invulnerableCoroutine = null;
             }
         }

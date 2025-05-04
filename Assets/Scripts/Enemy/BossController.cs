@@ -74,11 +74,13 @@ namespace WinterUniverse
         {
             Health.AddInvulnerable();
             WaitForSeconds delay = new(0.5f);
-            while (GameManager.StaticInstance.StageManager.CurrentStage.EnemyAlive())
+            Agent.SetDestination(transform.position);
+            GameplayComponent.AddGameplayTag("Is Freezed");
+            while (GameManager.StaticInstance.StageManager.CurrentStage.GetActiveEnemyCount() != 1)
             {
-                // отключение атаки
                 yield return delay;
             }
+            GameplayComponent.RemoveGameplayTag("Is Freezed");
             Health.RemoveInvulnerable();
         }
     }

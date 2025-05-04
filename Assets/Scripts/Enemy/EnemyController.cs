@@ -49,19 +49,19 @@ namespace WinterUniverse
             Combat.SetTarget(GameManager.StaticInstance.Player);
             while (!GameplayComponent.HasGameplayTag("Is Dead"))
             {
-                while (GameplayComponent.HasGameplayTag("Is Perfoming Action") || GameManager.StaticInstance.InputMode != InputMode.Game)
+                while (GameplayComponent.HasGameplayTag("Is Perfoming Action") || GameplayComponent.HasGameplayTag("Is Freezed") || GameManager.StaticInstance.InputMode != InputMode.Game)
                 {
                     yield return null;
                 }
                 IsRotatingToTarget = false;
-                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance * 0.75f)
+                while (Combat.DistanceToTarget > Combat.BasicAttack.CastType.Distance * 0.75f && !GameplayComponent.HasGameplayTag("Is Freezed"))
                 {
                     Agent.SetDestination(Combat.Target.transform.position);
                     yield return delay;
                 }
                 Agent.ResetPath();
                 IsRotatingToTarget = true;
-                while (Mathf.Abs(Combat.AngleToTarget) > Combat.BasicAttack.CastType.AngleToCast / 2f)
+                while (Mathf.Abs(Combat.AngleToTarget) > Combat.BasicAttack.CastType.AngleToCast / 2f && !GameplayComponent.HasGameplayTag("Is Freezed"))
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Combat.DirectionToTarget), Locomotion.RotateSpeed * Time.deltaTime);
                     yield return null;
@@ -82,7 +82,7 @@ namespace WinterUniverse
                     IsRotatingToTarget = false;
                     Agent.SetDestination(GameManager.StaticInstance.StageManager.CurrentStage.GetRandomSpawnPoint().position);
                     yield return delay;
-                    while (Agent.remainingDistance > 1f)
+                    while (Agent.remainingDistance > 1f && !GameplayComponent.HasGameplayTag("Is Freezed"))
                     {
                         yield return delay;
                     }

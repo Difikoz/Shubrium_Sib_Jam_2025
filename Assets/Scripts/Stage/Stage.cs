@@ -65,16 +65,17 @@ namespace WinterUniverse
             return SpawnPoints[Random.Range(0, SpawnPoints.Count)];
         }
 
-        public bool EnemyAlive()
+        public int GetActiveEnemyCount()
         {
+            int count = 0;
             foreach (BasicComponent enemy in _components)
             {
                 if (enemy.isActiveAndEnabled)
                 {
-                    return true;
+                    count++;
                 }
             }
-            return false;
+            return count;
         }
     }
 }
