@@ -11,6 +11,8 @@ namespace WinterUniverse
         public event Action<float> OnDashCooldownUpdate;
 
         public Vector3 MoveDirection;
+        public Vector3 LookDirection;
+        public Vector3 LookPoint;
         public Vector3 GroundVelocity { get; private set; }
         public Vector3 KnockbackVelocity { get; private set; }
         public Vector3 DashVelocity { get; private set; }
@@ -33,6 +35,8 @@ namespace WinterUniverse
 
         public override void UpdateComponent()
         {
+            LookPoint.y = 0f;
+            LookDirection = (LookPoint - transform.position).normalized;
             if (_pawn.GameplayComponent.HasGameplayTag("Is Moving"))
             {
                 if (MoveDirection == Vector3.zero || DashVelocity != Vector3.zero || _pawn.GameplayComponent.HasGameplayTag("Is Perfoming Action") || GameManager.StaticInstance.InputMode != InputMode.Game)
@@ -78,10 +82,10 @@ namespace WinterUniverse
             {
                 return;
             }
-            if (MoveDirection != Vector3.zero)
+            if (LookDirection != Vector3.zero)
             {
-                DashVelocity = MoveDirection.normalized * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
-                transform.rotation = Quaternion.LookRotation(MoveDirection.normalized);
+                DashVelocity = LookDirection.normalized * _pawn.GameplayComponent.GetGameplayStat("Dash Force").CurrentValue / TimeToDash;
+                transform.rotation = Quaternion.LookRotation(LookDirection.normalized);
             }
             else
             {

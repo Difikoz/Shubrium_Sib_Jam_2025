@@ -23,7 +23,11 @@ namespace WinterUniverse
         public override void FixedUpdateComponent()
         {
             base.FixedUpdateComponent();
-            if (Locomotion.GroundVelocity != Vector3.zero)
+            if (GameplayComponent.HasGameplayTag("Is Perfoming Action"))// костыль, по хорошему добавлять тег при атаке и дэше и чекать их наличие, как вариант
+            {
+                RB.rotation = Quaternion.RotateTowards(RB.rotation, Quaternion.LookRotation(Locomotion.LookDirection.normalized), Locomotion.RotateSpeed * Time.fixedDeltaTime);
+            }
+            else if (Locomotion.GroundVelocity != Vector3.zero)
             {
                 RB.rotation = Quaternion.RotateTowards(RB.rotation, Quaternion.LookRotation(Locomotion.GroundVelocity.normalized), Locomotion.RotateSpeed * Time.fixedDeltaTime);
             }

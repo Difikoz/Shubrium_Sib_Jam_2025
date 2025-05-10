@@ -43,6 +43,12 @@ namespace WinterUniverse
             {
                 _moveInput = _inputActions.Player.Move.ReadValue<Vector2>();
                 GameManager.StaticInstance.Player.Locomotion.MoveDirection = (GameManager.StaticInstance.CameraManager.transform.right * _moveInput.x + GameManager.StaticInstance.CameraManager.transform.forward * _moveInput.y).normalized;
+                Plane groundPlane = new(Vector3.up, Vector3.zero);
+                Ray cameraRay = Camera.main.ScreenPointToRay(_inputActions.UI.Point.ReadValue<Vector2>());
+                if (groundPlane.Raycast(cameraRay, out float length))
+                {
+                    GameManager.StaticInstance.Player.Locomotion.LookPoint = cameraRay.GetPoint(length);
+                }
             }
             else
             {

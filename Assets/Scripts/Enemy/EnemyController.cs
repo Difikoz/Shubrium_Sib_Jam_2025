@@ -28,12 +28,20 @@ namespace WinterUniverse
         public override void UpdateComponent()
         {
             Locomotion.MoveDirection = (Agent.steeringTarget - transform.position).normalized;
+            if (Combat.Target != null)
+            {
+                Locomotion.LookPoint = Combat.Target.transform.position;
+            }
+            else
+            {
+                Locomotion.LookPoint = Agent.destination;
+            }
             base.UpdateComponent();
             if (!GameplayComponent.HasGameplayTag("Is Perfoming Action"))
             {
-                if (IsRotatingToTarget && Combat.DirectionToTarget != Vector3.zero)
+                if (IsRotatingToTarget && Locomotion.LookDirection != Vector3.zero)
                 {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Combat.DirectionToTarget), Locomotion.RotateSpeed * Time.deltaTime);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Locomotion.LookDirection), Locomotion.RotateSpeed * Time.deltaTime);
                 }
                 else if (Locomotion.GroundVelocity != Vector3.zero)
                 {

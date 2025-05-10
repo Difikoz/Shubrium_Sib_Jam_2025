@@ -116,8 +116,8 @@ namespace WinterUniverse
             InputMode = mode;
             if (InputMode == InputMode.Game)
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                //Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.visible = false;
             }
             else
             {
